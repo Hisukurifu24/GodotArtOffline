@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://db0cl1ycyq7we"]
+
+[ext_resource type="Script" path="res://Scripts/npc.gd" id="1_1iap5"]
+[ext_resource type="Texture2D" uid="uid://cv7cftyunbj1a" path="res://Arts/Mini_Characters/char_42.png" id="1_3ygos"]
+[ext_resource type="PackedScene" uid="uid://cyh0amjo5p13s" path="res://Scenes/dialogue_box.tscn" id="2_32oao"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4ttr"]
+size = Vector2(6, 5.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbfkb"]
+size = Vector2(16, 12)
+
+[node name="NPC" type="CharacterBody2D"]
+script = ExtResource("1_1iap5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.25)
+shape = SubResource("RectangleShape2D_m4ttr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -5)
+texture = ExtResource("1_3ygos")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_mbfkb")
+
+[node name="DialogueBox" parent="." instance=ExtResource("2_32oao")]
+process_mode = 4
+visible = false
+lines = Array[String](["Ciao sono un NPC, sono programmato solo per salutarti."])
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

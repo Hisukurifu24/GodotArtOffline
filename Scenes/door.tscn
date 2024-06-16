@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://cx2o2i3ck7mtt"]
+
+[ext_resource type="Script" path="res://Scripts/door.gd" id="1_iau5y"]
+[ext_resource type="Texture2D" uid="uid://n7016hb7dp4d" path="res://Arts/Mystic Woods/sprites/tilesets/walls/wooden_door.png" id="1_txgwk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r6e6c"]
+size = Vector2(42, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kc0tm"]
+atlas = ExtResource("1_txgwk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yhp6"]
+atlas = ExtResource("1_txgwk")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7r3f5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kc0tm")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yhp6")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqnwl"]
+size = Vector2(16, 3)
+
+[node name="Door" type="Area2D"]
+script = ExtResource("1_iau5y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_r6e6c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_7r3f5")
+animation = &"closed"
+autoplay = "closed"
+frame_progress = 0.191402
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_oqnwl")
+debug_color = Color(0, 0.631373, 0.443137, 0.419608)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
