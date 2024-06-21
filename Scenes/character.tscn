@@ -1,6 +1,6 @@
 [gd_scene load_steps=43 format=3 uid="uid://dfpr1uxutxjr6"]
 
-[ext_resource type="Script" path="res://Scripts/character.gd" id="1_amt8x"]
+[ext_resource type="Script" path="res://Scripts/Entities/character.gd" id="1_amt8x"]
 [ext_resource type="Texture2D" uid="uid://cd8xy0n3arjyu" path="res://Arts/Mystic Woods/sprites/characters/player.png" id="2_akngc"]
 [ext_resource type="PackedScene" uid="uid://bqkr2usu7fvn" path="res://Scenes/sword.tscn" id="3_8pwlc"]
 
