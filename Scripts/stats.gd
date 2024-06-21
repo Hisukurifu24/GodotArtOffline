@@ -44,16 +44,15 @@ var crit_pt: float:
 		crit_dmg = clamp(value, 1, 3)
 
 # Returns a new Stats object
-func _init(hp=0, mp=0, ad=0, ap=0, armor=0, mr=0, crit=0, crit_dmg=1):
-	self.hp = hp
-	self.mp = mp
-	self.ad = ad
-	self.ap = ap
-	self.armor = armor
-	self.mr = mr
-	self.crit = crit
-	self.crit_dmg = crit_dmg
-	pass
+func _init(hp_param=0, mp_param=0, ad_param=0, ap_param=0, armor_param=0, mr_param=0, crit_param=0, crit_dmg_param=1):
+	self.hp = hp_param
+	self.mp = mp_param
+	self.ad = ad_param
+	self.ap = ap_param
+	self.armor = armor_param
+	self.mr = mr_param
+	self.crit = crit_param
+	self.crit_dmg = crit_dmg_param
 
 # Returns a new Stats object with the sum of the stats of the two objects
 static func sum(stats1, stats2):
