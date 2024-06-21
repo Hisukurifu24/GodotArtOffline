@@ -1,42 +1,69 @@
 class_name Stats
+extends Resource
 
-var hp: float:
+## Health Points
+@export var hp: float:
 	set(value):
 		hp = max(value, 0)
-var mp: float:
+## Mana Points
+@export var mp: float:
 	set(value):
 		mp = max(value, 0)
 
-var ad: float:
+## Attack Damage
+@export var ad: float:
 	set(value):
 		ad = max(value, 0)
-var ap: float:
+## Ability Power
+@export var ap: float:
 	set(value):
 		ap = max(value, 0)
 
-var armor: float:
+## Armor
+@export var armor: float:
 	set(value):
 		armor = max(value, 0)
-var mr: float:
+## Magic Resistance
+@export var mr: float:
 	set(value):
 		mr = max(value, 0)
 
-var speed: float:
-	set(value):
-		speed = max(value, 0)
-		
-var crit: float:
+## Critical Strike Chance [0, 1]
+@export_range(0, 1) var crit: float:
 	set(value):
 		crit = clamp(value, 0, 1)
+# Critical Strike Chance in percentage
 var crit_pt: float:
+	get:
+		return crit * 100
 	set(value):
-		crit_pt = max(value, 0)
+		crit = value / 100
+## Critical Strike Damage [1, 3]
+@export_range(1, 3) var crit_dmg: float:
+	set(value):
+		crit_dmg = clamp(value, 1, 3)
 
-func _init(ad_param: float, ap_param: float, armor_param: float, mr_param: float, hp_param: float, mp_param: float):
-	self.ad = ad_param
-	self.ap = ap_param
-	self.armor = armor_param
-	self.mr = mr_param
-	self.hp = hp_param
-	self.mp = mp_param
+# Returns a new Stats object
+func _init(hp=0, mp=0, ad=0, ap=0, armor=0, mr=0, crit=0, crit_dmg=1):
+	self.hp = hp
+	self.mp = mp
+	self.ad = ad
+	self.ap = ap
+	self.armor = armor
+	self.mr = mr
+	self.crit = crit
+	self.crit_dmg = crit_dmg
 	pass
+
+# Returns a new Stats object with the sum of the stats of the two objects
+static func sum(stats1, stats2):
+	var summed_stats = stats1.duplicate()
+	summed_stats.hp += stats2.hp
+	summed_stats.mp += stats2.mp
+	summed_stats.ad += stats2.ad
+	summed_stats.ap += stats2.ap
+	summed_stats.armor += stats2.armor
+	summed_stats.mr += stats2.mr
+	summed_stats.crit = clamp(summed_stats.crit + stats2.crit, 0, 1)
+	summed_stats.crit_dmg = clamp(summed_stats.crit_dmg + stats2.crit_dmg, 1, 3)
+	return summed_stats

@@ -2,11 +2,13 @@ class_name Entity
 extends CharacterBody2D
 
 #region Variabili principali
-var hp = 1000
-@export var max_hp = 1000
 
-var mana = 1000
-@export var max_mana = 1000
+@export var baseStats: Stats = Stats.new()
+var currentStats: Stats = Stats.new()
+var bonusStats: Stats = Stats.new()
+var maxStats: Stats = Stats.new():
+	get:
+		return Stats.sum(baseStats, bonusStats)
 
 var xp = 0
 var max_xp = 100
@@ -29,16 +31,15 @@ var is_alive = true
 var knockbackTime = 0.5
 
 func _ready():
-	hp = max_hp
-	mana = max_mana
+	currentStats = baseStats
+	bonusStats = Stats.new()
 
 func takeDamage(amount):
-	print("HP: " + str(hp) + " - " + str(amount))
-	hp -= amount
-	hp = clamp(hp, 0, max_hp)
-	health_changed.emit(hp, max_hp)
+	print("HP: " + str(currentStats.hp) + " - " + str(amount))
+	currentStats.hp -= amount
+	health_changed.emit(currentStats.hp, maxStats.hp)
 	changeColor()
-	if (hp == 0):
+	if (currentStats.hp == 0):
 		die()
 
 func changeColor():

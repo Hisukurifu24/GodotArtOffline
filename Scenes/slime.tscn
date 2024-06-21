@@ -1,12 +1,24 @@
-[gd_scene load_steps=36 format=3 uid="uid://7rgng7tmpief"]
+[gd_scene load_steps=38 format=3 uid="uid://7rgng7tmpief"]
 
 [ext_resource type="Texture2D" uid="uid://dagha4sohjjpy" path="res://Arts/Mystic Woods/sprites/characters/slime.png" id="1_beqgq"]
 [ext_resource type="Script" path="res://Scripts/Entities/slime.gd" id="1_syftl"]
+[ext_resource type="Script" path="res://Scripts/stats.gd" id="2_kdag4"]
 [ext_resource type="PackedScene" uid="uid://deuyd32igmrt" path="res://Scenes/hitbox.tscn" id="3_ujd7q"]
 [ext_resource type="Script" path="res://Scripts/States/State Machine.gd" id="4_avgsk"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="5_lx7uc"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyFollow.gd" id="6_o70pj"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyAttack.gd" id="7_yw73n"]
+
+[sub_resource type="Resource" id="Resource_hwq8e"]
+script = ExtResource("2_kdag4")
+hp = 100.0
+mp = 0.0
+ad = 0.0
+ap = 0.0
+armor = 0.0
+mr = 0.0
+crit = 0.0
+crit_dmg = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2gjm"]
 size = Vector2(14, 10)
@@ -219,8 +231,7 @@ radius = 7.0
 
 [node name="Slime" type="CharacterBody2D"]
 script = ExtResource("1_syftl")
-max_hp = 100
-max_mana = 50
+baseStats = SubResource("Resource_hwq8e")
 speed = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

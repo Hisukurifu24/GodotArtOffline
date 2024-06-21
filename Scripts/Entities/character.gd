@@ -21,11 +21,14 @@ var isAttacking = false
 #endregion
 
 func _ready():
+	super._ready()
 	energy = max_energy
 	water = max_water
 	
-	health_changed.emit(hp, max_hp)
-	mana_changed.emit(mana, max_mana)
+	health_changed.emit(currentStats.hp, maxStats.hp)
+	mana_changed.emit(currentStats.mp, maxStats.mp)
+	print(energy)
+	print(max_energy)
 	energy_changed.emit(energy, max_energy)
 	water_changed.emit(water, max_water)
 	xp_changed.emit(xp, max_xp, lvl)

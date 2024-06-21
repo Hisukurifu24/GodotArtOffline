@@ -1,8 +1,20 @@
-[gd_scene load_steps=43 format=3 uid="uid://dfpr1uxutxjr6"]
+[gd_scene load_steps=45 format=3 uid="uid://dfpr1uxutxjr6"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/character.gd" id="1_amt8x"]
+[ext_resource type="Script" path="res://Scripts/stats.gd" id="2_ajd7l"]
 [ext_resource type="Texture2D" uid="uid://cd8xy0n3arjyu" path="res://Arts/Mystic Woods/sprites/characters/player.png" id="2_akngc"]
 [ext_resource type="PackedScene" uid="uid://bqkr2usu7fvn" path="res://Scenes/sword.tscn" id="3_8pwlc"]
+
+[sub_resource type="Resource" id="Resource_7obnu"]
+script = ExtResource("2_ajd7l")
+hp = 1000.0
+mp = 1000.0
+ad = 0.0
+ap = 0.0
+armor = 0.0
+mr = 0.0
+crit = 0.0
+crit_dmg = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4ttr"]
 size = Vector2(9, 4.5)
@@ -333,6 +345,7 @@ func _on_sword_weapon_ready():
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_amt8x")
+baseStats = SubResource("Resource_7obnu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.25)
