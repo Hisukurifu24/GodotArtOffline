@@ -67,3 +67,25 @@ static func sum(stats1, stats2):
 	summed_stats.crit = clamp(summed_stats.crit + stats2.crit, 0, 1)
 	summed_stats.crit_dmg = clamp(summed_stats.crit_dmg + stats2.crit_dmg, 1, 3)
 	return summed_stats
+
+# Increase the stats of the object by the values of the parameter
+func increase(values: Stats):
+	self.hp += values.hp
+	self.mp += values.mp
+	self.ad += values.ad
+	self.ap += values.ap
+	self.armor += values.armor
+	self.mr += values.mr
+	self.crit = clamp(self.crit + values.crit, 0, 1)
+	self.crit_dmg = clamp(self.crit_dmg + values.crit_dmg, 1, 3)
+
+# Decrease the stats of the object by the values of the parameter
+func decrease(values: Stats):
+	self.hp -= values.hp
+	self.mp -= values.mp
+	self.ad -= values.ad
+	self.ap -= values.ap
+	self.armor -= values.armor
+	self.mr -= values.mr
+	self.crit = clamp(self.crit - values.crit, 0, 1)
+	self.crit_dmg = clamp(self.crit_dmg - values.crit_dmg, 1, 3)
