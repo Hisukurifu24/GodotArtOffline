@@ -43,6 +43,10 @@ var crit_pt: float:
 	set(value):
 		crit_dmg = clamp(value, 1, 3)
 
+# TODO: Da definire come funziona esattamente il crit_dmg:
+# damage = ad * (1 + crit_dmg * crit) = ad + ad * crit_dmg * is_crit[0, 1]
+# sum crit damage: self.crit_dmg * added_crit_dmg?
+
 # Returns a new Stats object
 func _init(hp_init=0, mp_init=0, ad_init=0, ap_init=0, armor_init=0, mr_init=0, crit_init=0, crit_dmg_init=1):
 	self.hp = hp_init
