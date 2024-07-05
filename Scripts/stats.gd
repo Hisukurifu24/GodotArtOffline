@@ -43,16 +43,21 @@ var crit_pt: float:
 	set(value):
 		crit_dmg = clamp(value, 1, 3)
 
+# TODO: Da definire come funziona esattamente il crit_dmg:
+# damage = ad * (1 + crit_dmg * crit) = ad + ad * crit_dmg * is_crit[0, 1]
+# sum crit damage: self.crit_dmg * added_crit_dmg?
+
 # Returns a new Stats object
-func _init(hp_param=0, mp_param=0, ad_param=0, ap_param=0, armor_param=0, mr_param=0, crit_param=0, crit_dmg_param=1):
-	self.hp = hp_param
-	self.mp = mp_param
-	self.ad = ad_param
-	self.ap = ap_param
-	self.armor = armor_param
-	self.mr = mr_param
-	self.crit = crit_param
-	self.crit_dmg = crit_dmg_param
+func _init(hp_init=0, mp_init=0, ad_init=0, ap_init=0, armor_init=0, mr_init=0, crit_init=0, crit_dmg_init=1):
+	self.hp = hp_init
+	self.mp = mp_init
+	self.ad = ad_init
+	self.ap = ap_init
+	self.armor = armor_init
+	self.mr = mr_init
+	self.crit = crit_init
+	self.crit_dmg = crit_dmg_init
+	pass
 
 # Returns a new Stats object with the sum of the stats of the two objects
 static func sum(stats1, stats2):
@@ -66,3 +71,25 @@ static func sum(stats1, stats2):
 	summed_stats.crit = clamp(summed_stats.crit + stats2.crit, 0, 1)
 	summed_stats.crit_dmg = clamp(summed_stats.crit_dmg + stats2.crit_dmg, 1, 3)
 	return summed_stats
+
+# Increase the stats of the object by the values of the parameter
+func increase(values: Stats):
+	self.hp += values.hp
+	self.mp += values.mp
+	self.ad += values.ad
+	self.ap += values.ap
+	self.armor += values.armor
+	self.mr += values.mr
+	self.crit = clamp(self.crit + values.crit, 0, 1)
+	self.crit_dmg = clamp(self.crit_dmg + values.crit_dmg, 1, 3)
+
+# Decrease the stats of the object by the values of the parameter
+func decrease(values: Stats):
+	self.hp -= values.hp
+	self.mp -= values.mp
+	self.ad -= values.ad
+	self.ap -= values.ap
+	self.armor -= values.armor
+	self.mr -= values.mr
+	self.crit = clamp(self.crit - values.crit, 0, 1)
+	self.crit_dmg = clamp(self.crit_dmg - values.crit_dmg, 1, 3)
