@@ -1,18 +1,18 @@
 class_name Reward
-extends Node
+extends Resource
 
 @export var experience: int = 200
 @export var gold: int = 150
-#@export var item: Item = []	Da fare
+@export var item: Array[Item] = []
 
-var player: Character
-
-func _ready():
-	player = get_tree().get_first_node_in_group("Player")
-	pass
-
-func receive():
+func receive(player: Character):
 	player.experience += experience
 	player.gold += gold
-	queue_free()
+	# If the player has a BagComponent, add the items to it
+	if player.get_node("Bag") is BagComponent:
+		var bag: BagComponent = player.get_node("Bag")
+		for i in item:
+			bag.add_item(i)
+	else:
+		printerr("The player does not have a BagComponent")
 	pass
