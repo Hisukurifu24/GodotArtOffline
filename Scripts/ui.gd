@@ -8,6 +8,10 @@ extends CanvasLayer
 @onready var staminaBar = $"Control/Stamina"
 @onready var staminaTimer = $"StaminaHideTimer"
 
+func _ready():
+	##TODO: connect signals for Quests
+	pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
