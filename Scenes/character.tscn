@@ -372,8 +372,9 @@ script = ExtResource("5_l5fk1")
 player = NodePath("..")
 items = Array[Resource("res://Scripts/item.gd")]([ExtResource("6_kq7nn")])
 
-[node name="Bag" type="Node2D" parent="."]
+[node name="Bag" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("7_qkw51")
+player = NodePath("..")
 
 [connection signal="weaponReady" from="Weapon/Sword" to="Weapon" method="_on_sword_weapon_ready"]
 [connection signal="weaponUsed" from="Weapon/Sword" to="Weapon" method="_on_sword_weapon_used"]
