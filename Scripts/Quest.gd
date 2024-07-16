@@ -1,15 +1,28 @@
 class_name Quest
-extends Resource
+extends Node
 
-enum QuestStatus {INACTIVE, ACCEPTED, COMPLETED, FAILED}
+enum QuestStatus {INACTIVE, ACCEPTED, COMPLETED, DELIVERED}
 
-## Nome della quest
-@export var name: String = ""
-## Descrizione della quest
-@export_multiline var description: String = ""
-## Obiettivi della quest
-@export_multiline var objectives: Array[String] = []
+## Informazioni sulla quest
+@export var questInfo: QuestInfo
 ## Stato della quest
 var status: QuestStatus = QuestStatus.INACTIVE
-## Ricompensa della quest
-@export var reward: Reward
+
+signal quest_accepted
+signal quest_completed
+signal quest_delivered
+
+func accept():
+	status = QuestStatus.ACCEPTED
+	# Emit signal
+	quest_accepted.emit()
+
+func complete():
+	status = QuestStatus.COMPLETED
+	# Emit signal
+	quest_completed.emit()
+
+func deliver():
+	status = QuestStatus.DELIVERED
+	# Emit signal
+	quest_delivered.emit()
