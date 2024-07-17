@@ -1,28 +1,54 @@
 class_name Quest
 extends Node
 
-enum QuestStatus {INACTIVE, ACCEPTED, COMPLETED, DELIVERED}
+enum QuestStatus {INACTIVE, AVAILABLE, ACCEPTED, COMPLETED, DELIVERED}
 
 ## Informazioni sulla quest
 @export var questInfo: QuestInfo
+
 ## Stato della quest
 var status: QuestStatus = QuestStatus.INACTIVE
 
-signal quest_accepted
-signal quest_completed
-signal quest_delivered
+signal quest_available(quest: Quest)
+signal quest_accepted(quest: Quest)
+signal quest_completed(quest: Quest)
+signal quest_delivered(quest: Quest)
+
+var player: Character
+
+func _ready():
+	# Connect signals
+	quest_delivered.connect(on_quest_delivered)
+
+	player = get_tree().get_first_node_in_group("player")
 
 func accept():
 	status = QuestStatus.ACCEPTED
 	# Emit signal
-	quest_accepted.emit()
+	quest_accepted.emit(self)
 
 func complete():
 	status = QuestStatus.COMPLETED
 	# Emit signal
-	quest_completed.emit()
+	quest_completed.emit(self)
 
 func deliver():
 	status = QuestStatus.DELIVERED
 	# Emit signal
-	quest_delivered.emit()
+	quest_delivered.emit(self)
+
+# This function is called on every quest node when a quest is delivered
+func on_quest_delivered(questDelivered: Quest):
+	# Check if the delivered quest is a required quest
+	if questInfo.required_quests.has(questDelivered.questInfo):
+		# Remove the delivered quest from the required quests
+		questInfo.required_quests.erase(questDelivered.questInfo)
+		# Check if all required quests are completed
+		# AND
+		# Check if the player level is greater or equal to the minimum level required
+		if questInfo.required_quests.is_empty() and player.lvl >= questInfo.min_level:
+			# Set the quest status to AVAILABLE
+			status = QuestStatus.AVAILABLE
+			# Emit signal
+			quest_available.emit(self)
+	pass
