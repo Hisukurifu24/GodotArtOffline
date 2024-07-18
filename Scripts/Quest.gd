@@ -20,7 +20,11 @@ func _ready():
 	# Connect signals
 	quest_delivered.connect(on_quest_delivered)
 
+	# Get the player node
 	player = get_tree().get_first_node_in_group("player")
+
+	# Check if quest is already available
+	check_availability()
 
 func accept():
 	status = QuestStatus.ACCEPTED
@@ -43,6 +47,13 @@ func on_quest_delivered(questDelivered: Quest):
 	if questInfo.required_quests.has(questDelivered.questInfo):
 		# Remove the delivered quest from the required quests
 		questInfo.required_quests.erase(questDelivered.questInfo)
+		
+		# Check if quest is now available
+		check_availability()
+	pass
+
+func check_availability():
+	if status == QuestStatus.INACTIVE:
 		# Check if all required quests are completed
 		# AND
 		# Check if the player level is greater or equal to the minimum level required
