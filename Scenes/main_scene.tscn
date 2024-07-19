@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cv7cftyunbj1a" path="res://Arts/Mini_Characters/char_42.png" id="10_j103l"]
 [ext_resource type="PackedScene" uid="uid://cyh0amjo5p13s" path="res://Scenes/dialogue_box.tscn" id="11_wt0sp"]
 [ext_resource type="Script" path="res://Scripts/Quest.gd" id="12_r7jrp"]
-[ext_resource type="Resource" uid="uid://ckeuatfv5rjum" path="res://Resources/Quests/Quest prova.tres" id="13_7pwlc"]
+[ext_resource type="Resource" uid="uid://ckeuatfv5rjum" path="res://Resources/Quests/1 - Il baule del vecchio.tres" id="13_7pwlc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u0j2l"]
 texture = ExtResource("1_gdd30")

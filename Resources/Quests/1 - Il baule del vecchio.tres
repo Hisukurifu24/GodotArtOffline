@@ -12,7 +12,10 @@ item = Array[Resource("res://Scripts/item.gd")]([ExtResource("1_nbqpm")])
 
 [resource]
 script = ExtResource("1_yher0")
-name = "Prova"
+id = 1
+name = "Il baule del vecchio"
 description = "Un vecchietto ha bisogno del tuo aiuto..."
 objectives = Array[String](["Trova il baule del vecchietto"])
 reward = SubResource("Resource_v1w8h")
+min_level = 1
+required_quests = Array[ExtResource("1_yher0")]([])
