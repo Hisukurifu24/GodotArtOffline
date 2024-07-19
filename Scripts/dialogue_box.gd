@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 ## Linee di dialogo
-@export_multiline var lines: Array[String]
+@export var dialog: Dialog
 
 var currentIndex: int = 0
 
