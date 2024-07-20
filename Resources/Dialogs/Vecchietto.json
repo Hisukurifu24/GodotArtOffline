@@ -1,41 +1,41 @@
 {
-    "Name": "Vecchietto",
-    "Dialogs": [
-        {
-            "Id": 1,
-            "Text": "Hey! Che ci fai in casa mia??",
-            "Options": [
-                {
-                    "Text": "Che ne so, sono spawnato qui.",
-                    "NextDialogId": 2
-                }
-            ]
-        },
-        {
-            "Id": 2,
-            "Text": "Ah sei un player nuovo, eh? In effetti mi servirebbe un po' di aiuto...",
-            "Options": [
-                {
-                    "Text": "Che devo fare?",
-                    "NextDialogId": 3
-                }
-            ]
-        },
-        {
-            "Id": 3,
-            "Text": "Vedi, avevo un baule pieno di roba preziosa, ma l'ho perso. Se mi aiuti a ritrovarlo ti darò una ricompensa.",
-            "NextDialogId": 4
-        },
-        {
-            "Id": 4,
-            "Text": "NON TI AZZARDARE A RUBARMI LE COSE CHE TROVI DENTRO!",
-            "Options": [
-                {
-                    "Text": "Ok, vado a cercare il baule.",
-                    "NextDialogId": 0,
-                    "QuestID": 1
-                }
-            ]
-        }
-    ]
+	"Name": "Vecchietto",
+	"Dialogs": [
+		{
+			"Id": 1,
+			"Text": "Hey! Che ci fai in casa mia??",
+			"Options": [
+				{
+					"Text": "Che ne so, sono spawnato qui.",
+					"NextDialogId": 2
+				}
+			]
+		},
+		{
+			"Id": 2,
+			"Text": "Ah sei un player nuovo, eh? In effetti mi servirebbe un po' di aiuto...",
+			"Options": [
+				{
+					"Text": "Che devo fare?",
+					"NextDialogId": 3
+				}
+			]
+		},
+		{
+			"Id": 3,
+			"Text": "Vedi, avevo un baule pieno di roba preziosa, ma l'ho perso. Se mi aiuti a ritrovarlo ti darò una ricompensa.",
+			"NextDialogId": 4
+		},
+		{
+			"Id": 4,
+			"Text": "NON TI AZZARDARE A RUBARMI LE COSE CHE TROVI DENTRO!",
+			"Options": [
+				{
+					"Text": "Ok, vado a cercare il baule.",
+					"NextDialogId": 0,
+					"QuestID": 1
+				}
+			]
+		}
+	]
 }

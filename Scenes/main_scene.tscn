@@ -902,9 +902,6 @@ position = Vector2(582, 331)
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="World/Character"]
 remote_path = NodePath("../../../Camera2D")
 
-[node name="Chest" parent="World" instance=ExtResource("7_mijix")]
-position = Vector2(469, 193)
-
 [node name="NPC" type="CharacterBody2D" parent="World"]
 position = Vector2(441, 240)
 script = ExtResource("9_h5f6w")
@@ -927,11 +924,14 @@ shape = SubResource("RectangleShape2D_mbfkb")
 [node name="DialogueBox" parent="World/NPC" instance=ExtResource("11_wt0sp")]
 process_mode = 4
 visible = false
-lines = Array[String](["Ciao brutto pirla"])
+dialogPath = "res://Resources/Dialogs/Vecchietto.json"
 
 [node name="Quest" type="Node" parent="World/NPC"]
 script = ExtResource("12_r7jrp")
 questInfo = ExtResource("13_7pwlc")
+
+[node name="Chest" parent="World" instance=ExtResource("7_mijix")]
+position = Vector2(469, 193)
 
 [node name="Slime" parent="World" instance=ExtResource("10_0r35n")]
 position = Vector2(471, 163)
