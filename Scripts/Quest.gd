@@ -21,7 +21,7 @@ func _ready():
 	quest_delivered.connect(on_quest_delivered)
 
 	# Get the player node
-	player = get_tree().get_first_node_in_group("player")
+	player = get_tree().get_first_node_in_group("Player")
 
 	# Check if quest is already available
 	check_availability()
