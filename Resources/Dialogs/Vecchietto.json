@@ -34,6 +34,10 @@
 					"Text": "Ok, vado a cercare il baule.",
 					"NextDialogId": 0,
 					"QuestID": 1
+				},
+				{
+					"Text": "Non mi interessa.",
+					"NextDialogId": 0
 				}
 			]
 		}
