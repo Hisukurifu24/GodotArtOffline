@@ -923,7 +923,6 @@ shape = SubResource("RectangleShape2D_mbfkb")
 
 [node name="DialogueBox" parent="World/NPC" instance=ExtResource("11_wt0sp")]
 process_mode = 4
-visible = false
 dialogPath = "res://Resources/Dialogs/Vecchietto.json"
 
 [node name="Quest" type="Node" parent="World/NPC"]

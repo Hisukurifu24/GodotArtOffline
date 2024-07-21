@@ -30,8 +30,6 @@ shape = SubResource("RectangleShape2D_mbfkb")
 
 [node name="DialogueBox" parent="." instance=ExtResource("2_32oao")]
 process_mode = 4
-visible = false
-lines = Array[String](["Ciao sono un NPC, sono programmato solo per salutarti."])
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
