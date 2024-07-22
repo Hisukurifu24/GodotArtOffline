@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://n7016hb7dp4d" path="res://Arts/Mystic Woods/sprites/tilesets/walls/wooden_door.png" id="1_txgwk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r6e6c"]
-size = Vector2(42, 40)
+size = Vector2(16, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kc0tm"]
 atlas = ExtResource("1_txgwk")
