@@ -31,12 +31,14 @@ var is_alive = true
 var knockbackTime = 0.5
 
 func _ready():
-	currentStats = baseStats
+	currentStats.copy(baseStats)
 	bonusStats = Stats.new()
 
 func takeDamage(amount):
 	print("HP: " + str(currentStats.hp) + " - " + str(amount))
 	currentStats.hp -= amount
+	print("HP: " + str(currentStats.hp))
+	print("MAX HP: " + str(maxStats.hp))
 	health_changed.emit(currentStats.hp, maxStats.hp)
 	changeColor()
 	if (currentStats.hp == 0):

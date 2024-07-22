@@ -93,3 +93,13 @@ func decrease(values: Stats):
 	self.mr -= values.mr
 	self.crit = clamp(self.crit - values.crit, 0, 1)
 	self.crit_dmg = clamp(self.crit_dmg - values.crit_dmg, 1, 3)
+
+func copy(stats: Stats):
+	self.hp = stats.hp
+	self.mp = stats.mp
+	self.ad = stats.ad
+	self.ap = stats.ap
+	self.armor = stats.armor
+	self.mr = stats.mr
+	self.crit = stats.crit
+	self.crit_dmg = stats.crit_dmg
