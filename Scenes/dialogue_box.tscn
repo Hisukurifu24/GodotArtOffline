@@ -74,6 +74,15 @@ autowrap_mode = 3
 clip_text = true
 text_overrun_behavior = 4
 
+[node name="Button" type="Button" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Answers" type="VBoxContainer" parent="."]
 anchors_preset = 3
 anchor_left = 1.0

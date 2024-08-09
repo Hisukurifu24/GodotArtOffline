@@ -9,6 +9,7 @@ var currentIndex: int = 0
 
 @onready var textLabel: Label = $"Control/Content/Text"
 @onready var answers: CanvasItem = $"Answers"
+@onready var panelButton: Button = $"Control/Button"
 @onready var option1: Button = $"Answers/Option1"
 @onready var option2: Button = $"Answers/Option2"
 @onready var option3: Button = $"Answers/Option3"
@@ -21,6 +22,8 @@ func _ready():
 	option1.pressed.connect(_on_Option1_pressed)
 	option2.pressed.connect(_on_Option2_pressed)
 	option3.pressed.connect(_on_Option3_pressed)
+
+	panelButton.pressed.connect(updateDialog)
 
 	# Set the icon as the sprite of the NPC
 	$"Control/TextureRect".texture = $"../Sprite2D".texture
@@ -42,7 +45,6 @@ func loadDialogData():
 	# print(currentDialog["Dialogs"][currentIndex]["Text"])
 
 func updateDialog():
-	print(currentIndex)
 	# Se il dialogo è finito
 	if currentIndex == - 1:
 		visible = false
@@ -79,13 +81,34 @@ func updateDialog():
 		currentIndex = currentDialog["Dialogs"][currentIndex]["NextDialogId"] - 1
 
 func _on_Option1_pressed():
+	# Se l'opzione ha un QuestID, accetta la quest
+	if currentDialog["Dialogs"][currentIndex]["Options"][0].has("QuestID"):
+		Quest_Manager.accept_quest(currentDialog["Dialogs"][currentIndex]["Options"][0]["QuestID"])
+	
+	# Muovi l'indice al prossimo dialogo
 	currentIndex = currentDialog["Dialogs"][currentIndex]["Options"][0]["NextDialogId"] - 1
+
+	# Aggiorna il dialogo
 	updateDialog()
 
 func _on_Option2_pressed():
+	# Se l'opzione ha un QuestID, accetta la quest
+	if currentDialog["Dialogs"][currentIndex]["Options"][1].has("QuestID"):
+		Quest_Manager.accept_quest(currentDialog["Dialogs"][currentIndex]["Options"][1]["QuestID"])
+	
+	# Muovi l'indice al prossimo dialogo
 	currentIndex = currentDialog["Dialogs"][currentIndex]["Options"][1]["NextDialogId"] - 1
+
+	# Aggiorna il dialogo
 	updateDialog()
 
 func _on_Option3_pressed():
+	# Se l'opzione ha un QuestID, accetta la quest
+	if currentDialog["Dialogs"][currentIndex]["Options"][2].has("QuestID"):
+		Quest_Manager.accept_quest(currentDialog["Dialogs"][currentIndex]["Options"][2]["QuestID"])
+	
+	# Muovi l'indice al prossimo dialogo
 	currentIndex = currentDialog["Dialogs"][currentIndex]["Options"][2]["NextDialogId"] - 1
+
+	# Aggiorna il dialogo
 	updateDialog()
