@@ -73,10 +73,10 @@ func _physics_process(_delta):
 
 	move_and_slide()
 
-func sprint(canSprint):
+func sprint(value):
 	# Sprinting is only possible if the player has enough stamina
-	isSprinting = canSprint
-	speed = 150 if isSprinting else 100
+	isSprinting = value
+	speed = speed * 1.5 if isSprinting else speed / 1.5
 
 func _input(event):
 	if event.is_action_pressed("sprint"):
