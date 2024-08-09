@@ -20,6 +20,11 @@ func _ready():
 	# Connect signals
 	quest_delivered.connect(on_quest_delivered)
 
+	quest_available.connect(Quest_Manager.on_quest_available)
+	quest_accepted.connect(Quest_Manager.on_quest_accepted)
+	quest_completed.connect(Quest_Manager.on_quest_completed)
+	quest_delivered.connect(Quest_Manager.on_quest_delivered)
+
 	# Get the player node
 	player = get_tree().get_first_node_in_group("Player")
 
