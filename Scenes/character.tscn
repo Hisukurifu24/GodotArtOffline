@@ -349,6 +349,7 @@ func _on_sword_weapon_ready():
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_amt8x")
 baseStats = SubResource("Resource_7obnu")
+speed = 75.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.25)
