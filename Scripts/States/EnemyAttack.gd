@@ -8,7 +8,6 @@ func StatePhysicsUpdate(_delta: float):
 
 	# Check if the player is out of range
 	if direction.length() > attackDistance:
-		print("Out of range")
 		Transitioned.emit(self, "follow")
 	else:
 		enemy.attack(player)

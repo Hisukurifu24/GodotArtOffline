@@ -34,5 +34,4 @@ func StatePhysicsUpdate(_delta: float):
 	
 	# Check if the player is in view
 	if direction.length() < viewDistance:
-		print("Player in view")
 		Transitioned.emit(self, "follow")

@@ -9,7 +9,6 @@ func StatePhysicsUpdate(_delta: float):
 
 	# If the player is out of view, transition to idle
 	if direction.length() > outOfViewDistance:
-		print("Out of view")
 		Transitioned.emit(self, "idle")
 	# If the player is out of attack distance, move towards the player
 	elif direction.length() > attackDistance:
