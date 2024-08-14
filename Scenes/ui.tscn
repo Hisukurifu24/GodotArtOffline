@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmeggbh2vhflk"]
+[gd_scene load_steps=12 format=3 uid="uid://dmeggbh2vhflk"]
 
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="1_1symc"]
 [ext_resource type="FontFile" uid="uid://f3sw3475y8u6" path="res://Arts/RPGSystem.ttf" id="1_8uj7j"]
+[ext_resource type="LabelSettings" uid="uid://cd1xwn3ul4l2n" path="res://Resources/UI/DefaultLabel.tres" id="3_cnb16"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_phwr3"]
 bg_color = Color(0.631373, 0.2, 0.180392, 1)
@@ -143,6 +144,21 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_8uj7j")
 text = "900/1000"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Gold" type="Label" parent="Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -53.0
+offset_right = 45.0
+offset_bottom = -30.0
+grow_vertical = 0
+text = "Gold: 0"
+label_settings = ExtResource("3_cnb16")
 vertical_alignment = 1
 
 [node name="Exp" type="ProgressBar" parent="Control"]
