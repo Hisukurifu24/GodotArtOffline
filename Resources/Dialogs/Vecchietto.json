@@ -32,14 +32,43 @@
 			"Options": [
 				{
 					"Text": "Ok, vado a cercare il baule.",
-					"NextDialogId": 0,
-					"QuestID": 1
+					"CloseDialog": true,
+					"NextDialogId": 5,
+					"StartQuestID": 1
 				},
 				{
 					"Text": "Non mi interessa.",
 					"NextDialogId": 0
 				}
 			]
+		},
+		{
+			"Id": 5,
+			"Text": "Hai trovato il baule? Portamelo!",
+			"Options": [
+				{
+					"CheckQuestID": 1,
+					"Text": "Ecco il baule.",
+					"DeliverQuestID": 1,
+					"NextDialogId": 6
+				}
+			]
+		},
+		{
+			"Id": 6,
+			"Text": "Grazie mille! Ecco la tua ricompensa.",
+			"Options": [
+				{
+					"Text": "Grazie!",
+					"CloseDialog": true,
+					"NextDialogId": 7
+				}
+			]
+		},
+		{
+			"Id": 7,
+			"Text": "E da me che vuoi? Io al massimo ti posso cantare una canzone.",
+			"NextDialogId": 7
 		}
 	]
 }

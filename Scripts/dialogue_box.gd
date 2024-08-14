@@ -46,7 +46,7 @@ func loadDialogData():
 
 func updateDialog():
 	# Se il dialogo è finito
-	if currentIndex == - 1:
+	if currentIndex == -1:
 		visible = false
 		currentIndex = 0
 		return
@@ -54,6 +54,17 @@ func updateDialog():
 	if currentDialog["Dialogs"][currentIndex].has("Options"):
 		# mostra il testo
 		textLabel.text = currentDialog["Dialogs"][currentIndex]["Text"]
+
+		# Se l'opzione ha un CheckQuestID, controlla se la quest è stata completata
+		# Nota: l'opzione 0 è sempre quella che controlla la quest
+		if currentDialog["Dialogs"][currentIndex]["Options"][0].has("CheckQuestID"):
+			var questID = currentDialog["Dialogs"][currentIndex]["Options"][0]["CheckQuestID"]
+			# Se la quest non è stata consegnata, nascondi le opzioni
+			if !Quest_Manager.is_completed(questID):
+				answers.visible = false
+				return
+		# La quest è stata consegnata
+
 		# mostra opzioni
 		answers.visible = true
 
@@ -81,34 +92,28 @@ func updateDialog():
 		currentIndex = currentDialog["Dialogs"][currentIndex]["NextDialogId"] - 1
 
 func _on_Option1_pressed():
-	# Se l'opzione ha un QuestID, accetta la quest
-	if currentDialog["Dialogs"][currentIndex]["Options"][0].has("QuestID"):
-		Quest_Manager.accept_quest(currentDialog["Dialogs"][currentIndex]["Options"][0]["QuestID"])
-	
-	# Muovi l'indice al prossimo dialogo
-	currentIndex = currentDialog["Dialogs"][currentIndex]["Options"][0]["NextDialogId"] - 1
-
-	# Aggiorna il dialogo
-	updateDialog()
+	pressOption(0)
 
 func _on_Option2_pressed():
-	# Se l'opzione ha un QuestID, accetta la quest
-	if currentDialog["Dialogs"][currentIndex]["Options"][1].has("QuestID"):
-		Quest_Manager.accept_quest(currentDialog["Dialogs"][currentIndex]["Options"][1]["QuestID"])
-	
-	# Muovi l'indice al prossimo dialogo
-	currentIndex = currentDialog["Dialogs"][currentIndex]["Options"][1]["NextDialogId"] - 1
-
-	# Aggiorna il dialogo
-	updateDialog()
+	pressOption(1)
 
 func _on_Option3_pressed():
+	pressOption(2)
+
+func pressOption(index: int):
 	# Se l'opzione ha un QuestID, accetta la quest
-	if currentDialog["Dialogs"][currentIndex]["Options"][2].has("QuestID"):
-		Quest_Manager.accept_quest(currentDialog["Dialogs"][currentIndex]["Options"][2]["QuestID"])
-	
+	if currentDialog["Dialogs"][currentIndex]["Options"][index].has("StartQuestID"):
+		Quest_Manager.accept_quest(currentDialog["Dialogs"][currentIndex]["Options"][index]["StartQuestID"])
+
+	if currentDialog["Dialogs"][currentIndex]["Options"][index].has("DeliverQuestID"):
+		Quest_Manager.deliver_quest(currentDialog["Dialogs"][currentIndex]["Options"][index]["DeliverQuestID"])
+
+	# Se l'opzione ha un CloseDialog, chiudi il dialogo
+	if currentDialog["Dialogs"][currentIndex]["Options"][index].has("CloseDialog"):
+		visible = false
+
 	# Muovi l'indice al prossimo dialogo
-	currentIndex = currentDialog["Dialogs"][currentIndex]["Options"][2]["NextDialogId"] - 1
+	currentIndex = currentDialog["Dialogs"][currentIndex]["Options"][index]["NextDialogId"] - 1
 
 	# Aggiorna il dialogo
 	updateDialog()
