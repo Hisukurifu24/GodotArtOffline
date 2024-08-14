@@ -311,8 +311,12 @@ resource_name = "WeaponAim"
 script/source = "extends Node2D
 
 @export var characterSprite : AnimatedSprite2D
+var player: Character
 
 var isWeaponReady = true
+
+func _ready():
+	player = get_tree().get_first_node_in_group(\"Player\")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -323,14 +327,18 @@ func _process(_delta):
 		# Mentre uso l'arma, cambio la sprite del giocatore verso la stessa direzione 
 		if global_rotation_degrees >= -45 and global_rotation_degrees < 45:
 			characterSprite.play(\"idle_side\")
+			player.dirstring = \"side\"
 			characterSprite.flip_h = false
 		elif global_rotation_degrees >= 45 and global_rotation_degrees < 135:
 			characterSprite.play(\"idle_front\")
+			player.dirstring = \"front\"
 		elif global_rotation_degrees >= 135 or global_rotation_degrees < -135:
 			characterSprite.play(\"idle_side\")
+			player.dirstring = \"side\"
 			characterSprite.flip_h = true
 		elif global_rotation_degrees >= -135 and global_rotation_degrees < -45:
 			characterSprite.play(\"idle_back\")
+			player.dirstring = \"back\"
 			
 	
 
