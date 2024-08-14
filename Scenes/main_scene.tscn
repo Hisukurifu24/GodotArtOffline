@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dutg115ia8t6r"]
+[gd_scene load_steps=24 format=3 uid="uid://dutg115ia8t6r"]
 
 [ext_resource type="PackedScene" uid="uid://dmeggbh2vhflk" path="res://Scenes/ui.tscn" id="1_3xr84"]
 [ext_resource type="Texture2D" uid="uid://c3ntpy34qnwtt" path="res://Arts/Mystic Woods/sprites/tilesets/all.png" id="1_gdd30"]
@@ -12,8 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://7rgng7tmpief" path="res://Scenes/slime.tscn" id="10_0r35n"]
 [ext_resource type="Texture2D" uid="uid://cv7cftyunbj1a" path="res://Arts/Mini_Characters/char_42.png" id="10_j103l"]
 [ext_resource type="PackedScene" uid="uid://cyh0amjo5p13s" path="res://Scenes/dialogue_box.tscn" id="11_wt0sp"]
-[ext_resource type="Script" path="res://Scripts/Quest.gd" id="12_r7jrp"]
-[ext_resource type="Resource" uid="uid://ckeuatfv5rjum" path="res://Resources/Quests/1 - Il baule del vecchio.tres" id="13_7pwlc"]
+[ext_resource type="Script" path="res://Scripts/QuestSystem/Quest.gd" id="12_r7jrp"]
+[ext_resource type="Resource" uid="uid://7ue2ydqks7n4" path="res://Resources/Quests/1 - Il baule del vecchio.tres" id="13_7pwlc"]
+[ext_resource type="Resource" uid="uid://dp1ecqhn1pu23" path="res://Resources/Items/Spada del Vecchio.tres" id="14_aluq4"]
+[ext_resource type="Script" path="res://Scripts/reward.gd" id="15_8m2gb"]
+[ext_resource type="PackedScene" uid="uid://cfnyiu3a7cgnl" path="res://Scenes/quest_wall.tscn" id="16_i0gqk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u0j2l"]
 texture = ExtResource("1_gdd30")
@@ -855,6 +858,12 @@ size = Vector2(6, 5.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mbfkb"]
 size = Vector2(16, 12)
 
+[sub_resource type="Resource" id="Resource_6kw0t"]
+script = ExtResource("15_8m2gb")
+experience = 50
+gold = 150
+item = Array[Resource("res://Scripts/item.gd")]([ExtResource("14_aluq4")])
+
 [node name="Scena" type="Node2D"]
 
 [node name="UI" parent="." instance=ExtResource("1_3xr84")]
@@ -931,15 +940,16 @@ questInfo = ExtResource("13_7pwlc")
 
 [node name="Chest" parent="World" instance=ExtResource("7_mijix")]
 position = Vector2(469, 193)
+randomLoot = false
+loot = SubResource("Resource_6kw0t")
+
+[node name="QuestWall" parent="World/Chest" node_paths=PackedStringArray("quest") instance=ExtResource("16_i0gqk")]
+scale = Vector2(2.195, 2.195)
+quest = NodePath("../../NPC/Quest")
+questStatus = 2
 
 [node name="Slime" parent="World" instance=ExtResource("10_0r35n")]
-position = Vector2(471, 163)
+position = Vector2(470, 157)
 
-[connection signal="energy_changed" from="World/Character" to="UI" method="_on_character_energy_changed"]
-[connection signal="health_changed" from="World/Character" to="UI" method="_on_character_health_changed"]
-[connection signal="mana_changed" from="World/Character" to="UI" method="_on_character_mana_changed"]
-[connection signal="stamina_changed" from="World/Character" to="UI" method="_on_character_stamina_changed"]
-[connection signal="water_changed" from="World/Character" to="UI" method="_on_character_water_changed"]
-[connection signal="xp_changed" from="World/Character" to="UI" method="_on_character_xp_changed"]
 [connection signal="body_entered" from="World/NPC/Area2D" to="World/NPC" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="World/NPC/Area2D" to="World/NPC" method="_on_area_2d_body_exited"]
