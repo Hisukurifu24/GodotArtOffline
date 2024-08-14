@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://db0cl1ycyq7we"]
 
-[ext_resource type="Script" path="res://Scripts/npc.gd" id="1_1iap5"]
+[ext_resource type="Script" path="res://Scripts/World Elements/npc.gd" id="1_1iap5"]
 [ext_resource type="Texture2D" uid="uid://cv7cftyunbj1a" path="res://Arts/Mini_Characters/char_42.png" id="1_3ygos"]
 [ext_resource type="PackedScene" uid="uid://cyh0amjo5p13s" path="res://Scenes/dialogue_box.tscn" id="2_32oao"]
 

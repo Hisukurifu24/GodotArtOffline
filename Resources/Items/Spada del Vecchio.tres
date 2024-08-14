@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://dp1ecqhn1pu23"]
 
-[ext_resource type="Script" path="res://Scripts/item.gd" id="1_0j87c"]
+[ext_resource type="Script" path="res://Scripts/Resources/item.gd" id="1_0j87c"]
 [ext_resource type="Texture2D" uid="uid://elipp5ixvnoa" path="res://Arts/Items/god sword.jpeg" id="1_epggp"]
-[ext_resource type="Script" path="res://Scripts/stats.gd" id="3_mgej5"]
+[ext_resource type="Script" path="res://Scripts/Resources/stats.gd" id="3_mgej5"]
 
 [sub_resource type="Resource" id="Resource_0soxw"]
 script = ExtResource("3_mgej5")

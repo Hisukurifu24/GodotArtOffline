@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://l07dxy6ito5l"]
 
 [ext_resource type="Texture2D" uid="uid://gaqp22l7ohy8" path="res://Arts/Items/doran blade.jpg" id="1_cbhv2"]
-[ext_resource type="Script" path="res://Scripts/item.gd" id="1_xxnko"]
-[ext_resource type="Script" path="res://Scripts/stats.gd" id="2_aadig"]
+[ext_resource type="Script" path="res://Scripts/Resources/item.gd" id="1_xxnko"]
+[ext_resource type="Script" path="res://Scripts/Resources/stats.gd" id="2_aadig"]
 
 [sub_resource type="Resource" id="Resource_tac0r"]
 script = ExtResource("2_aadig")

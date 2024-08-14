@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cyh0amjo5p13s"]
 
-[ext_resource type="Script" path="res://Scripts/dialogue_box.gd" id="1_ia0ef"]
+[ext_resource type="Script" path="res://Scripts/UI/dialogue_box.gd" id="1_ia0ef"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_t8wu1"]
 outline_size = 5

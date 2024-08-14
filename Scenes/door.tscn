@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cx2o2i3ck7mtt"]
 
-[ext_resource type="Script" path="res://Scripts/door.gd" id="1_iau5y"]
+[ext_resource type="Script" path="res://Scripts/World Elements/door.gd" id="1_iau5y"]
 [ext_resource type="Texture2D" uid="uid://n7016hb7dp4d" path="res://Arts/Mystic Woods/sprites/tilesets/walls/wooden_door.png" id="1_txgwk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r6e6c"]

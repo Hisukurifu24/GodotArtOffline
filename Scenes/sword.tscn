@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bqkr2usu7fvn"]
 
-[ext_resource type="Script" path="res://Scripts/sword.gd" id="1_trtg1"]
+[ext_resource type="Script" path="res://Scripts/Weapons/sword.gd" id="1_trtg1"]
 [ext_resource type="Texture2D" uid="uid://byahow3e3q2c1" path="res://Arts/Character pack/free_icons1.png" id="1_xm7xy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mxxx"]

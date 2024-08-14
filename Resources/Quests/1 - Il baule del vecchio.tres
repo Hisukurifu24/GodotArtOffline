@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/QuestSystem/Objectives/QuestCollectObjective.gd" id="1_28dhu"]
 [ext_resource type="Script" path="res://Scripts/QuestSystem/QuestInfo.gd" id="1_62udp"]
 [ext_resource type="Resource" uid="uid://dp1ecqhn1pu23" path="res://Resources/Items/Spada del Vecchio.tres" id="2_4ojfd"]
-[ext_resource type="Script" path="res://Scripts/reward.gd" id="3_hhwx6"]
+[ext_resource type="Script" path="res://Scripts/Resources/reward.gd" id="3_hhwx6"]
 
 [sub_resource type="Resource" id="Resource_ltrnf"]
 script = ExtResource("1_28dhu")
@@ -15,7 +15,7 @@ text = "Apri il baule"
 script = ExtResource("3_hhwx6")
 experience = 200
 gold = 150
-item = Array[Resource("res://Scripts/item.gd")]([])
+item = Array[Resource("res://Scripts/Resources/item.gd")]([])
 
 [resource]
 script = ExtResource("1_62udp")
