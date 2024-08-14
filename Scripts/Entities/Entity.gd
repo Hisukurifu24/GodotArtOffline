@@ -15,7 +15,11 @@ var max_xp = 100
 var lvl = 1
 
 @export var speed = 100.0
-var stamina = 100
+
+var stamina = 100:
+	set(value):
+		stamina = clamp(value, 0, 100)
+		stamina_changed.emit(stamina)
 #endregion
 
 #region Segnali
@@ -24,7 +28,7 @@ signal mana_changed(mana, max_mana)
 signal xp_changed(xp, max_xp, lvl)
 signal stamina_changed(stamina)
 
-signal died()
+signal died(entity)
 #endregion
 
 var is_alive = true
@@ -41,6 +45,31 @@ func takeDamage(amount):
 	if (currentStats.hp == 0):
 		die()
 
+func heal(amount):
+	currentStats.hp += amount
+	if (currentStats.hp > maxStats.hp):
+		currentStats.hp = maxStats.hp
+	health_changed.emit(currentStats.hp, maxStats.hp)
+
+func restoreMana(amount):
+	currentStats.mana += amount
+	if (currentStats.mana > maxStats.mana):
+		currentStats.mana = maxStats.mana
+	mana_changed.emit(currentStats.mana, maxStats.mana)
+
+func gainXP(amount):
+	xp += amount
+	while (xp >= max_xp):
+		xp -= max_xp
+		lvlup()
+		max_xp *= 1.2
+		xp_changed.emit(xp, max_xp, lvl)
+
+func lvlup():
+	lvl += 1
+	var statsIncrement = Stats.new(100, 50, 2, 2, 1, 1, 0, 0)
+	baseStats.increase(statsIncrement)
+
 func changeColor():
 	modulate = Color(1, 0, 0) # Change color to red
 	await get_tree().create_timer(0.5).timeout
@@ -53,7 +82,7 @@ func _process(delta):
 		velocity = Vector2()
 
 func die():
-	died.emit()
+	died.emit(self)
 	is_alive = false
 
 func apply_knockback(attackerPos, power):
