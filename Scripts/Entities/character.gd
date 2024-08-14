@@ -1,14 +1,36 @@
 class_name Character
 extends Entity
 
-var energy = 100
-@export var max_energy = 100
+## TODO: Implementare il sistema di energia e acqua
+var energy = 100:
+	set(value):
+		energy = clamp(value, 0, max_energy)
+		energy_changed.emit(energy, max_energy)
+@export var max_energy = 100:
+	set(value):
+		max_energy = max(value, 0)
+		energy = min(energy, max_energy)
+		energy_changed.emit(energy, max_energy)
 
-var water = 100
-@export var max_water = 100
+var water = 100:
+	set(value):
+		water = clamp(value, 0, max_water)
+		water_changed.emit(water, max_water)
+@export var max_water = 100:
+	set(value):
+		max_water = max(value, 0)
+		water = min(water, max_water)
+		water_changed.emit(water, max_water)
+
+var gold: int = 0:
+	set(value):
+		gold = value
+		gold_changed.emit(gold)
+
 
 signal energy_changed(energy, max_energy)
 signal water_changed(water, max_water)
+signal gold_changed(gold)
 
 #region Altre Variabili
 @onready var sprite = $AnimatedSprite2D
@@ -27,12 +49,11 @@ func _ready():
 	
 	health_changed.emit(currentStats.hp, maxStats.hp)
 	mana_changed.emit(currentStats.mp, maxStats.mp)
-	print(energy)
-	print(max_energy)
 	energy_changed.emit(energy, max_energy)
 	water_changed.emit(water, max_water)
 	xp_changed.emit(xp, max_xp, lvl)
 	stamina_changed.emit(stamina)
+	gold_changed.emit(gold)
 
 func _process(delta):
 	# Load correct sprite based on direction
@@ -52,14 +73,12 @@ func _process(delta):
 	if isSprinting:
 		if (stamina > 0):
 			stamina -= delta * 30
-			stamina_changed.emit(stamina)
 		else:
 			sprint(false)
 	else:
 		# Recover stamina otherwise
 		if stamina < 100:
 			stamina += delta * 5
-			stamina_changed.emit(stamina)
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
