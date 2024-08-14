@@ -7,17 +7,26 @@ extends CanvasLayer
 @onready var expBar = $"Control/Exp"
 @onready var staminaBar = $"Control/Stamina"
 @onready var staminaTimer = $"StaminaHideTimer"
+@onready var goldLabel = $"Control/Gold"
 
 @onready var quest1 = $"Control/Control/Quests/Quest1"
 @onready var quest2 = $"Control/Control/Quests/Quest2"
 @onready var quest3 = $"Control/Control/Quests/Quest3"
 
+var player: Character
+
 func _ready():
 	##TODO: connect signals for Quests
-	pass
+	player = get_tree().get_first_node_in_group("Player")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+	player.health_changed.connect(_on_character_health_changed)
+	player.mana_changed.connect(_on_character_mana_changed)
+	player.xp_changed.connect(_on_character_xp_changed)
+	player.stamina_changed.connect(_on_character_stamina_changed)
+	player.energy_changed.connect(_on_character_energy_changed)
+	player.water_changed.connect(_on_character_water_changed)
+	player.gold_changed.connect(_on_character_gold_changed)
+
 	pass
 
 func _on_character_health_changed(hp, max_hp):
@@ -43,6 +52,9 @@ func _on_character_xp_changed(xp, max_xp, lvl):
 	expBar.value = xp
 	expBar.get_node("Level").text = "lvl: " + str(lvl)
 
+func _on_character_gold_changed(gold):
+	goldLabel.text = "Gold: " + str(gold)
+
 func _on_character_stamina_changed(stamina):
 	if stamina < 25:
 		staminaBar.get("theme_override_styles/fill").bg_color = Color("adad00")
@@ -61,33 +73,39 @@ func updateQuests(acceptedQuests: Array[Quest]):
 	quest1.visible = false
 	quest2.visible = false
 	quest3.visible = false
+
+	# If there are no quests, return
+	if acceptedQuests.size() == 0:
+		return
+	
+	# Show the quests
 	for i in range(acceptedQuests.size()):
 		if i == 0:
-			print("Quest 1")
-			quest1.visible = true
-			quest1.get_node("Title").text = acceptedQuests[i].questInfo.name + ":"
-			for j in range(3):
-				if j < acceptedQuests[i].questInfo.objectives.size():
-					quest1.get_node("Objective"+str(j+1)).visible = true
-					quest1.get_node("Objective"+str(j+1)).text = "- " + acceptedQuests[i].questInfo.objectives[j]
-				else:
-					quest1.get_node("Objective"+str(j+1)).visible = false
+			showQuest(quest1, i, acceptedQuests)
 		elif i == 1:
-			quest2.visible = true
-			quest2.get_node("Title").text = acceptedQuests[i].questInfo.name + ":"
-			for j in range(3):
-				if j < acceptedQuests[i].questInfo.objectives.size():
-					quest2.get_node("Objective"+str(j+1)).visible = true
-					quest2.get_node("Objective"+str(j+1)).text = "- " + acceptedQuests[i].questInfo.objectives[j]
-				else:
-					quest2.get_node("Objective"+str(j+1)).visible = false
+			showQuest(quest2, i, acceptedQuests)
 		elif i == 2:
-			quest3.visible = true
-			quest3.get_node("Title").text = acceptedQuests[i].questInfo.name + ":"
-			for j in range(3):
-				if j < acceptedQuests[i].questInfo.objectives.size():
-					quest3.get_node("Objective"+str(j+1)).visible = true
-					quest3.get_node("Objective"+str(j+1)).text = "- " + acceptedQuests[i].questInfo.objectives[j]
-				else:
-					quest3.get_node("Objective"+str(j+1)).visible = false
+			showQuest(quest3, i, acceptedQuests)
 	pass
+
+func showQuest(quest: CanvasItem, index: int, acceptedQuests: Array[Quest]):
+	quest.visible = true
+	var completedCount = 0
+	for j in range(3):
+		if j < acceptedQuests[index].questInfo.objectives.size():
+			quest.get_node("Objective" + str(j + 1)).visible = true
+			quest.get_node("Objective" + str(j + 1)).text = "- " + acceptedQuests[index].questInfo.objectives[j].text
+			if acceptedQuests[index].questInfo.objectives[j].completed:
+				quest.get_node("Objective" + str(j + 1)).modulate = Color("00ff00")
+				completedCount += 1
+			else:
+				quest.get_node("Objective" + str(j + 1)).modulate = Color("ffffff")
+		else:
+			quest.get_node("Objective" + str(j + 1)).visible = false
+	
+	if completedCount == acceptedQuests[index].questInfo.objectives.size():
+		quest.get_node("Title").modulate = Color("00ff00")
+		quest.get_node("Title").text = acceptedQuests[index].questInfo.name + " (Completed):"
+	else:
+		quest.get_node("Title").modulate = Color("ffffff")
+		quest.get_node("Title").text = acceptedQuests[index].questInfo.name + ":"
