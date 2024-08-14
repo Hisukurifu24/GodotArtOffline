@@ -5,12 +5,12 @@ extends Resource
 @export var gold: int = 150
 @export var item: Array[Item] = []
 
-func receive(player: Character):
-	player.experience += experience
+func give(player: Character):
+	player.gainXP(experience)
 	player.gold += gold
 	# If the player has a BagComponent, add the items to it
-	if player.get_node("Bag") is BagComponent:
-		var bag: BagComponent = player.get_node("Bag")
+	if player.get_node("Bag") is InventoryComponent:
+		var bag: InventoryComponent = player.get_node("Bag")
 		for i in item:
 			bag.add_item(i)
 	else:
