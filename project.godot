@@ -17,7 +17,7 @@ config/icon="res://Arts/icon.jpeg"
 
 [autoload]
 
-Quest_Manager="*res://Scripts/QuestManager.gd"
+Quest_Manager="*res://Scripts/QuestSystem/QuestManager.gd"
 
 [dotnet]
 
