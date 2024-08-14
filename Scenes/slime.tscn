@@ -229,7 +229,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_b0snn"]
 radius = 7.0
 
-[node name="Slime" type="CharacterBody2D"]
+[node name="Slime" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_syftl")
 baseStats = SubResource("Resource_hwq8e")
 speed = 20.0
