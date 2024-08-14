@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cd1xwn3ul4l2n"]
+
+[ext_resource type="FontFile" uid="uid://f3sw3475y8u6" path="res://Arts/RPGSystem.ttf" id="1_1smlb"]
+
+[resource]
+font = ExtResource("1_1smlb")
