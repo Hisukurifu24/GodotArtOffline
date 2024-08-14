@@ -22,5 +22,5 @@ func _on_area_2d_body_exited(body: Node2D):
 		$DialogueBox.hide()
 
 		# Reset the dialogue box
-		$DialogueBox.currentIndex = 0
-		$DialogueBox.updateDialog()
+		# $DialogueBox.currentIndex = 0
+		# $DialogueBox.updateDialog()
