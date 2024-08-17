@@ -1,0 +1,118 @@
+[gd_scene load_steps=3 format=3 uid="uid://did6lhbr8fvh0"]
+
+[ext_resource type="Script" path="res://Scripts/UI/inventory_slot.gd" id="2_yal0b"]
+[ext_resource type="Texture2D" uid="uid://pix1714wfc5d" path="res://Arts/icon.jpeg" id="3_wmvnc"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="InventorySlot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 667.0
+offset_top = 209.0
+offset_right = 667.0
+offset_bottom = 209.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("2_yal0b")
+
+[node name="Background" type="Panel" parent="InventorySlot"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 2
+
+[node name="Item Icon" type="TextureRect" parent="InventorySlot/Background"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="InventorySlot2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 323.0
+offset_top = 163.0
+offset_right = 323.0
+offset_bottom = 163.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("2_yal0b")
+
+[node name="Background" type="Panel" parent="InventorySlot2"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 2
+
+[node name="Item Icon" type="TextureRect" parent="InventorySlot2/Background"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="InventorySlot3" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 126.0
+offset_top = 169.0
+offset_right = 126.0
+offset_bottom = 169.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("2_yal0b")
+
+[node name="Background" type="Panel" parent="InventorySlot3"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 2
+
+[node name="Item Icon" type="TextureRect" parent="InventorySlot3/Background"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wmvnc")
+expand_mode = 1
