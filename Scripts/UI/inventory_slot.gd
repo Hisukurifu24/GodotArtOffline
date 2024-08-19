@@ -1,16 +1,16 @@
 class_name InventorySlot
 extends Control
 
+signal item_swapped(origin: String, originIndex: int, target: String, targetIndex: int)
+
 var item: Item = null
-@onready var item_ui: TextureRect = $"Background/Item Icon"
+@onready var item_ui: TextureRect = %ItemIcon
 
 func _ready():
 	if item:
 		item_ui.texture = item.icon
 
 func _get_drag_data(_at_position):
-	print("Dragged item")
-
 	# Create a preview of the item
 	var preview_texture = TextureRect.new()
 	preview_texture.texture = item_ui.texture
@@ -41,8 +41,6 @@ func _can_drop_data(_at_position, _data):
 	return true
 
 func _drop_data(_at_position, data):
-	print("Dropped data: ", data)
-
 	# Swap textures
 	data["origin"].item_ui.texture = item_ui.texture
 	item_ui.texture = data["texture"]
@@ -50,3 +48,13 @@ func _drop_data(_at_position, data):
 	# Swap items
 	data["origin"].item = item
 	item = data["item"]
+
+	# Emit signal
+	emit_signal("item_swapped", data["origin"].get_parent().name, data["origin"].get_index(), self.get_parent().name, self.get_index())
+
+# Restore the item icon if the drag failed
+func _notification(what):
+	if what == NOTIFICATION_DRAG_END and !get_viewport().gui_is_drag_successful():
+		# Drag failed, restore the item icon
+		if item:
+			item_ui.texture = item.icon
