@@ -19,6 +19,11 @@ config/icon="res://Arts/icon.jpeg"
 
 Quest_Manager="*res://Scripts/QuestSystem/QuestManager.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
+
 [dotnet]
 
 project/assembly_name="Godot Art Offline"
