@@ -1,348 +1,369 @@
-[gd_scene load_steps=2 format=3 uid="uid://walnucdf02sg"]
+[gd_scene load_steps=5 format=3 uid="uid://walnucdf02sg"]
 
+[ext_resource type="Script" path="res://Scripts/UI/inventory_ui.gd" id="1_pcdmi"]
+[ext_resource type="FontFile" uid="uid://f3sw3475y8u6" path="res://Arts/RPGSystem.ttf" id="2_h3p5x"]
 [ext_resource type="PackedScene" uid="uid://bgk66fypiwyas" path="res://Scenes/inventory_slot.tscn" id="3_8rmkm"]
 
-[node name="Inventory" type="Control"]
-layout_mode = 3
+[sub_resource type="LabelSettings" id="LabelSettings_7ok6c"]
+font = ExtResource("2_h3p5x")
+font_size = 32
+
+[node name="Inventory" type="PanelContainer"]
+custom_minimum_size = Vector2(640, 360)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_pcdmi")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 500.0
-grow_horizontal = 2
-
-[node name="Spacer" type="Control" parent="Panel/VBoxContainer2"]
-custom_minimum_size = Vector2(0, 10)
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer2"]
-layout_mode = 2
-text = "BAG"
-horizontal_alignment = 1
-
-[node name="Bag" type="GridContainer" parent="Panel/VBoxContainer2"]
+[node name="Control2" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="BagContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 17.0
+
+[node name="Label" type="Label" parent="VBoxContainer/BagContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "BAG"
+label_settings = SubResource("LabelSettings_7ok6c")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/BagContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 5
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/BagContainer/MarginContainer"]
+layout_mode = 2
+ratio = 2.0
+
+[node name="Bag" type="GridContainer" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 10
 
-[node name="InventorySlot1" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot1" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot2" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot2" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot3" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot3" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot4" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot4" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot5" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot5" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot6" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot6" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot7" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot7" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot8" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot8" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot9" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot9" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot10" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot10" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot11" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot11" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot12" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot12" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot13" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot13" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot14" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot14" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot15" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot15" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot16" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot16" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot17" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot17" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot18" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot18" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot19" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot19" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot20" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot20" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot21" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot21" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot22" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot22" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot23" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot23" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot24" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot24" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot25" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot25" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot26" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot26" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot27" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot27" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot28" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot28" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot29" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot29" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot30" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot30" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot31" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot31" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot32" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot32" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot33" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot33" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot34" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot34" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot35" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot35" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot36" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot36" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot37" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot37" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot38" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot38" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot39" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot39" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot40" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot40" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot41" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot41" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot42" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot42" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot43" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot43" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot44" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot44" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot45" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot45" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot46" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot46" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot47" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot47" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot48" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot48" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot49" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot49" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="InventorySlot50" parent="Panel/VBoxContainer2/Bag" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot50" parent="VBoxContainer/BagContainer/MarginContainer/AspectRatioContainer/Bag" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-custom_minimum_size = Vector2(0, 125)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -55.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Label" type="Label" parent="Panel/VBoxContainer"]
-layout_mode = 2
-text = "INVENTORY"
-horizontal_alignment = 1
-
-[node name="Inventory" type="HBoxContainer" parent="Panel/VBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="InventorySlot1" parent="Panel/VBoxContainer/Inventory" instance=ExtResource("3_8rmkm")]
+[node name="InvContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
 
-[node name="InventorySlot2" parent="Panel/VBoxContainer/Inventory" instance=ExtResource("3_8rmkm")]
+[node name="Label" type="Label" parent="VBoxContainer/InvContainer"]
+texture_filter = 1
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
+text = "INVENTORY"
+label_settings = SubResource("LabelSettings_7ok6c")
+horizontal_alignment = 1
 
-[node name="InventorySlot3" parent="Panel/VBoxContainer/Inventory" instance=ExtResource("3_8rmkm")]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/InvContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
+size_flags_vertical = 3
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 10
 
-[node name="InventorySlot4" parent="Panel/VBoxContainer/Inventory" instance=ExtResource("3_8rmkm")]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer/InvContainer/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
+size_flags_vertical = 3
+ratio = 7.0
 
-[node name="InventorySlot5" parent="Panel/VBoxContainer/Inventory" instance=ExtResource("3_8rmkm")]
+[node name="Inventory" type="HBoxContainer" parent="VBoxContainer/InvContainer/MarginContainer/AspectRatioContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
+theme_override_constants/separation = 15
+alignment = 1
 
-[node name="InventorySlot6" parent="Panel/VBoxContainer/Inventory" instance=ExtResource("3_8rmkm")]
+[node name="InventorySlot1" parent="VBoxContainer/InvContainer/MarginContainer/AspectRatioContainer/Inventory" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
+size_flags_horizontal = 3
 
-[node name="Spacer2" type="Control" parent="Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 10)
+[node name="InventorySlot2" parent="VBoxContainer/InvContainer/MarginContainer/AspectRatioContainer/Inventory" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_horizontal = 3
+
+[node name="InventorySlot3" parent="VBoxContainer/InvContainer/MarginContainer/AspectRatioContainer/Inventory" instance=ExtResource("3_8rmkm")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InventorySlot4" parent="VBoxContainer/InvContainer/MarginContainer/AspectRatioContainer/Inventory" instance=ExtResource("3_8rmkm")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InventorySlot5" parent="VBoxContainer/InvContainer/MarginContainer/AspectRatioContainer/Inventory" instance=ExtResource("3_8rmkm")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InventorySlot6" parent="VBoxContainer/InvContainer/MarginContainer/AspectRatioContainer/Inventory" instance=ExtResource("3_8rmkm")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control3" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
