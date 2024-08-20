@@ -44,7 +44,7 @@ func on_child_transitioned(state, next_state_name):
 # Called when the entity dies
 # This function will call the Exit function of the current state
 # and set the current state to null
-func on_entity_died():
+func on_entity_died(_entity):
 	if current_state:
 		current_state.Exit()
 	current_state = null

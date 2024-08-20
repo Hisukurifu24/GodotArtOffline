@@ -44,7 +44,7 @@ func update_inventory():
 			slot.item_ui.texture = null
 
 func swap_items(origin: String, originIndex: int, target: String, targetIndex: int):
-	print("Swapping item: " + origin + "[" + str(originIndex) + "] with " + target + "[" + str(targetIndex) + "]")
+	# print("Swapping item: " + origin + "[" + str(originIndex) + "] with " + target + "[" + str(targetIndex) + "]")
 
 	# Retrieve the origin and target inventories
 	var origin_inventory: InventoryComponent = get_inventory_by_name(origin)
@@ -69,9 +69,9 @@ func swap_items(origin: String, originIndex: int, target: String, targetIndex: i
 		origin_inventory.insert_at(target_item, originIndex)
 		target_inventory.insert_at(origin_item, targetIndex)
 
-	print("--------------------------------")
-	player_inventory.print_inventory()
-	player_bag.print_inventory()
+	# print("--------------------------------")
+	# player_inventory.print_inventory()
+	# player_bag.print_inventory()
 
 	update_inventory()
 

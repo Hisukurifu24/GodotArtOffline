@@ -27,6 +27,8 @@ var gold: int = 0:
 		gold = value
 		gold_changed.emit(gold)
 
+# Segnali
+signal player_stats_changed()
 
 signal energy_changed(energy, max_energy)
 signal water_changed(water, max_water)
@@ -47,8 +49,13 @@ func _ready():
 	energy = max_energy
 	water = max_water
 	
-	health_changed.emit(currentStats.hp, maxStats.hp)
-	mana_changed.emit(currentStats.mp, maxStats.mp)
+	# Connect signals
+	baseStats.stats_changed.connect(_on_character_stats_changed)
+	currentStats.stats_changed.connect(_on_character_stats_changed)
+	bonusStats.stats_changed.connect(_on_character_stats_changed)
+	maxStats.stats_changed.connect(_on_character_stats_changed)
+
+	player_stats_changed.emit()
 	energy_changed.emit(energy, max_energy)
 	water_changed.emit(water, max_water)
 	xp_changed.emit(xp, max_xp, lvl)
@@ -104,3 +111,6 @@ func _input(event):
 	if event.is_action_released("sprint"):
 		if isSprinting:
 			sprint(false)
+
+func _on_character_stats_changed():
+	player_stats_changed.emit()

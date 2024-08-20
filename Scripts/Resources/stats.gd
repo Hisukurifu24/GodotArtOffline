@@ -1,54 +1,65 @@
 class_name Stats
 extends Resource
 
+signal stats_changed()
+
 ## Health Points
 @export var hp: float:
 	set(value):
 		hp = max(value, 0)
+		stats_changed.emit()
 ## Mana Points
 @export var mp: float:
 	set(value):
 		mp = max(value, 0)
+		stats_changed.emit()
 
 ## Attack Damage
 @export var ad: float:
 	set(value):
 		ad = max(value, 0)
+		stats_changed.emit()
 ## Ability Power
 @export var ap: float:
 	set(value):
 		ap = max(value, 0)
+		stats_changed.emit()
 
 ## Armor
 @export var armor: float:
 	set(value):
 		armor = max(value, 0)
+		stats_changed.emit()
 ## Magic Resistance
 @export var mr: float:
 	set(value):
 		mr = max(value, 0)
+		stats_changed.emit()
 
 ## Critical Strike Chance [0, 1]
 @export_range(0, 1) var crit: float:
 	set(value):
 		crit = clamp(value, 0, 1)
+		stats_changed.emit()
 # Critical Strike Chance in percentage
 var crit_pt: float:
 	get:
 		return crit * 100
 	set(value):
 		crit = value / 100
+		stats_changed.emit()
 ## Critical Strike Damage [1, 3]
 @export_range(1, 3) var crit_dmg: float:
 	set(value):
 		crit_dmg = clamp(value, 1, 3)
+		stats_changed.emit()
 
 # TODO: Da definire come funziona esattamente il crit_dmg:
 # damage = ad * (1 + crit_dmg * crit) = ad + ad * crit_dmg * is_crit[0, 1]
 # sum crit damage: self.crit_dmg * added_crit_dmg?
 
 # Returns a new Stats object
-func _init(hp_init=0, mp_init=0, ad_init=0, ap_init=0, armor_init=0, mr_init=0, crit_init=0, crit_dmg_init=1):
+func _init(hp_init = 0, mp_init = 0, ad_init = 0, ap_init = 0, armor_init = 0, mr_init = 0, crit_init = 0, crit_dmg_init = 1):
 	self.hp = hp_init
 	self.mp = mp_init
 	self.ad = ad_init

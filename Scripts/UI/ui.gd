@@ -16,18 +16,19 @@ extends CanvasLayer
 var player: Character
 
 func _ready():
-	##TODO: connect signals for Quests
 	player = get_tree().get_first_node_in_group("Player")
 
-	player.health_changed.connect(_on_character_health_changed)
-	player.mana_changed.connect(_on_character_mana_changed)
+	player.player_stats_changed.connect(_on_character_stats_changed)
+
 	player.xp_changed.connect(_on_character_xp_changed)
 	player.stamina_changed.connect(_on_character_stamina_changed)
 	player.energy_changed.connect(_on_character_energy_changed)
 	player.water_changed.connect(_on_character_water_changed)
 	player.gold_changed.connect(_on_character_gold_changed)
 
-	pass
+func _on_character_stats_changed():
+	_on_character_health_changed(player.currentStats.hp, player.maxStats.hp)
+	_on_character_mana_changed(player.currentStats.mp, player.maxStats.mp)
 
 func _on_character_health_changed(hp, max_hp):
 	hpBar.max_value = max_hp

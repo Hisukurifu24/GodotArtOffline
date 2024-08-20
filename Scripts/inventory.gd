@@ -21,20 +21,15 @@ func add_item(item: Item):
         printerr("Inventory is full")
         return
     _items[index] = item
-    
-    item_collected.emit(item)
-    Quest_Manager.item_collected.emit(item) # Emit signal for quest system
-
-    if isActiveInventory:
-        # Increase the player's stats
-        player.bonusStats.increase(item.stats)
+    _on_item_collected(item)
 
 func insert_at(item: Item, index: int):
     if index < 0 or index >= _items.size():
         printerr("Invalid index")
         return
-    print("Inserting" + item.name + "at index " + str(index))
+    # print("Inserting" + item.name + "at index " + str(index))
     _items[index] = item
+    _on_item_collected(item)
 
 ## Remove an item from the inventory
 func remove_item(item: Item):
@@ -43,17 +38,15 @@ func remove_item(item: Item):
     if index == -1:
         printerr("Item not found in inventory")
         return
+    _on_item_removed(_items[index])
     _items[index] = null
-    
-    if isActiveInventory:
-        # Decrease the player's stats
-        player.bonusStats.decrease(item.stats)
 
 func remove_at(index: int):
     if index < 0 or index >= _items.size():
         printerr("Invalid index")
         return
-    print("Removing item at index " + str(index))
+    # print("Removing item at index " + str(index))
+    _on_item_removed(_items[index])
     _items[index] = null
 
 ## Get the item at the specified index
@@ -61,6 +54,20 @@ func get_item(index: int) -> Item:
     if index < 0 or index >= _items.size():
         return null
     return _items[index]
+
+func _on_item_collected(item: Item):
+    # Emit signal
+    item_collected.emit(item)
+    Quest_Manager.item_collected.emit(item) # Emit signal for quest system
+
+    if isActiveInventory:
+        # Increase the player's stats
+        player.bonusStats.increase(item.stats)
+
+func _on_item_removed(item: Item):
+    if isActiveInventory:
+        # Decrease the player's stats
+        player.bonusStats.decrease(item.stats)
 
 func print_inventory():
     print(name + ":")

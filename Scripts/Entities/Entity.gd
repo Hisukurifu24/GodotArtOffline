@@ -10,9 +10,18 @@ var maxStats: Stats = Stats.new():
 	get:
 		return Stats.sum(baseStats, bonusStats)
 
-var xp = 0
-var max_xp = 100
-var lvl = 1
+var xp = 0:
+	set(value):
+		xp = value
+		xp_changed.emit(xp, max_xp, lvl)
+var max_xp = 100:
+	set(value):
+		max_xp = value
+		xp_changed.emit(xp, max_xp, lvl)
+var lvl = 1:
+	set(value):
+		lvl = value
+		xp_changed.emit(xp, max_xp, lvl)
 
 @export var speed = 100.0
 
@@ -23,8 +32,6 @@ var stamina = 100:
 #endregion
 
 #region Segnali
-signal health_changed(hp, max_hp)
-signal mana_changed(mana, max_mana)
 signal xp_changed(xp, max_xp, lvl)
 signal stamina_changed(stamina)
 
@@ -40,7 +47,6 @@ func _ready():
 
 func takeDamage(amount):
 	currentStats.hp -= amount
-	health_changed.emit(currentStats.hp, maxStats.hp)
 	changeColor()
 	if (currentStats.hp == 0):
 		die()
@@ -49,13 +55,11 @@ func heal(amount):
 	currentStats.hp += amount
 	if (currentStats.hp > maxStats.hp):
 		currentStats.hp = maxStats.hp
-	health_changed.emit(currentStats.hp, maxStats.hp)
 
 func restoreMana(amount):
 	currentStats.mana += amount
 	if (currentStats.mana > maxStats.mana):
 		currentStats.mana = maxStats.mana
-	mana_changed.emit(currentStats.mana, maxStats.mana)
 
 func gainXP(amount):
 	xp += amount
@@ -63,7 +67,6 @@ func gainXP(amount):
 		xp -= max_xp
 		lvlup()
 		max_xp *= 1.2
-		xp_changed.emit(xp, max_xp, lvl)
 
 func lvlup():
 	lvl += 1

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Stats" load_steps=2 format=3 uid="uid://b0jfrilt62d2l"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/stats.gd" id="1_ocqjb"]
+
+[resource]
+script = ExtResource("1_ocqjb")
+hp = 1000.0
+mp = 1000.0
+ad = 10.0
+ap = 0.0
+armor = 0.0
+mr = 0.0
+crit = 0.0
+crit_dmg = 0.0
