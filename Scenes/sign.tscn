@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/World Elements/sign.gd" id="1_glkcu"]
 [ext_resource type="Texture2D" uid="uid://v36wjo4ucjib" path="res://Arts/Mystic Woods/sprites/objects/objects.png" id="1_ql62m"]
-[ext_resource type="FontFile" uid="uid://f3sw3475y8u6" path="res://Arts/RPGSystem.ttf" id="2_1yuod"]
+[ext_resource type="FontFile" uid="uid://f3sw3475y8u6" path="res://Arts/Fonts/RPGSystem.ttf" id="2_1yuod"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4cjd"]
 size = Vector2(4, 2)

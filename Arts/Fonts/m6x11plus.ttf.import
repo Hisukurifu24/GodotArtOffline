@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://f3sw3475y8u6"
-path="res://.godot/imported/RPGSystem.ttf-65a2a949f9c3b41c1fdcf4f3a93ec710.fontdata"
+uid="uid://ohw6qwn6o6pn"
+path="res://.godot/imported/m6x11plus.ttf-f02f7d1ebc5ef1806e7765a04ea1c833.fontdata"
 
 [deps]
 
-source_file="res://Arts/RPGSystem.ttf"
-dest_files=["res://.godot/imported/RPGSystem.ttf-65a2a949f9c3b41c1fdcf4f3a93ec710.fontdata"]
+source_file="res://Arts/Fonts/m6x11plus.ttf"
+dest_files=["res://.godot/imported/m6x11plus.ttf-f02f7d1ebc5ef1806e7765a04ea1c833.fontdata"]
 
 [params]
 

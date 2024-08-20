@@ -7,7 +7,7 @@ extends CanvasLayer
 var currentDialog = null
 var currentIndex: int = 0
 
-@onready var textLabel: Label = $"Control/Content/Text"
+@onready var textLabel: Label = $"Control/TextureRect/Content/Text"
 @onready var answers: CanvasItem = $"Answers"
 @onready var panelButton: Button = $"Control/Button"
 @onready var option1: Button = $"Answers/Option1"
@@ -28,7 +28,7 @@ func _ready():
 	# Set the icon as the sprite of the NPC
 	$"Control/TextureRect".texture = $"../Sprite2D".texture
 	# Set the name of the NPC
-	$"Control/Content/Name".text = currentDialog["Name"]
+	$"Control/TextureRect/Content/Name".text = currentDialog["Name"]
 	# Set the first line of the dialog
 	updateDialog()
 

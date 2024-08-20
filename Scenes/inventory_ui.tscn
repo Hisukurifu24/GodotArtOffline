@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://walnucdf02sg"]
 
 [ext_resource type="Script" path="res://Scripts/UI/inventory_ui.gd" id="1_pcdmi"]
-[ext_resource type="FontFile" uid="uid://f3sw3475y8u6" path="res://Arts/RPGSystem.ttf" id="2_h3p5x"]
+[ext_resource type="FontFile" uid="uid://1v7rfdsso4xy" path="res://Arts/Fonts/upheavtt.ttf" id="2_b24x2"]
 [ext_resource type="PackedScene" uid="uid://bgk66fypiwyas" path="res://Scenes/inventory_slot.tscn" id="3_8rmkm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7ok6c"]
-font = ExtResource("2_h3p5x")
-font_size = 32
+font = ExtResource("2_b24x2")
+font_size = 40
 
 [node name="Inventory" type="PanelContainer"]
 custom_minimum_size = Vector2(640, 360)

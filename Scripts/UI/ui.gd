@@ -9,9 +9,9 @@ extends CanvasLayer
 @onready var staminaTimer = $"StaminaHideTimer"
 @onready var goldLabel = $"Control/Gold"
 
-@onready var quest1 = $"Control/Control/Quests/Quest1"
-@onready var quest2 = $"Control/Control/Quests/Quest2"
-@onready var quest3 = $"Control/Control/Quests/Quest3"
+@onready var quest1 = %Quest1
+@onready var quest2 = %Quest2
+@onready var quest3 = %Quest3
 
 var player: Character
 
@@ -58,9 +58,9 @@ func _on_character_gold_changed(gold):
 
 func _on_character_stamina_changed(stamina):
 	if stamina < 25:
-		staminaBar.get("theme_override_styles/fill").bg_color = Color("adad00")
+		staminaBar.modulate = Color("999999")
 	else:
-		staminaBar.get("theme_override_styles/fill").bg_color = Color("ffff77")
+		staminaBar.modulate = Color("ffffff")
 	if stamina > 99:
 		staminaTimer.start()
 	else:
