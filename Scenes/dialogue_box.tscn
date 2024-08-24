@@ -1,24 +1,50 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyh0amjo5p13s"]
+[gd_scene load_steps=15 format=3 uid="uid://cyh0amjo5p13s"]
 
 [ext_resource type="Script" path="res://Scripts/UI/dialogue_box.gd" id="1_ia0ef"]
+[ext_resource type="Texture2D" uid="uid://b2ymmbub0mq5m" path="res://Arts/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_abwxb"]
 [ext_resource type="FontFile" uid="uid://dgnpq8ryfeqmi" path="res://Arts/Fonts/m6x11.ttf" id="2_o1qql"]
 [ext_resource type="FontFile" uid="uid://f3sw3475y8u6" path="res://Arts/Fonts/RPGSystem.ttf" id="3_k2bm4"]
+[ext_resource type="Texture2D" uid="uid://dp6y0r42dl13j" path="res://Arts/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Dialouge UI/dialog box big.png" id="4_rup0r"]
+[ext_resource type="LabelSettings" uid="uid://cd1xwn3ul4l2n" path="res://Resources/UI/DefaultLabel.tres" id="5_5aqrf"]
+[ext_resource type="Theme" uid="uid://c74xmjjbwnv0t" path="res://Resources/UI/ui_theme.tres" id="6_35hkq"]
+[ext_resource type="Texture2D" uid="uid://dmuevguymbuh0" path="res://Arts/Sprout Lands - UI Pack - Basic pack/Sprite sheets/buttons/Square Buttons 26x26.png" id="6_ggo7m"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_t8wu1"]
+[sub_resource type="LabelSettings" id="LabelSettings_ukx86"]
 font = ExtResource("2_o1qql")
 font_size = 32
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_wwxjj"]
-line_spacing = 1.0
-font = ExtResource("3_k2bm4")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3chr3"]
+texture = ExtResource("6_ggo7m")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(11, 59, 26, 28)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rtbrv"]
+texture = ExtResource("6_ggo7m")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(11, 107, 26, 28)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v3nhh"]
+texture = ExtResource("6_ggo7m")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(59, 107, 26, 28)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b5mjt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wwtvl"]
 line_spacing = 0.0
 font = ExtResource("3_k2bm4")
 
 [node name="DialogueBox" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_ia0ef")
 
 [node name="Control" type="Control" parent="."]
@@ -31,60 +57,93 @@ offset_top = -150.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Panel" type="Panel" parent="Control"]
+[node name="Background" type="NinePatchRect" parent="Control"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_abwxb")
+region_rect = Rect2(104, 56, 32, 32)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="Icon Container" type="NinePatchRect" parent="Control"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 25.0
-offset_top = -50.0
-offset_right = 125.0
-offset_bottom = 50.0
+offset_left = 12.0
+offset_top = -63.0
+offset_right = 137.0
+offset_bottom = 62.0
 grow_vertical = 2
-mouse_filter = 0
+texture = ExtResource("2_abwxb")
+region_rect = Rect2(152, 8, 32, 32)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
 
-[node name="Content" type="VBoxContainer" parent="Control/TextureRect"]
+[node name="Icon" type="TextureRect" parent="Control/Icon Container"]
+unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 31.0
-offset_top = -54.5
-offset_right = 1000.0
-offset_bottom = 54.5
-grow_horizontal = 0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
 
-[node name="Name" type="Label" parent="Control/TextureRect/Content"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_vertical = 3
+[node name="Name" type="Label" parent="Control/Icon Container/Icon"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 136.0
+offset_top = -6.0
+offset_right = 268.0
+offset_bottom = 22.0
 text = "Vecchietto"
-label_settings = SubResource("LabelSettings_t8wu1")
-vertical_alignment = 1
-autowrap_mode = 3
-text_overrun_behavior = 4
+label_settings = SubResource("LabelSettings_ukx86")
 
-[node name="Text" type="Label" parent="Control/TextureRect/Content"]
-custom_minimum_size = Vector2(0, 75)
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/Icon Container/Icon"]
 layout_mode = 2
-size_flags_vertical = 0
-text = "Hey ciao come stai io sto bene e tu come stai? Stai come devi stare, ecco come. Hey ciao come stai io sto bene e tu come stai? Stai come devi stare, ecco come. Hey ciao come stai io sto bene e tu come stai? Stai come devi stare, ecco come. Hey ciao come stai io sto bene e tu come stai? Stai come devi stare, ecco come. Hey ciao come stai io sto bene e tu come stai? Stai come devi stare, ecco come. Hey ciao come stai io sto bene e tu come stai? Stai come devi stare, ecco come. "
-label_settings = SubResource("LabelSettings_wwxjj")
-autowrap_mode = 3
-clip_text = true
+offset_left = 124.0
+offset_top = 25.0
+offset_right = 1093.0
+offset_bottom = 113.0
+size_flags_vertical = 3
+texture = ExtResource("4_rup0r")
+region_rect = Rect2(2, 7, 172, 35)
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 20
+
+[node name="Text" type="Label" parent="Control/Icon Container/Icon/NinePatchRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 3.0
+offset_right = -8.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ciao bro come stai, io sto bene e tu? tutto bene grazie, che fai oggi? Oggi nulla di che... Ciao bro come stai, io sto bene e tu? tutto bene grazie, che fai oggi? Oggi nulla di che... Ciao bro come stai, io sto bene e tu? tutto bene grazie, che fai oggi? Oggi nulla di che... Ciao bro come stai, io sto bene e tu? tutto bene grazie, che fai oggi? Oggi nulla di che... Ciao bro come stai, io sto bene e tu? tutto bene grazie, che fai oggi? Oggi nulla di che... Ciao bro come stai, io sto bene e tu? tutto bene grazie, che fai oggi? Oggi nulla di che... Ciao bro come stai, io sto bene e tu? tutto bene grazie, che fai oggi? Oggi nulla di che... Ciao bro come stai, io sto bene e tu? tutto bene grazie, che fai oggi? Oggi nulla di che... "
+label_settings = ExtResource("5_5aqrf")
+autowrap_mode = 2
 text_overrun_behavior = 4
 
 [node name="Button" type="Button" parent="Control"]
@@ -111,17 +170,24 @@ grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 0
+theme = ExtResource("6_35hkq")
 
 [node name="Spacer" type="Control" parent="Answers"]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Option1" type="Button" parent="Answers"]
+texture_filter = 1
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_3chr3")
+theme_override_styles/hover = SubResource("StyleBoxTexture_rtbrv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_v3nhh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b5mjt")
 
 [node name="Label" type="Label" parent="Answers/Option1"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -140,6 +206,7 @@ layout_mode = 2
 size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="Answers/Option2"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -158,6 +225,7 @@ layout_mode = 2
 size_flags_vertical = 8
 
 [node name="Label" type="Label" parent="Answers/Option3"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

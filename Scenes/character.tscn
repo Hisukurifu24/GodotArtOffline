@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dfpr1uxutxjr6"]
+[gd_scene load_steps=47 format=3 uid="uid://dfpr1uxutxjr6"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/character.gd" id="1_amt8x"]
 [ext_resource type="Texture2D" uid="uid://cd8xy0n3arjyu" path="res://Arts/Mystic Woods/sprites/characters/player.png" id="2_akngc"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bqkr2usu7fvn" path="res://Scenes/sword.tscn" id="3_8pwlc"]
 [ext_resource type="Script" path="res://Scripts/inventory.gd" id="5_l5fk1"]
 [ext_resource type="Resource" uid="uid://l07dxy6ito5l" path="res://Resources/Items/Doran Blade.tres" id="6_kq7nn"]
+[ext_resource type="Resource" uid="uid://dp1ecqhn1pu23" path="res://Resources/Items/Spada del Vecchio.tres" id="7_fn65f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4ttr"]
 size = Vector2(9, 4.5)
@@ -367,7 +368,7 @@ characterSprite = NodePath("../AnimatedSprite2D")
 [node name="Inventory" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("5_l5fk1")
 player = NodePath("..")
-_items = Array[Resource("res://Scripts/Resources/item.gd")]([ExtResource("6_kq7nn")])
+_items = Array[Resource("res://Scripts/Resources/item.gd")]([ExtResource("6_kq7nn"), ExtResource("7_fn65f")])
 
 [node name="Bag" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("5_l5fk1")

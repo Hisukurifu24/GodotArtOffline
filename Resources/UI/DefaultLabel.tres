@@ -3,4 +3,5 @@
 [ext_resource type="FontFile" uid="uid://f3sw3475y8u6" path="res://Arts/Fonts/RPGSystem.ttf" id="1_1smlb"]
 
 [resource]
+line_spacing = 1.0
 font = ExtResource("1_1smlb")

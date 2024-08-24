@@ -1,4 +1,4 @@
-extends Control
+extends Draggable
 
 
 var player: Character
@@ -10,8 +10,11 @@ var player_bag: InventoryComponent
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
-	player_inventory = player.get_node("Inventory")
-	player_bag = player.get_node("Bag")
+	if player:
+		player_inventory = player.get_node("Inventory")
+		player_bag = player.get_node("Bag")
+	else:
+		push_error("Player not found in scene")
 
 	for slot: InventorySlot in inventory_slots.get_children():
 		slot.item_swapped.connect(swap_items)
@@ -22,10 +25,12 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("openInventory"):
-		visible = not visible
-		update_inventory()
+		if visible:
+			close()
+		else:
+			open()
 	if event.is_action_pressed("ui_cancel"):
-		visible = false
+		close()
 	
 func update_inventory():
 	for i in range(player_bag.inventorySize):
@@ -54,6 +59,9 @@ func swap_items(origin: String, originIndex: int, target: String, targetIndex: i
 	var origin_item: Item = origin_inventory.get_item(originIndex)
 	var target_item: Item = target_inventory.get_item(targetIndex)
 
+	print("origin_item: " + str(origin_item))
+	print("target_item: " + str(target_item))
+
 	if origin_item == null and target_item == null:
 		print("No items to swap")
 	elif origin_item == null:
@@ -65,9 +73,16 @@ func swap_items(origin: String, originIndex: int, target: String, targetIndex: i
 		target_inventory.insert_at(origin_item, targetIndex)
 		origin_inventory.remove_at(originIndex)
 	else:
-		# Swap the items
-		origin_inventory.insert_at(target_item, originIndex)
-		target_inventory.insert_at(origin_item, targetIndex)
+		if origin_item != target_item:
+			# Swap the items
+			origin_inventory.insert_at(target_item, originIndex)
+			target_inventory.insert_at(origin_item, targetIndex)
+		else:
+			pass
+
+			# # If the items are the same, stack them
+			# origin_item.stack(target_item)
+			# target_inventory.remove_at(targetIndex)
 
 	# print("--------------------------------")
 	# player_inventory.print_inventory()
@@ -84,3 +99,14 @@ func get_inventory_by_name(inv_name: String):
 		_:
 			printerr("Unknown inventory name: " + inv_name)
 			return null
+
+func open():
+	visible = true
+	
+	# Center the inventory on the screen
+	global_position = get_viewport_rect().size / 2 - size / 2
+
+	update_inventory()
+
+func close():
+	visible = false

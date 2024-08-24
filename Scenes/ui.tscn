@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://djxxoo8x4s8gt" path="res://Arts/All.png" id="2_tlq1y"]
 [ext_resource type="LabelSettings" uid="uid://cd1xwn3ul4l2n" path="res://Resources/UI/DefaultLabel.tres" id="3_cnb16"]
 [ext_resource type="FontFile" uid="uid://f3sw3475y8u6" path="res://Arts/Fonts/RPGSystem.ttf" id="3_qnjgq"]
-[ext_resource type="PackedScene" uid="uid://walnucdf02sg" path="res://Scenes/inventory_ui.tscn" id="4_gj4nt"]
 [ext_resource type="FontFile" uid="uid://ohw6qwn6o6pn" path="res://Arts/Fonts/m6x11plus.ttf" id="5_nw5lk"]
+[ext_resource type="PackedScene" uid="uid://walnucdf02sg" path="res://Scenes/inventory_ui.tscn" id="6_ttmw4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nlcnp"]
 atlas = ExtResource("2_tlq1y")
@@ -403,16 +403,7 @@ autowrap_mode = 2
 wait_time = 5.0
 one_shot = true
 
-[node name="Inventory" parent="." instance=ExtResource("4_gj4nt")]
+[node name="Inventory" parent="." instance=ExtResource("6_ttmw4")]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -180.0
-offset_right = 320.0
-offset_bottom = 180.0
 
 [connection signal="timeout" from="StaminaHideTimer" to="." method="_on_stamina_hide_timer_timeout"]
