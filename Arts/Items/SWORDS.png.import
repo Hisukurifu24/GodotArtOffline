@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk8mii82fi31i"
-path="res://.godot/imported/skill_icon_03_nobg.png-697ea3215238c4b07e44d01acc9bde13.ctex"
+uid="uid://cay3jnftooi2f"
+path="res://.godot/imported/SWORDS.png-905b193a3d21784b664e9872d56d109b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/GUI_Parts/Icons/skill_icon_03_nobg.png"
-dest_files=["res://.godot/imported/skill_icon_03_nobg.png-697ea3215238c4b07e44d01acc9bde13.ctex"]
+source_file="res://Arts/Items/SWORDS.png"
+dest_files=["res://.godot/imported/SWORDS.png-905b193a3d21784b664e9872d56d109b.ctex"]
 
 [params]
 

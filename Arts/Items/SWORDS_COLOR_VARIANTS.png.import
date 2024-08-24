@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bccxsamx7ue4w"
-path="res://.godot/imported/button_agree.png-32af5f1d477f10acfb163a7ed621364c.ctex"
+uid="uid://drbalw8tbtsv3"
+path="res://.godot/imported/SWORDS_COLOR_VARIANTS.png-a2fff20c80baf222d0e238ed77eda12a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arts/GUI_Parts/Gui_parts/button_agree.png"
-dest_files=["res://.godot/imported/button_agree.png-32af5f1d477f10acfb163a7ed621364c.ctex"]
+source_file="res://Arts/Items/SWORDS_COLOR_VARIANTS.png"
+dest_files=["res://.godot/imported/SWORDS_COLOR_VARIANTS.png-a2fff20c80baf222d0e238ed77eda12a.ctex"]
 
 [params]
 
