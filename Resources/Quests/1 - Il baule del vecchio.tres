@@ -1,13 +1,35 @@
-[gd_resource type="Resource" script_class="QuestInfo" load_steps=7 format=3 uid="uid://7ue2ydqks7n4"]
+[gd_resource type="Resource" script_class="QuestInfo" load_steps=11 format=3 uid="uid://7ue2ydqks7n4"]
 
 [ext_resource type="Script" path="res://Scripts/QuestSystem/Objectives/QuestCollectObjective.gd" id="1_28dhu"]
 [ext_resource type="Script" path="res://Scripts/QuestSystem/QuestInfo.gd" id="1_62udp"]
-[ext_resource type="Resource" uid="uid://dp1ecqhn1pu23" path="res://Resources/Items/Spada del Vecchio.tres" id="2_4ojfd"]
+[ext_resource type="Texture2D" uid="uid://elipp5ixvnoa" path="res://Arts/Items/god sword.jpeg" id="2_qt5an"]
+[ext_resource type="Script" path="res://Scripts/Resources/item.gd" id="3_0jgwn"]
 [ext_resource type="Script" path="res://Scripts/Resources/reward.gd" id="3_hhwx6"]
+[ext_resource type="Script" path="res://Scripts/Resources/stats.gd" id="4_xegc6"]
+
+[sub_resource type="Resource" id="Resource_0soxw"]
+script = ExtResource("4_xegc6")
+hp = 0.0
+mp = 0.0
+ad = 1000.0
+ap = 0.0
+armor = 0.0
+mr = 0.0
+crit = 1.0
+crit_dmg = 3.0
+
+[sub_resource type="Resource" id="Resource_l6q6i"]
+script = ExtResource("3_0jgwn")
+name = "Spada del vecchio"
+description = "Una spada incredibile, trovata in un baule di un certo vecchietto..."
+icon = ExtResource("2_qt5an")
+stats = SubResource("Resource_0soxw")
+maxStack = 1
+rarity = 0
 
 [sub_resource type="Resource" id="Resource_ltrnf"]
 script = ExtResource("1_28dhu")
-target = ExtResource("2_4ojfd")
+target = SubResource("Resource_l6q6i")
 amount = 1
 text = "Apri il baule"
 
@@ -15,7 +37,7 @@ text = "Apri il baule"
 script = ExtResource("3_hhwx6")
 experience = 200
 gold = 150
-item = Array[Resource("res://Scripts/Resources/item.gd")]([])
+item = Array[ExtResource("3_0jgwn")]([])
 
 [resource]
 script = ExtResource("1_62udp")

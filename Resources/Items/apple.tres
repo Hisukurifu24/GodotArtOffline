@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ConsumableItem" load_steps=2 format=3 uid="uid://c0joqdpd3c47h"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Items/ConsumableItem.gd" id="1_bpl6v"]
+
+[resource]
+script = ExtResource("1_bpl6v")
+hydratation = 0
+hunger = 10
+isInstant = true
+duration = 0.0
+name = "Mela"
+description = "Una mela al giorno leva il medico di torno"
+maxStack = 1
+rarity = 0
