@@ -5,3 +5,4 @@
 [resource]
 line_spacing = 1.0
 font = ExtResource("1_1smlb")
+font_size = 24
