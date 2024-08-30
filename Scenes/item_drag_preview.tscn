@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnai782bg826n"]
+
+[ext_resource type="Theme" uid="uid://c74xmjjbwnv0t" path="res://Resources/UI/ui_theme.tres" id="1_w18lx"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3qcyw"]
+
+[node name="Control" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_w18lx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("PlaceholderTexture2D_3qcyw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "1"
