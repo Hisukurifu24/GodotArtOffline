@@ -15,6 +15,26 @@ func _ready():
 
 ## Add an item to the inventory
 func add_item(item: Item):
+    if !isItemEquippable(item):
+        return
+
+    # Check if the item is stackable
+    if item.maxStack > 1:
+        # Check if the item is already in the inventory
+        var index = _items.find(item)
+        if index != -1:
+            # Check if the item can be stacked
+            if _items[index].quantity < item.maxStack:
+                _items[index].quantity += 1
+                _on_item_collected(item)
+                return
+        # If the item is not in the inventory, add it
+        add_at_empty_slot(item)
+        return
+    else:
+        add_at_empty_slot(item)
+
+func add_at_empty_slot(item: Item):
     # Add the item to the inventory
     var index = _items.find(null)
     if index == -1:
@@ -24,6 +44,8 @@ func add_item(item: Item):
     _on_item_collected(item)
 
 func insert_at(item: Item, index: int):
+    if !isItemEquippable(item):
+        return
     if index < 0 or index >= _items.size():
         printerr("Invalid index")
         return
@@ -73,3 +95,11 @@ func print_inventory():
     print(name + ":")
     for i in range(_items.size()):
         print(_items[i])
+
+func isItemEquippable(item: Item) -> bool:
+    if isActiveInventory:
+        # se l'oggetto non è equipaggiabile ritorna false
+        if !(item is EquippableItem):
+            printerr("Item is not equippable")
+            return false
+    return true
