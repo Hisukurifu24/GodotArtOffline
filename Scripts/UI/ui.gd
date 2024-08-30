@@ -7,7 +7,7 @@ extends CanvasLayer
 @onready var expBar = $"Control/Exp"
 @onready var staminaBar = $"Control/Stamina"
 @onready var staminaTimer = $"StaminaHideTimer"
-@onready var goldLabel = $"Control/Gold"
+@onready var goldLabel = %GoldText
 
 @onready var quest1 = %Quest1
 @onready var quest2 = %Quest2
@@ -71,9 +71,9 @@ func _on_stamina_hide_timer_timeout():
 	staminaBar.visible = false
 
 func updateQuests(acceptedQuests: Array[Quest]):
-	quest1.visible = false
-	quest2.visible = false
-	quest3.visible = false
+	quest1.get_parent().visible = false
+	quest2.get_parent().visible = false
+	quest3.get_parent().visible = false
 
 	# If there are no quests, return
 	if acceptedQuests.size() == 0:
@@ -90,7 +90,7 @@ func updateQuests(acceptedQuests: Array[Quest]):
 	pass
 
 func showQuest(quest: CanvasItem, index: int, acceptedQuests: Array[Quest]):
-	quest.visible = true
+	quest.get_parent().visible = true
 	var completedCount = 0
 	for j in range(3):
 		if j < acceptedQuests[index].questInfo.objectives.size():

@@ -8,11 +8,11 @@ var currentDialog = null
 var currentIndex: int = 0
 
 @onready var textLabel: Label = %Text
-@onready var answers: CanvasItem = $"Answers"
+@onready var answers: CanvasItem = $"Control/Answers"
 @onready var panelButton: Button = $"Control/Button"
-@onready var option1: Button = $"Answers/Option1"
-@onready var option2: Button = $"Answers/Option2"
-@onready var option3: Button = $"Answers/Option3"
+@onready var option1: Button = %Option1
+@onready var option2: Button = %Option2
+@onready var option3: Button = %Option3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
