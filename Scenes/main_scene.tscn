@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cyh0amjo5p13s" path="res://Scenes/dialogue_box.tscn" id="11_wt0sp"]
 [ext_resource type="Script" path="res://Scripts/QuestSystem/Quest.gd" id="12_r7jrp"]
 [ext_resource type="Resource" uid="uid://7ue2ydqks7n4" path="res://Resources/Quests/1 - Il baule del vecchio.tres" id="13_7pwlc"]
-[ext_resource type="Resource" uid="uid://dp1ecqhn1pu23" path="res://Resources/Items/Spada del Vecchio.tres" id="14_aluq4"]
+[ext_resource type="Resource" uid="uid://661o47l54uqg" path="res://Resources/Items/Spada del Vecchio.tres" id="14_aluq4"]
 [ext_resource type="Script" path="res://Scripts/Resources/reward.gd" id="15_8m2gb"]
 [ext_resource type="PackedScene" uid="uid://cfnyiu3a7cgnl" path="res://Scenes/quest_wall.tscn" id="16_i0gqk"]
 
