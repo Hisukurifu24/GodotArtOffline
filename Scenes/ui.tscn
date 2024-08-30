@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://dmeggbh2vhflk"]
+[gd_scene load_steps=25 format=3 uid="uid://dmeggbh2vhflk"]
 
 [ext_resource type="Script" path="res://Scripts/UI/ui.gd" id="1_1symc"]
 [ext_resource type="Texture2D" uid="uid://djxxoo8x4s8gt" path="res://Arts/All.png" id="2_tlq1y"]
-[ext_resource type="LabelSettings" uid="uid://cd1xwn3ul4l2n" path="res://Resources/UI/DefaultLabel.tres" id="3_cnb16"]
+[ext_resource type="Theme" uid="uid://c74xmjjbwnv0t" path="res://Resources/UI/ui_theme.tres" id="2_vbl7c"]
 [ext_resource type="FontFile" uid="uid://f3sw3475y8u6" path="res://Arts/Fonts/RPGSystem.ttf" id="3_qnjgq"]
+[ext_resource type="Texture2D" uid="uid://brh0nbhe3gv86" path="res://Arts/Shikashi's Fantasy Icons Pack v2/#1 - Transparent Icons.png" id="5_7lttt"]
 [ext_resource type="FontFile" uid="uid://ohw6qwn6o6pn" path="res://Arts/Fonts/m6x11plus.ttf" id="5_nw5lk"]
 [ext_resource type="PackedScene" uid="uid://walnucdf02sg" path="res://Scenes/inventory_ui.tscn" id="6_ttmw4"]
 
@@ -13,7 +14,7 @@ region = Rect2(576, 3, 48, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7jc76"]
 atlas = ExtResource("2_tlq1y")
-region = Rect2(625, 3, 46, 11)
+region = Rect2(625, 3, 47, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8oicf"]
 atlas = ExtResource("2_tlq1y")
@@ -21,7 +22,15 @@ region = Rect2(576, 3, 48, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xj37j"]
 atlas = ExtResource("2_tlq1y")
-region = Rect2(625, 35, 46, 11)
+region = Rect2(625, 35, 47, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfsej"]
+atlas = ExtResource("2_tlq1y")
+region = Rect2(873, 165, 32, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34leh"]
+atlas = ExtResource("2_tlq1y")
+region = Rect2(633, 165, 32, 5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6x5vu"]
 atlas = ExtResource("2_tlq1y")
@@ -47,35 +56,34 @@ region = Rect2(1107, 85, 42, 7)
 atlas = ExtResource("2_tlq1y")
 region = Rect2(916, 85, 41, 7)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lfsej"]
-atlas = ExtResource("2_tlq1y")
-region = Rect2(873, 165, 32, 5)
+[sub_resource type="LabelSettings" id="LabelSettings_phbjf"]
+font_size = 32
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_34leh"]
-atlas = ExtResource("2_tlq1y")
-region = Rect2(633, 165, 32, 5)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqtw4"]
+atlas = ExtResource("5_7lttt")
+region = Rect2(224, 384, 32, 32)
 
-[sub_resource type="LabelSettings" id="LabelSettings_ke4eh"]
-font = ExtResource("3_qnjgq")
+[sub_resource type="LabelSettings" id="LabelSettings_ddaf2"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_yuoaq"]
+font = ExtResource("5_nw5lk")
+font_size = 36
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_h4cen"]
 font = ExtResource("3_qnjgq")
+font_size = 32
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 4
 shadow_color = Color(0, 0, 0, 0.215686)
-
-[sub_resource type="LabelSettings" id="LabelSettings_yuoaq"]
-font = ExtResource("5_nw5lk")
-font_size = 18
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
 
 [node name="UI" type="CanvasLayer" groups=["UI"]]
 script = ExtResource("1_1symc")
 
 [node name="Control" type="Control" parent="."]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,18 +91,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme = ExtResource("2_vbl7c")
 
 [node name="HP" type="TextureProgressBar" parent="Control"]
+custom_minimum_size = Vector2(400, 30)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -50.0
-offset_right = 100.0
-offset_bottom = -35.0
+offset_left = -200.0
+offset_top = -80.0
+offset_right = 200.0
+offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 0
 tooltip_text = "La tua vita"
@@ -102,47 +112,52 @@ max_value = 1000.0
 value = 900.0
 nine_patch_stretch = true
 stretch_margin_left = 6
-stretch_margin_top = 4
+stretch_margin_top = 5
 stretch_margin_right = 6
-stretch_margin_bottom = 4
+stretch_margin_bottom = 5
 texture_over = SubResource("AtlasTexture_nlcnp")
 texture_progress = SubResource("AtlasTexture_7jc76")
 
 [node name="Label" type="Label" parent="Control/HP"]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -29.0
-offset_top = -13.0
+offset_top = -7.5
 offset_right = 29.0
-offset_bottom = 2.0
+offset_bottom = 7.5
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_qnjgq")
 text = "900/1000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Mana" type="TextureProgressBar" parent="Control"]
+custom_minimum_size = Vector2(400, 25)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -99.0
-offset_top = -23.0
-offset_right = 101.0
-offset_bottom = -10.0
+offset_left = -200.0
+offset_top = -45.0
+offset_right = 200.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 tooltip_text = "Il tuo mana"
-value = 76.0
+max_value = 1000.0
+value = 900.0
 nine_patch_stretch = true
 stretch_margin_left = 6
-stretch_margin_top = 4
-stretch_margin_right = 6
+stretch_margin_top = 5
+stretch_margin_right = 7
 stretch_margin_bottom = 5
 texture_over = SubResource("AtlasTexture_8oicf")
 texture_progress = SubResource("AtlasTexture_xj37j")
@@ -150,18 +165,46 @@ texture_progress = SubResource("AtlasTexture_xj37j")
 [node name="Label" type="Label" parent="Control/Mana"]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -29.0
-offset_top = -13.0
+offset_top = -7.5
 offset_right = 29.0
-offset_bottom = 2.0
+offset_bottom = 7.5
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_qnjgq")
 text = "900/1000"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Stamina" type="TextureProgressBar" parent="Control"]
+modulate = Color(0.968627, 0.968627, 0.968627, 1)
+custom_minimum_size = Vector2(240, 10)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -100.0
+offset_right = 120.0
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 0
+tooltip_text = "La tua stamina"
+value = 66.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = SubResource("AtlasTexture_lfsej")
+texture_progress = SubResource("AtlasTexture_34leh")
 
 [node name="Sete" type="TextureProgressBar" parent="Control"]
 layout_mode = 1
@@ -170,10 +213,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -110.0
-offset_top = -50.0
-offset_right = -104.0
-offset_bottom = -10.0
+offset_left = -222.0
+offset_top = -100.0
+offset_right = -210.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 tooltip_text = "Il tuo livello di idratazione"
@@ -190,10 +233,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -118.0
-offset_top = -50.0
-offset_right = -112.0
-offset_bottom = -10.0
+offset_left = -239.0
+offset_top = -100.0
+offset_right = -227.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 tooltip_text = "La tua energia residua"
@@ -203,28 +246,15 @@ nine_patch_stretch = true
 texture_under = SubResource("AtlasTexture_b5wfo")
 texture_progress = SubResource("AtlasTexture_vq7q5")
 
-[node name="Gold" type="Label" parent="Control"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = -53.0
-offset_right = 45.0
-offset_bottom = -30.0
-grow_vertical = 0
-text = "Gold: 0"
-label_settings = ExtResource("3_cnb16")
-vertical_alignment = 1
-
 [node name="Exp" type="TextureProgressBar" parent="Control"]
+texture_filter = 2
+custom_minimum_size = Vector2(0, 8)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -4.0
+offset_top = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 tooltip_text = "La tua esperienza"
@@ -239,160 +269,192 @@ texture_progress = SubResource("AtlasTexture_pqqrg")
 texture_filter = 1
 layout_mode = 0
 offset_left = 5.0
-offset_top = -23.0
+offset_top = -30.0
 offset_right = 129.0
 tooltip_text = "Il tuo livello"
 mouse_filter = 1
-theme_override_fonts/font = ExtResource("3_qnjgq")
 text = "lvl: 1"
+label_settings = SubResource("LabelSettings_phbjf")
 vertical_alignment = 1
 
-[node name="Stamina" type="TextureProgressBar" parent="Control"]
-modulate = Color(0.968627, 0.968627, 0.968627, 1)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -60.0
-offset_top = -75.0
-offset_right = 60.0
-offset_bottom = -70.0
-grow_horizontal = 2
-grow_vertical = 0
-tooltip_text = "La tua stamina"
-value = 66.0
-nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
-texture_under = SubResource("AtlasTexture_lfsej")
-texture_progress = SubResource("AtlasTexture_34leh")
+[node name="Gold" type="HBoxContainer" parent="Control/Exp"]
+layout_mode = 0
+offset_top = -65.0
+offset_right = 114.0
+offset_bottom = -33.0
+
+[node name="Icon" type="TextureRect" parent="Control/Exp/Gold"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_tqtw4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GoldText" type="Label" parent="Control/Exp/Gold"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+text = "Gold: 0"
+label_settings = SubResource("LabelSettings_ddaf2")
+vertical_alignment = 1
 
 [node name="Control" type="Control" parent="Control"]
-clip_contents = true
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -150.5
-offset_bottom = 109.5
+offset_left = -370.0
+offset_top = -20.0
+offset_right = -20.0
+offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/Control"]
+[node name="PanelContainer" type="PanelContainer" parent="Control/Control"]
+texture_filter = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Control/PanelContainer"]
 layout_mode = 2
-offset_right = 200.0
-offset_bottom = 260.0
-theme_override_constants/margin_left = 5
+size_flags_vertical = 8
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Quests" type="VBoxContainer" parent="Control/Control/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 15
+
+[node name="NinePatchRect" type="PanelContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests"]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+size_flags_vertical = 8
+theme_type_variation = &"SmallPanelContainer"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
+theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="Quests" type="VBoxContainer" parent="Control/Control/MarginContainer"]
-layout_mode = 2
-
-[node name="Quest1" type="VBoxContainer" parent="Control/Control/MarginContainer/Quests"]
+[node name="Quest1" type="VBoxContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect/MarginContainer"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Control/Control/MarginContainer/Quests/Quest1"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "Test 1: "
-label_settings = SubResource("LabelSettings_ke4eh")
-autowrap_mode = 2
-
-[node name="Objective1" type="Label" parent="Control/Control/MarginContainer/Quests/Quest1"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "- Caccia i draghi"
-label_settings = SubResource("LabelSettings_h4cen")
-autowrap_mode = 2
-
-[node name="Objective2" type="Label" parent="Control/Control/MarginContainer/Quests/Quest1"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "- Caccia i draghi"
-label_settings = SubResource("LabelSettings_h4cen")
-autowrap_mode = 2
-
-[node name="Objective3" type="Label" parent="Control/Control/MarginContainer/Quests/Quest1"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "- Caccia i draghi"
-label_settings = SubResource("LabelSettings_h4cen")
-autowrap_mode = 2
-
-[node name="Quest2" type="VBoxContainer" parent="Control/Control/MarginContainer/Quests"]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="Title" type="Label" parent="Control/Control/MarginContainer/Quests/Quest2"]
+[node name="Title" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect/MarginContainer/Quest1"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Test 1: "
 label_settings = SubResource("LabelSettings_yuoaq")
 autowrap_mode = 2
 
-[node name="Objective1" type="Label" parent="Control/Control/MarginContainer/Quests/Quest2"]
+[node name="Objective1" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect/MarginContainer/Quest1"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "- Caccia i draghi"
 label_settings = SubResource("LabelSettings_h4cen")
 autowrap_mode = 2
 
-[node name="Objective2" type="Label" parent="Control/Control/MarginContainer/Quests/Quest2"]
+[node name="Objective2" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect/MarginContainer/Quest1"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "- Caccia i draghi"
 label_settings = SubResource("LabelSettings_h4cen")
 autowrap_mode = 2
 
-[node name="Objective3" type="Label" parent="Control/Control/MarginContainer/Quests/Quest2"]
+[node name="Objective3" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect/MarginContainer/Quest1"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "- Caccia i draghi"
 label_settings = SubResource("LabelSettings_h4cen")
 autowrap_mode = 2
 
-[node name="Quest3" type="VBoxContainer" parent="Control/Control/MarginContainer/Quests"]
+[node name="NinePatchRect2" type="PanelContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests"]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+size_flags_vertical = 8
+theme_type_variation = &"SmallPanelContainer"
+
+[node name="Quest2" type="VBoxContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect2"]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Control/Control/MarginContainer/Quests/Quest3"]
+[node name="Title" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect2/Quest2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Test 1: "
 label_settings = SubResource("LabelSettings_yuoaq")
 autowrap_mode = 2
 
-[node name="Objective1" type="Label" parent="Control/Control/MarginContainer/Quests/Quest3"]
+[node name="Objective1" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect2/Quest2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "- Caccia i draghi"
 label_settings = SubResource("LabelSettings_h4cen")
 autowrap_mode = 2
 
-[node name="Objective2" type="Label" parent="Control/Control/MarginContainer/Quests/Quest3"]
+[node name="Objective2" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect2/Quest2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "- Caccia i draghi"
 label_settings = SubResource("LabelSettings_h4cen")
 autowrap_mode = 2
 
-[node name="Objective3" type="Label" parent="Control/Control/MarginContainer/Quests/Quest3"]
+[node name="Objective3" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect2/Quest2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "- Caccia i draghi"
+label_settings = SubResource("LabelSettings_h4cen")
+autowrap_mode = 2
+
+[node name="NinePatchRect3" type="PanelContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests"]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+size_flags_vertical = 8
+theme_type_variation = &"SmallPanelContainer"
+
+[node name="Quest3" type="VBoxContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect3/Quest3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Test 1: "
+label_settings = SubResource("LabelSettings_yuoaq")
+autowrap_mode = 2
+
+[node name="Objective1" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect3/Quest3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "- Caccia i draghi"
+label_settings = SubResource("LabelSettings_h4cen")
+autowrap_mode = 2
+
+[node name="Objective2" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect3/Quest3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "- Caccia i draghi"
+label_settings = SubResource("LabelSettings_h4cen")
+autowrap_mode = 2
+
+[node name="Objective3" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect3/Quest3"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "- Caccia i draghi"
