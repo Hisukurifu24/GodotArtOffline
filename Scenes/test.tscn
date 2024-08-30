@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://did6lhbr8fvh0"]
+
+[ext_resource type="PackedScene" uid="uid://bgk66fypiwyas" path="res://Scenes/inventory_slot.tscn" id="1_xh4fw"]
+
+[node name="Node2D" type="CanvasLayer"]
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventorySlot" parent="GridContainer" instance=ExtResource("1_xh4fw")]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
