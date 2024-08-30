@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://c74xmjjbwnv0t" path="res://Resources/UI/ui_theme.tres" id="2_vbl7c"]
 [ext_resource type="FontFile" uid="uid://f3sw3475y8u6" path="res://Arts/Fonts/RPGSystem.ttf" id="3_qnjgq"]
 [ext_resource type="Texture2D" uid="uid://brh0nbhe3gv86" path="res://Arts/Shikashi's Fantasy Icons Pack v2/#1 - Transparent Icons.png" id="5_7lttt"]
-[ext_resource type="FontFile" uid="uid://ohw6qwn6o6pn" path="res://Arts/Fonts/m6x11plus.ttf" id="5_nw5lk"]
+[ext_resource type="FontFile" uid="uid://dgnpq8ryfeqmi" path="res://Arts/Fonts/m6x11.ttf" id="6_1wp34"]
 [ext_resource type="PackedScene" uid="uid://walnucdf02sg" path="res://Scenes/inventory_ui.tscn" id="6_ttmw4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nlcnp"]
@@ -67,17 +67,11 @@ region = Rect2(224, 384, 32, 32)
 font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_yuoaq"]
-font = ExtResource("5_nw5lk")
-font_size = 36
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
+font = ExtResource("6_1wp34")
+font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_h4cen"]
-font = ExtResource("3_qnjgq")
-font_size = 32
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 4
-shadow_color = Color(0, 0, 0, 0.215686)
+font = ExtResource("6_1wp34")
 
 [node name="UI" type="CanvasLayer" groups=["UI"]]
 script = ExtResource("1_1symc")
@@ -337,127 +331,184 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 15
 
-[node name="NinePatchRect" type="PanelContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests"]
+[node name="Quest1" type="PanelContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 175)
 layout_mode = 2
 size_flags_vertical = 8
 theme_type_variation = &"SmallPanelContainer"
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest1"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="Quest1" type="VBoxContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect/MarginContainer"]
-unique_name_in_owner = true
+[node name="Control" type="Control" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest1/MarginContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect/MarginContainer/Quest1"]
+[node name="Title" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest1/MarginContainer/Control"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "Test 1: "
+offset_right = 269.0
+offset_bottom = 60.0
+text = "Il ritorno del re: "
 label_settings = SubResource("LabelSettings_yuoaq")
+vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Objective1" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect/MarginContainer/Quest1"]
+[node name="Objectives" type="VBoxContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest1/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 66.0
+offset_right = -90.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.44, 1.44)
+
+[node name="Objective1" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest1/MarginContainer/Control/Objectives"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "- Caccia i draghi"
+text = "- Raggiungi Mordor"
+label_settings = SubResource("LabelSettings_h4cen")
+autowrap_mode = 3
+
+[node name="Objective2" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest1/MarginContainer/Control/Objectives"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "- Sconfiggi Sauron"
 label_settings = SubResource("LabelSettings_h4cen")
 autowrap_mode = 2
 
-[node name="Objective2" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect/MarginContainer/Quest1"]
+[node name="Objective3" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest1/MarginContainer/Control/Objectives"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "- Caccia i draghi"
+text = "- Getta l'anello nel vulcano"
 label_settings = SubResource("LabelSettings_h4cen")
 autowrap_mode = 2
 
-[node name="Objective3" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect/MarginContainer/Quest1"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "- Caccia i draghi"
-label_settings = SubResource("LabelSettings_h4cen")
-autowrap_mode = 2
-
-[node name="NinePatchRect2" type="PanelContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests"]
+[node name="Quest2" type="PanelContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 175)
 layout_mode = 2
 size_flags_vertical = 8
 theme_type_variation = &"SmallPanelContainer"
 
-[node name="Quest2" type="VBoxContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect2"]
-unique_name_in_owner = true
+[node name="MarginContainer" type="MarginContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest2"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Control" type="Control" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest2/MarginContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect2/Quest2"]
+[node name="Title" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest2/MarginContainer/Control"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "Test 1: "
+offset_right = 230.0
+offset_bottom = 34.0
+scale = Vector2(1.2, 1.2)
+text = "Il ritorno del re: "
 label_settings = SubResource("LabelSettings_yuoaq")
+vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Objective1" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect2/Quest2"]
+[node name="Objectives" type="VBoxContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest2/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 44.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Objective1" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest2/MarginContainer/Control/Objectives"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "- Caccia i draghi"
+text = "- Raggiungi Mordor"
+label_settings = SubResource("LabelSettings_h4cen")
+autowrap_mode = 3
+
+[node name="Objective2" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest2/MarginContainer/Control/Objectives"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "- Sconfiggi Sauron"
 label_settings = SubResource("LabelSettings_h4cen")
 autowrap_mode = 2
 
-[node name="Objective2" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect2/Quest2"]
+[node name="Objective3" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest2/MarginContainer/Control/Objectives"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "- Caccia i draghi"
+text = "- Getta l'anello nel vulcano"
 label_settings = SubResource("LabelSettings_h4cen")
 autowrap_mode = 2
 
-[node name="Objective3" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect2/Quest2"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "- Caccia i draghi"
-label_settings = SubResource("LabelSettings_h4cen")
-autowrap_mode = 2
-
-[node name="NinePatchRect3" type="PanelContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests"]
+[node name="Quest3" type="PanelContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 175)
 layout_mode = 2
 size_flags_vertical = 8
 theme_type_variation = &"SmallPanelContainer"
 
-[node name="Quest3" type="VBoxContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect3"]
-unique_name_in_owner = true
+[node name="MarginContainer" type="MarginContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest3"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Control" type="Control" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest3/MarginContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect3/Quest3"]
+[node name="Title" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest3/MarginContainer/Control"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "Test 1: "
+offset_right = 230.0
+offset_bottom = 34.0
+scale = Vector2(1.2, 1.2)
+text = "Il ritorno del re: "
 label_settings = SubResource("LabelSettings_yuoaq")
+vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Objective1" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect3/Quest3"]
+[node name="Objectives" type="VBoxContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest3/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 44.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Objective1" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest3/MarginContainer/Control/Objectives"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "- Caccia i draghi"
+text = "- Raggiungi Mordor"
+label_settings = SubResource("LabelSettings_h4cen")
+autowrap_mode = 3
+
+[node name="Objective2" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest3/MarginContainer/Control/Objectives"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "- Sconfiggi Sauron"
 label_settings = SubResource("LabelSettings_h4cen")
 autowrap_mode = 2
 
-[node name="Objective2" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect3/Quest3"]
+[node name="Objective3" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest3/MarginContainer/Control/Objectives"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "- Caccia i draghi"
-label_settings = SubResource("LabelSettings_h4cen")
-autowrap_mode = 2
-
-[node name="Objective3" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/NinePatchRect3/Quest3"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "- Caccia i draghi"
+text = "- Getta l'anello nel vulcano"
 label_settings = SubResource("LabelSettings_h4cen")
 autowrap_mode = 2
 

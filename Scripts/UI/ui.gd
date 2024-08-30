@@ -71,9 +71,9 @@ func _on_stamina_hide_timer_timeout():
 	staminaBar.visible = false
 
 func updateQuests(acceptedQuests: Array[Quest]):
-	quest1.get_parent().visible = false
-	quest2.get_parent().visible = false
-	quest3.get_parent().visible = false
+	quest1.visible = false
+	quest2.visible = false
+	quest3.visible = false
 
 	# If there are no quests, return
 	if acceptedQuests.size() == 0:
@@ -89,24 +89,26 @@ func updateQuests(acceptedQuests: Array[Quest]):
 			showQuest(quest3, i, acceptedQuests)
 	pass
 
-func showQuest(quest: CanvasItem, index: int, acceptedQuests: Array[Quest]):
-	quest.get_parent().visible = true
+func showQuest(quest_ui: CanvasItem, index: int, acceptedQuests: Array[Quest]):
+	quest_ui.visible = true
+	var title_ui = quest_ui.get_node("MarginContainer/Control/Title")
+	var objectives_ui = quest_ui.get_node("MarginContainer/Control/Objectives")
 	var completedCount = 0
 	for j in range(3):
 		if j < acceptedQuests[index].questInfo.objectives.size():
-			quest.get_node("Objective" + str(j + 1)).visible = true
-			quest.get_node("Objective" + str(j + 1)).text = "- " + acceptedQuests[index].questInfo.objectives[j].text
+			objectives_ui.get_node("Objective" + str(j + 1)).visible = true
+			objectives_ui.get_node("Objective" + str(j + 1)).text = "- " + acceptedQuests[index].questInfo.objectives[j].text
 			if acceptedQuests[index].questInfo.objectives[j].completed:
-				quest.get_node("Objective" + str(j + 1)).modulate = Color("00ff00")
+				objectives_ui.get_node("Objective" + str(j + 1)).modulate = Color("00ff00")
 				completedCount += 1
 			else:
-				quest.get_node("Objective" + str(j + 1)).modulate = Color("ffffff")
+				objectives_ui.get_node("Objective" + str(j + 1)).modulate = Color("ffffff")
 		else:
-			quest.get_node("Objective" + str(j + 1)).visible = false
+			objectives_ui.get_node("Objective" + str(j + 1)).visible = false
 	
 	if completedCount == acceptedQuests[index].questInfo.objectives.size():
-		quest.get_node("Title").modulate = Color("00ff00")
-		quest.get_node("Title").text = acceptedQuests[index].questInfo.name + " (Completed):"
+		title_ui.modulate = Color("00ff00")
+		title_ui.text = acceptedQuests[index].questInfo.name + " (Completed):"
 	else:
-		quest.get_node("Title").modulate = Color("ffffff")
-		quest.get_node("Title").text = acceptedQuests[index].questInfo.name + ":"
+		title_ui.modulate = Color("ffffff")
+		title_ui.text = acceptedQuests[index].questInfo.name + ":"

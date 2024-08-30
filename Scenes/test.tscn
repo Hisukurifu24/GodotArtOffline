@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://did6lhbr8fvh0"]
+[gd_scene load_steps=3 format=3 uid="uid://did6lhbr8fvh0"]
 
 [ext_resource type="PackedScene" uid="uid://bgk66fypiwyas" path="res://Scenes/inventory_slot.tscn" id="1_xh4fw"]
+[ext_resource type="FontFile" uid="uid://f3sw3475y8u6" path="res://Arts/Fonts/RPGSystem.ttf" id="2_wyn1w"]
 
 [node name="Node2D" type="CanvasLayer"]
 
@@ -15,3 +16,13 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+texture_filter = 1
+offset_right = 234.73
+offset_bottom = 68.0
+scale = Vector2(1.175, 1.175)
+theme_override_fonts/normal_font = ExtResource("2_wyn1w")
+theme_override_font_sizes/normal_font_size = 32
+text = "Il ritorno del re"
+fit_content = true

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/QuestSystem/Objectives/QuestCollectObjective.gd" id="1_28dhu"]
 [ext_resource type="Script" path="res://Scripts/QuestSystem/QuestInfo.gd" id="1_62udp"]
-[ext_resource type="Resource" uid="uid://661o47l54uqg" path="res://Resources/Items/spada del vecchio.tres" id="2_fyyus"]
+[ext_resource type="Resource" uid="uid://661o47l54uqg" path="res://Resources/Items/Spada del Vecchio.tres" id="2_fyyus"]
 [ext_resource type="Script" path="res://Scripts/Resources/reward.gd" id="3_hhwx6"]
 
 [sub_resource type="Resource" id="Resource_ltrnf"]
