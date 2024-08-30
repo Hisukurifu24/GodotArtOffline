@@ -36,17 +36,11 @@ func update_inventory():
 	for i in range(player_bag.inventorySize):
 		var slot: InventorySlot = bag_slots.get_child(i)
 		slot.item = player_bag.get_item(i)
-		if slot.item != null:
-			slot.item_ui.texture = slot.item.icon
-		else:
-			slot.item_ui.texture = null
+		slot.update()
 	for i in range(player_inventory.inventorySize):
 		var slot: InventorySlot = inventory_slots.get_child(i)
 		slot.item = player_inventory.get_item(i)
-		if slot.item != null:
-			slot.item_ui.texture = slot.item.icon
-		else:
-			slot.item_ui.texture = null
+		slot.update()
 
 func swap_items(origin: String, originIndex: int, target: String, targetIndex: int):
 	# print("Swapping item: " + origin + "[" + str(originIndex) + "] with " + target + "[" + str(targetIndex) + "]")
@@ -59,17 +53,17 @@ func swap_items(origin: String, originIndex: int, target: String, targetIndex: i
 	var origin_item: Item = origin_inventory.get_item(originIndex)
 	var target_item: Item = target_inventory.get_item(targetIndex)
 
-	print("origin_item: " + str(origin_item))
-	print("target_item: " + str(target_item))
+	# print("origin_item: " + str(origin_item))
+	# print("target_item: " + str(target_item))
 
 	if origin_item == null and target_item == null:
 		print("No items to swap")
 	elif origin_item == null:
-		print("origin_item is null")
+		# print("origin_item is null")
 		origin_inventory.insert_at(target_item, originIndex)
 		target_inventory.remove_at(targetIndex)
 	elif target_item == null:
-		print("target_item is null")
+		# print("target_item is null")
 		target_inventory.insert_at(origin_item, targetIndex)
 		origin_inventory.remove_at(originIndex)
 	else:
