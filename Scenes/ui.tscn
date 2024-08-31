@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dmeggbh2vhflk"]
+[gd_scene load_steps=27 format=3 uid="uid://dmeggbh2vhflk"]
 
 [ext_resource type="Script" path="res://Scripts/UI/ui.gd" id="1_1symc"]
 [ext_resource type="Texture2D" uid="uid://djxxoo8x4s8gt" path="res://Arts/All.png" id="2_tlq1y"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://brh0nbhe3gv86" path="res://Arts/Shikashi's Fantasy Icons Pack v2/#1 - Transparent Icons.png" id="5_7lttt"]
 [ext_resource type="FontFile" uid="uid://dgnpq8ryfeqmi" path="res://Arts/Fonts/m6x11.ttf" id="6_1wp34"]
 [ext_resource type="PackedScene" uid="uid://walnucdf02sg" path="res://Scenes/inventory_ui.tscn" id="6_ttmw4"]
+[ext_resource type="FontFile" uid="uid://w0sb7dfmwths" path="res://Arts/Fonts/m5x7.ttf" id="7_6bf3l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nlcnp"]
 atlas = ExtResource("2_tlq1y")
@@ -59,19 +60,24 @@ region = Rect2(916, 85, 41, 7)
 [sub_resource type="LabelSettings" id="LabelSettings_phbjf"]
 font_size = 32
 
+[sub_resource type="LabelSettings" id="LabelSettings_ddaf2"]
+font_size = 32
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_tqtw4"]
 atlas = ExtResource("5_7lttt")
 region = Rect2(224, 384, 32, 32)
 
-[sub_resource type="LabelSettings" id="LabelSettings_ddaf2"]
-font_size = 32
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gha2"]
+bg_color = Color(0, 0, 0, 0.0196078)
 
-[sub_resource type="LabelSettings" id="LabelSettings_yuoaq"]
+[sub_resource type="LabelSettings" id="LabelSettings_ampic"]
 font = ExtResource("6_1wp34")
 font_size = 32
+font_color = Color(0.792157, 0.635294, 0.0156863, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_h4cen"]
-font = ExtResource("6_1wp34")
+[sub_resource type="LabelSettings" id="LabelSettings_au3gv"]
+font = ExtResource("7_6bf3l")
+font_size = 32
 
 [node name="UI" type="CanvasLayer" groups=["UI"]]
 script = ExtResource("1_1symc")
@@ -126,7 +132,6 @@ offset_right = 29.0
 offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_qnjgq")
 text = "900/1000"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -272,29 +277,39 @@ label_settings = SubResource("LabelSettings_phbjf")
 vertical_alignment = 1
 
 [node name="Gold" type="HBoxContainer" parent="Control/Exp"]
-layout_mode = 0
-offset_top = -65.0
-offset_right = 114.0
-offset_bottom = -33.0
-
-[node name="Icon" type="TextureRect" parent="Control/Exp/Gold"]
-texture_filter = 1
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("AtlasTexture_tqtw4")
-expand_mode = 1
-stretch_mode = 5
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -114.0
+offset_top = -42.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
 
 [node name="GoldText" type="Label" parent="Control/Exp/Gold"]
 unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
-text = "Gold: 0"
+text = "0"
 label_settings = SubResource("LabelSettings_ddaf2")
+horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="Control"]
+[node name="Icon" type="TextureRect" parent="Control/Exp/Gold"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = SubResource("AtlasTexture_tqtw4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="QuestFollow" type="Control" parent="Control"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -308,209 +323,54 @@ offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/Control"]
-texture_filter = 1
-clip_contents = true
+[node name="PanelContainer" type="PanelContainer" parent="Control/QuestFollow"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0gha2")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/Control/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/QuestFollow/PanelContainer"]
 layout_mode = 2
-size_flags_vertical = 8
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="Quests" type="VBoxContainer" parent="Control/Control/PanelContainer/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 8
-theme_override_constants/separation = 15
-
-[node name="Quest1" type="PanelContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 175)
-layout_mode = 2
-size_flags_vertical = 8
-theme_type_variation = &"SmallPanelContainer"
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest1"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Control" type="Control" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest1/MarginContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="Title" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest1/MarginContainer/Control"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-offset_right = 269.0
-offset_bottom = 60.0
-text = "Il ritorno del re: "
-label_settings = SubResource("LabelSettings_yuoaq")
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Objectives" type="VBoxContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest1/MarginContainer/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 66.0
-offset_right = -90.0
-offset_bottom = -32.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.44, 1.44)
-
-[node name="Objective1" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest1/MarginContainer/Control/Objectives"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "- Raggiungi Mordor"
-label_settings = SubResource("LabelSettings_h4cen")
-autowrap_mode = 3
-
-[node name="Objective2" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest1/MarginContainer/Control/Objectives"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "- Sconfiggi Sauron"
-label_settings = SubResource("LabelSettings_h4cen")
-autowrap_mode = 2
-
-[node name="Objective3" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest1/MarginContainer/Control/Objectives"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "- Getta l'anello nel vulcano"
-label_settings = SubResource("LabelSettings_h4cen")
-autowrap_mode = 2
-
-[node name="Quest2" type="PanelContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests"]
+[node name="Quest" type="VBoxContainer" parent="Control/QuestFollow/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 175)
-layout_mode = 2
-size_flags_vertical = 8
-theme_type_variation = &"SmallPanelContainer"
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest2"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 5
-
-[node name="Control" type="Control" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest2/MarginContainer"]
-custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest2/MarginContainer/Control"]
+[node name="Title" type="Label" parent="Control/QuestFollow/PanelContainer/MarginContainer/Quest"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-offset_right = 230.0
-offset_bottom = 34.0
-scale = Vector2(1.2, 1.2)
-text = "Il ritorno del re: "
-label_settings = SubResource("LabelSettings_yuoaq")
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Objectives" type="VBoxContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest2/MarginContainer/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 44.0
-offset_bottom = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Objective1" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest2/MarginContainer/Control/Objectives"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "- Raggiungi Mordor"
-label_settings = SubResource("LabelSettings_h4cen")
+text = "Il ritorno del re"
+label_settings = SubResource("LabelSettings_ampic")
+horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Objective2" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest2/MarginContainer/Control/Objectives"]
+[node name="Objective1" type="Label" parent="Control/QuestFollow/PanelContainer/MarginContainer/Quest"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "- Sconfiggi Sauron"
-label_settings = SubResource("LabelSettings_h4cen")
-autowrap_mode = 2
-
-[node name="Objective3" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest2/MarginContainer/Control/Objectives"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "- Getta l'anello nel vulcano"
-label_settings = SubResource("LabelSettings_h4cen")
-autowrap_mode = 2
-
-[node name="Quest3" type="PanelContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 175)
-layout_mode = 2
-size_flags_vertical = 8
-theme_type_variation = &"SmallPanelContainer"
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest3"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 5
-
-[node name="Control" type="Control" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest3/MarginContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="Title" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest3/MarginContainer/Control"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-offset_right = 230.0
-offset_bottom = 34.0
-scale = Vector2(1.2, 1.2)
-text = "Il ritorno del re: "
-label_settings = SubResource("LabelSettings_yuoaq")
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Objectives" type="VBoxContainer" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest3/MarginContainer/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 44.0
-offset_bottom = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Objective1" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest3/MarginContainer/Control/Objectives"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "- Raggiungi Mordor"
-label_settings = SubResource("LabelSettings_h4cen")
+text = "Uccidi 3 goblin (0/3)"
+label_settings = SubResource("LabelSettings_au3gv")
 autowrap_mode = 3
 
-[node name="Objective2" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest3/MarginContainer/Control/Objectives"]
+[node name="Objective2" type="Label" parent="Control/QuestFollow/PanelContainer/MarginContainer/Quest"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "- Sconfiggi Sauron"
-label_settings = SubResource("LabelSettings_h4cen")
-autowrap_mode = 2
+text = "Uccidi 3 slime (0/3)"
+label_settings = SubResource("LabelSettings_au3gv")
+autowrap_mode = 3
 
-[node name="Objective3" type="Label" parent="Control/Control/PanelContainer/MarginContainer/Quests/Quest3/MarginContainer/Control/Objectives"]
+[node name="Objective3" type="Label" parent="Control/QuestFollow/PanelContainer/MarginContainer/Quest"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "- Getta l'anello nel vulcano"
-label_settings = SubResource("LabelSettings_h4cen")
-autowrap_mode = 2
+text = "Raccogli la spada incantata e canta 4 canzoni bravo"
+label_settings = SubResource("LabelSettings_au3gv")
+autowrap_mode = 3
 
 [node name="StaminaHideTimer" type="Timer" parent="."]
 wait_time = 5.0

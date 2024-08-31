@@ -9,9 +9,8 @@ extends CanvasLayer
 @onready var staminaTimer = $"StaminaHideTimer"
 @onready var goldLabel = %GoldText
 
-@onready var quest1 = %Quest1
-@onready var quest2 = %Quest2
-@onready var quest3 = %Quest3
+@onready var questFollow_ui = %QuestFollow
+@onready var quest_ui = %Quest
 
 var player: Character
 
@@ -70,45 +69,51 @@ func _on_character_stamina_changed(stamina):
 func _on_stamina_hide_timer_timeout():
 	staminaBar.visible = false
 
-func updateQuests(acceptedQuests: Array[Quest]):
-	quest1.visible = false
-	quest2.visible = false
-	quest3.visible = false
+func updateQuests():
+	questFollow_ui.visible = false
 
-	# If there are no quests, return
-	if acceptedQuests.size() == 0:
+	var followQuest = Quest_Manager.followQuest
+
+	# If there is no follow quest, return
+	if !followQuest:
 		return
 	
-	# Show the quests
-	for i in range(acceptedQuests.size()):
-		if i == 0:
-			showQuest(quest1, i, acceptedQuests)
-		elif i == 1:
-			showQuest(quest2, i, acceptedQuests)
-		elif i == 2:
-			showQuest(quest3, i, acceptedQuests)
-	pass
+	# Show the follow quest
+	questFollow_ui.visible = true
 
-func showQuest(quest_ui: CanvasItem, index: int, acceptedQuests: Array[Quest]):
-	quest_ui.visible = true
-	var title_ui = quest_ui.get_node("MarginContainer/Control/Title")
-	var objectives_ui = quest_ui.get_node("MarginContainer/Control/Objectives")
+	var title_ui = quest_ui.get_node("Title")
 	var completedCount = 0
+
+	# For each objective (max 3), show it in the UI
 	for j in range(3):
-		if j < acceptedQuests[index].questInfo.objectives.size():
-			objectives_ui.get_node("Objective" + str(j + 1)).visible = true
-			objectives_ui.get_node("Objective" + str(j + 1)).text = "- " + acceptedQuests[index].questInfo.objectives[j].text
-			if acceptedQuests[index].questInfo.objectives[j].completed:
-				objectives_ui.get_node("Objective" + str(j + 1)).modulate = Color("00ff00")
+		# Get the objective UI
+		var objective_ui = quest_ui.get_node("Objective" + str(j + 1))
+
+		# Check if the objective exists
+		if j < followQuest.questInfo.objectives.size():
+			# Show the objective
+			objective_ui.visible = true
+			objective_ui.text = "- " + followQuest.questInfo.objectives[j].text
+			
+			# Check if the objective is completed
+			if followQuest.questInfo.objectives[j].completed:
+				# Mark the objective as completed
+				objective_ui.modulate = Color("00aa00")
+
+				# Increment the completed count
 				completedCount += 1
 			else:
-				objectives_ui.get_node("Objective" + str(j + 1)).modulate = Color("ffffff")
+				# Mark the objective as not completed
+				objective_ui.modulate = Color("ffffff")
 		else:
-			objectives_ui.get_node("Objective" + str(j + 1)).visible = false
+			# Hide the objective
+			objective_ui.visible = false
 	
-	if completedCount == acceptedQuests[index].questInfo.objectives.size():
-		title_ui.modulate = Color("00ff00")
-		title_ui.text = acceptedQuests[index].questInfo.name + " (Completed):"
+	# Check if the quest is wholly completed
+	if completedCount == followQuest.questInfo.objectives.size():
+		# Mark the quest as ready to deliver
+		# title_ui.modulate = Color("00ff00")
+		title_ui.text = followQuest.questInfo.name + " (Ready to deliver)"
 	else:
-		title_ui.modulate = Color("ffffff")
-		title_ui.text = acceptedQuests[index].questInfo.name + ":"
+		# title_ui.modulate = Color("ffffff")
+		title_ui.text = followQuest.questInfo.name
