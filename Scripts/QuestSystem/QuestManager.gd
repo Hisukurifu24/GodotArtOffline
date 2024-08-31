@@ -8,6 +8,7 @@ var availableQuests: Array[Quest] = []
 var acceptedQuests: Array[Quest] = []
 var completedQuests: Array[Quest] = []
 var deliveredQuests: Array[Quest] = []
+var followQuest: Quest
 
 var ui: CanvasLayer
 
@@ -22,13 +23,14 @@ func on_quest_accepted(quest: Quest):
 	print("Quest accepted: ", quest.questInfo.name)
 	availableQuests.erase(quest)
 	acceptedQuests.append(quest)
+	followQuest = quest
     
-	ui.updateQuests(acceptedQuests)
+	ui.updateQuests()
 
 func on_objective_completed(objective: QuestObjective):
 	print("Objective completed: " + objective.text)
 
-	ui.updateQuests(acceptedQuests)
+	ui.updateQuests()
 
 func on_quest_completed(quest: Quest):
 	print("Quest completed: ", quest.questInfo.name)
@@ -40,7 +42,7 @@ func on_quest_delivered(quest: Quest):
 	completedQuests.erase(quest)
 	deliveredQuests.append(quest)
 
-	ui.updateQuests(acceptedQuests)
+	ui.updateQuests()
 
 ## Accept a quest by id
 func accept_quest(id: int):
