@@ -1,3 +1,4 @@
+class_name Slime
 extends Enemy
 
 @onready var sprite = $AnimatedSprite2D
@@ -25,3 +26,5 @@ func die():
 
 func _physics_process(_delta):
 	move_and_slide()
+	if !is_alive:
+		$CollisionShape2D.disabled = true
