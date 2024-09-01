@@ -93,7 +93,10 @@ func updateQuests():
 		if j < followQuest.questInfo.objectives.size():
 			# Show the objective
 			objective_ui.visible = true
+			# Set the objective text
 			objective_ui.text = "- " + followQuest.questInfo.objectives[j].text
+			# Add the current amount and the total amount
+			objective_ui.text += " (" + str(followQuest.questInfo.objectives[j].currentAmount) + "/" + str(followQuest.questInfo.objectives[j].amount) + ")"
 			
 			# Check if the objective is completed
 			if followQuest.questInfo.objectives[j].completed:
@@ -113,7 +116,7 @@ func updateQuests():
 	if completedCount == followQuest.questInfo.objectives.size():
 		# Mark the quest as ready to deliver
 		# title_ui.modulate = Color("00ff00")
-		title_ui.text = followQuest.questInfo.name + " (Ready to deliver)"
+		title_ui.text = followQuest.questInfo.name + "\n(Complete)"
 	else:
 		# title_ui.modulate = Color("ffffff")
 		title_ui.text = followQuest.questInfo.name
