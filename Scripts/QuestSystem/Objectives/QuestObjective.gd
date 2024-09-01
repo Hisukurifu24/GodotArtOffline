@@ -2,11 +2,13 @@ class_name QuestObjective
 extends Resource
 
 signal objective_completed(objective: QuestObjective)
+signal objective_progressed(objective: QuestObjective)
 
 @export_multiline var text: String = ""
 
 func _init():
 	objective_completed.connect(Quest_Manager.on_objective_completed)
+	objective_progressed.connect(Quest_Manager.on_objective_progressed)
 
 # Emit signal when the objective is completed
 var completed: bool = false:

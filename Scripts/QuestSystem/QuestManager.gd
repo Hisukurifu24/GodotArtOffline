@@ -32,6 +32,9 @@ func on_objective_completed(objective: QuestObjective):
 
 	ui.updateQuests()
 
+func on_objective_progressed(_objective: QuestObjective):
+	ui.updateQuests()
+
 func on_quest_completed(quest: Quest):
 	print("Quest completed: ", quest.questInfo.name)
 	acceptedQuests.erase(quest)
