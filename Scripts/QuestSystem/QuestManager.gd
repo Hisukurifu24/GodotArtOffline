@@ -1,7 +1,10 @@
 class_name QuestManager
 extends Node
 
+@warning_ignore("unused_signal")
 signal enemy_killed(enemy: Enemy)
+
+@warning_ignore("unused_signal")
 signal item_collected(item: Item)
 
 var availableQuests: Array[Quest] = []
@@ -23,6 +26,8 @@ func on_quest_accepted(quest: Quest):
 	print("Quest accepted: ", quest.questInfo.name)
 	availableQuests.erase(quest)
 	acceptedQuests.append(quest)
+
+	# Set the quest as the quest as following
 	followQuest = quest
     
 	ui.updateQuests()
@@ -44,6 +49,11 @@ func on_quest_delivered(quest: Quest):
 	print("Quest delivered: ", quest.questInfo.name)
 	completedQuests.erase(quest)
 	deliveredQuests.append(quest)
+
+	# Check if the delivered quest is the quest being followed
+	if quest == followQuest:
+		# Stop following the quest
+		followQuest = null
 
 	ui.updateQuests()
 
