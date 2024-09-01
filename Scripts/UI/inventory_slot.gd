@@ -72,7 +72,7 @@ func _drop_data(_at_position, data):
 	self.update()
 
 	# Emit signal
-	emit_signal("item_swapped", data["origin"].get_parent().name, data["origin"].get_index(), self.get_parent().name, self.get_index())
+	item_swapped.emit(data["origin"].get_parent().name, data["origin"].get_index(), self.get_parent().name, self.get_index())
 
 # Restore the item icon if the drag failed
 func _notification(what):
