@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="QuestInfo" load_steps=7 format=3 uid="uid://7ue2ydqks7n4"]
+[gd_resource type="Resource" script_class="QuestInfo" load_steps=9 format=3 uid="uid://7ue2ydqks7n4"]
 
 [ext_resource type="Script" path="res://Scripts/QuestSystem/Objectives/QuestCollectObjective.gd" id="1_28dhu"]
 [ext_resource type="Script" path="res://Scripts/QuestSystem/QuestInfo.gd" id="1_62udp"]
+[ext_resource type="Script" path="res://Scripts/QuestSystem/Objectives/QuestObjective.gd" id="1_clbpd"]
 [ext_resource type="Resource" uid="uid://661o47l54uqg" path="res://Resources/Items/Spada del Vecchio.tres" id="2_fyyus"]
 [ext_resource type="Script" path="res://Scripts/Resources/reward.gd" id="3_hhwx6"]
+[ext_resource type="Script" path="res://Scripts/Resources/item.gd" id="5_7unke"]
 
 [sub_resource type="Resource" id="Resource_ltrnf"]
 script = ExtResource("1_28dhu")
@@ -15,14 +17,14 @@ text = "Apri il baule"
 script = ExtResource("3_hhwx6")
 experience = 200
 gold = 150
-item = Array[Resource("res://Scripts/Resources/item.gd")]([])
+item = Array[ExtResource("5_7unke")]([])
 
 [resource]
 script = ExtResource("1_62udp")
 id = 1
 name = "Il baule del vecchio"
 description = "Aiuta il vecchietto a ritrovare il suo baule! Magari ci trovi qualcosa dentro..."
-objectives = Array[Resource("res://Scripts/QuestSystem/Objectives/QuestObjective.gd")]([SubResource("Resource_ltrnf")])
+objectives = Array[ExtResource("1_clbpd")]([SubResource("Resource_ltrnf")])
 reward = SubResource("Resource_ajhk5")
 min_level = 1
 required_quests = Array[ExtResource("1_62udp")]([])
