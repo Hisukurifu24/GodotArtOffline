@@ -98,7 +98,7 @@ func updateQuests():
 			# Check if the objective is completed
 			if followQuest.questInfo.objectives[j].completed:
 				# Mark the objective as completed
-				objective_ui.modulate = Color("00aa00")
+				objective_ui.modulate = Color("00dd00")
 
 				# Increment the completed count
 				completedCount += 1
