@@ -48,6 +48,9 @@ func _ready():
 	super._ready()
 	energy = max_energy
 	water = max_water
+
+	##Test
+	Quest_Manager.accept_quest(2)
 	
 	# Connect signals
 	baseStats.stats_changed.connect(_on_character_stats_changed)

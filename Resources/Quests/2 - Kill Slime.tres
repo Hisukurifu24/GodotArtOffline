@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="QuestInfo" load_steps=6 format=3 uid="uid://ctoo3g5y03jx8"]
+
+[ext_resource type="Script" path="res://Scripts/QuestSystem/Objectives/QuestObjective.gd" id="1_rkxfj"]
+[ext_resource type="Script" path="res://Scripts/QuestSystem/Objectives/QuestKillObjective.gd" id="1_v01f7"]
+[ext_resource type="Script" path="res://Scripts/Entities/slime.gd" id="3_p8tv6"]
+[ext_resource type="Script" path="res://Scripts/QuestSystem/QuestInfo.gd" id="3_w3sem"]
+
+[sub_resource type="Resource" id="Resource_sbddx"]
+script = ExtResource("1_v01f7")
+target = ExtResource("3_p8tv6")
+amount = 3
+text = "Uccidi 3 slime!"
+
+[resource]
+script = ExtResource("3_w3sem")
+id = 2
+name = "Un problema melmoso"
+description = "Uccidi un po' di slime"
+objectives = Array[ExtResource("1_rkxfj")]([SubResource("Resource_sbddx")])
+min_level = 1
+required_quests = Array[ExtResource("3_w3sem")]([])
