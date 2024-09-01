@@ -48,7 +48,7 @@ func _ready():
 func takeDamage(amount):
 	currentStats.hp -= amount
 	changeColor()
-	if (currentStats.hp == 0):
+	if (currentStats.hp == 0) and is_alive:
 		die()
 
 func heal(amount):
