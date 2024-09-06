@@ -19,9 +19,6 @@ extends Resource
 ## Rarità dell'oggetto
 @export var rarity: Rarity = Rarity.COMMON
 
-## Quantità dell'oggetto (all'interno di un inventario)
-var quantity: int = 1
-
 enum Rarity {
 	COMMON,
 	UNCOMMON,

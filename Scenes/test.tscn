@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://did6lhbr8fvh0"]
 
-[ext_resource type="PackedScene" uid="uid://bgk66fypiwyas" path="res://Scenes/inventory_slot.tscn" id="1_xh4fw"]
+[ext_resource type="PackedScene" uid="uid://bgk66fypiwyas" path="res://Scenes/inventory_slot_ui.tscn" id="1_xh4fw"]
 [ext_resource type="FontFile" uid="uid://f3sw3475y8u6" path="res://Arts/Fonts/RPGSystem.ttf" id="2_wyn1w"]
 
 [node name="Node2D" type="CanvasLayer"]

@@ -1,13 +1,10 @@
-[gd_scene load_steps=48 format=3 uid="uid://dfpr1uxutxjr6"]
+[gd_scene load_steps=45 format=3 uid="uid://dfpr1uxutxjr6"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/character.gd" id="1_amt8x"]
 [ext_resource type="Texture2D" uid="uid://cd8xy0n3arjyu" path="res://Arts/Mystic Woods/sprites/characters/player.png" id="2_akngc"]
 [ext_resource type="Resource" uid="uid://b0jfrilt62d2l" path="res://Resources/Stats/Character Base Stats.tres" id="2_wowal"]
 [ext_resource type="PackedScene" uid="uid://bqkr2usu7fvn" path="res://Scenes/sword.tscn" id="3_8pwlc"]
-[ext_resource type="Script" path="res://Scripts/inventory.gd" id="5_l5fk1"]
-[ext_resource type="Script" path="res://Scripts/Resources/item.gd" id="6_1neh1"]
-[ext_resource type="Resource" uid="uid://c0joqdpd3c47h" path="res://Resources/Items/apple.tres" id="6_ko6da"]
-[ext_resource type="Resource" uid="uid://sn8spt5fagpb" path="res://Resources/Items/banana.tres" id="7_v12ba"]
+[ext_resource type="Script" path="res://Scripts/InventorySystem/inventory.gd" id="5_l5fk1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4ttr"]
 size = Vector2(9, 4.5)
@@ -374,7 +371,6 @@ player = NodePath("..")
 script = ExtResource("5_l5fk1")
 player = NodePath("..")
 inventorySize = 50
-_items = Array[ExtResource("6_1neh1")]([ExtResource("6_ko6da"), ExtResource("7_v12ba"), ExtResource("6_ko6da")])
 isActiveInventory = false
 
 [connection signal="weaponReady" from="Weapon/Sword" to="Weapon" method="_on_sword_weapon_ready"]

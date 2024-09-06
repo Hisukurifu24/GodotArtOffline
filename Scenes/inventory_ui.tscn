@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://walnucdf02sg"]
 
-[ext_resource type="Script" path="res://Scripts/UI/inventory_ui.gd" id="1_pcdmi"]
+[ext_resource type="Script" path="res://Scripts/InventorySystem/inventory_ui.gd" id="1_pcdmi"]
 [ext_resource type="FontFile" uid="uid://1v7rfdsso4xy" path="res://Arts/Fonts/upheavtt.ttf" id="2_b24x2"]
-[ext_resource type="PackedScene" uid="uid://bgk66fypiwyas" path="res://Scenes/inventory_slot.tscn" id="3_8rmkm"]
+[ext_resource type="PackedScene" uid="uid://bgk66fypiwyas" path="res://Scenes/inventory_slot_ui.tscn" id="3_8rmkm"]
 [ext_resource type="Texture2D" uid="uid://b2ymmbub0mq5m" path="res://Arts/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="3_tr4tc"]
 [ext_resource type="Theme" uid="uid://c74xmjjbwnv0t" path="res://Resources/UI/ui_theme.tres" id="5_rrx6x"]
 

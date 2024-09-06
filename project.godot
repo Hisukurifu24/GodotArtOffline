@@ -31,6 +31,19 @@ window/stretch/aspect="keep_height"
 
 project/assembly_name="Godot Art Offline"
 
+[file_customization]
+
+folder_colors={
+"res://Arts/": "pink",
+"res://Arts/Fonts/": "gray",
+"res://Arts/Sprout Lands - UI Pack - Basic pack/": "green",
+"res://Arts/music/": "orange",
+"res://Resources/": "yellow",
+"res://Scenes/": "blue",
+"res://Scripts/": "purple",
+"res://Scripts/UI/": "green"
+}
+
 [input]
 
 moveUp={

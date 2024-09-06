@@ -51,7 +51,16 @@ func _ready():
 
 	##Test
 	Quest_Manager.accept_quest(2)
-	
+
+	# $Bag._init()
+	$Bag.add_item(load("res://Resources/Items/Spada del Vecchio.tres"), 2)
+	$Bag.add_item(load("res://Resources/Items/apple.tres"), 200)
+	$Bag.add_item(load("res://Resources/Items/banana.tres"), 23)
+	$Bag.add_item(load("res://Resources/Items/banana.tres"), 33)
+	$Bag.insert_at(15, load("res://Resources/Items/banana.tres"), 33)
+	$Bag.insert_at(16, load("res://Resources/Items/apple.tres"), 33)
+	$Bag.insert_at(17, load("res://Resources/Items/banana.tres"), 66)
+
 	# Connect signals
 	baseStats.stats_changed.connect(_on_character_stats_changed)
 	currentStats.stats_changed.connect(_on_character_stats_changed)

@@ -1,24 +1,18 @@
-class_name InventorySlot
+class_name InventorySlotUI
 extends Control
 
 signal item_swapped(origin: String, originIndex: int, target: String, targetIndex: int)
 
 @export var isEquipSlot: bool = false
 
-var item: Item = null
+var slot: Slot = null
 var previewScene = preload("res://Scenes/item_drag_preview.tscn")
 
 @onready var item_ui: TextureRect = %ItemIcon
 @onready var quantity_ui: Label = %Quantity
 
-
-# func _ready():
-# 	if item:
-# 		item_ui.texture = item.icon
-# 		quantity_ui.text = str(item.quantity)
-
 func _get_drag_data(_at_position):
-	if !item:
+	if !slot:
 		return null
 
 	# Create a preview of the item
@@ -30,15 +24,17 @@ func _get_drag_data(_at_position):
 	preview_texture.size = item_ui.size / 1.5
 
 	var preview_label = preview.get_node("TextureRect/Label")
-	preview_label.text = str(item.quantity)
+	if slot.item is EquippableItem:
+		preview_label.text = ""
+	else:
+		preview_label.text = str(slot.quantity)
 
 	# Set the preview as the drag preview
 	set_drag_preview(preview)
 
 	var data = {
 		"origin": self,
-		"item": item,
-		# "texture": item_ui.texture
+		"slot": slot,
 	}
 
 	# Clear the item icon
@@ -51,7 +47,7 @@ func _get_drag_data(_at_position):
 func _can_drop_data(_at_position, _data):
 	# This may check if item is compatible with the slot (e.g. weapon slot only accepts weapons)
 	if isEquipSlot:
-		if _data["item"] is EquippableItem:
+		if _data["slot"].item is EquippableItem:
 			return true
 		else:
 			return false
@@ -59,20 +55,18 @@ func _can_drop_data(_at_position, _data):
 		return true
 
 func _drop_data(_at_position, data):
-	# Swap textures
-	# data["origin"].item_ui.texture = item_ui.texture
-	# item_ui.texture = data["texture"]
+	# Swap slots
+	data["origin"].slot = slot
+	slot = data["slot"]
 
-	# Swap items
-	data["origin"].item = item
-	item = data["item"]
-
-	# Update slots data
-	data["origin"].update()
-	self.update()
+	# Setup variables
+	var origin = data["origin"].get_parent().name
+	var originIndex = data["origin"].get_index()
+	var target = self.get_parent().name
+	var targetIndex = self.get_index()
 
 	# Emit signal
-	item_swapped.emit(data["origin"].get_parent().name, data["origin"].get_index(), self.get_parent().name, self.get_index())
+	item_swapped.emit(origin, originIndex, target, targetIndex)
 
 # Restore the item icon if the drag failed
 func _notification(what):
@@ -80,9 +74,12 @@ func _notification(what):
 		update()
 
 func update():
-	if item:
-		item_ui.texture = item.icon
-		quantity_ui.text = str(item.quantity)
+	if slot and slot.item:
+		item_ui.texture = slot.item.icon
+		if slot.item is EquippableItem:
+			quantity_ui.text = ""
+		else:
+			quantity_ui.text = str(slot.quantity)
 	else:
 		item_ui.texture = null
 		quantity_ui.text = ""

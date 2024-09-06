@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/QuestSystem/Objectives/QuestObjective.gd" id="1_clbpd"]
 [ext_resource type="Resource" uid="uid://661o47l54uqg" path="res://Resources/Items/Spada del Vecchio.tres" id="2_fyyus"]
 [ext_resource type="Script" path="res://Scripts/Resources/reward.gd" id="3_hhwx6"]
-[ext_resource type="Script" path="res://Scripts/Resources/item.gd" id="5_7unke"]
+[ext_resource type="Script" path="res://Scripts/Resources/Items/Item.gd" id="5_7unke"]
 
 [sub_resource type="Resource" id="Resource_ltrnf"]
 script = ExtResource("1_28dhu")
