@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dmeggbh2vhflk"]
+[gd_scene load_steps=29 format=3 uid="uid://dmeggbh2vhflk"]
 
 [ext_resource type="Script" path="res://Scripts/UI/ui.gd" id="1_1symc"]
 [ext_resource type="Texture2D" uid="uid://djxxoo8x4s8gt" path="res://Arts/All.png" id="2_tlq1y"]
@@ -17,6 +17,9 @@ region = Rect2(576, 3, 48, 11)
 atlas = ExtResource("2_tlq1y")
 region = Rect2(625, 3, 47, 11)
 
+[sub_resource type="LabelSettings" id="LabelSettings_yq6fd"]
+font_size = 32
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_8oicf"]
 atlas = ExtResource("2_tlq1y")
 region = Rect2(576, 3, 48, 11)
@@ -24,6 +27,9 @@ region = Rect2(576, 3, 48, 11)
 [sub_resource type="AtlasTexture" id="AtlasTexture_xj37j"]
 atlas = ExtResource("2_tlq1y")
 region = Rect2(625, 35, 47, 11)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pmsyl"]
+font_size = 32
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lfsej"]
 atlas = ExtResource("2_tlq1y")
@@ -93,18 +99,31 @@ grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("2_vbl7c")
 
-[node name="HP" type="TextureProgressBar" parent="Control"]
-custom_minimum_size = Vector2(400, 30)
+[node name="Bars" type="Control" parent="Control"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -80.0
-offset_right = 200.0
-offset_bottom = -50.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HP" type="TextureProgressBar" parent="Control/Bars"]
+custom_minimum_size = Vector2(600, 50)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -120.0
+offset_right = 300.0
+offset_bottom = -70.0
 grow_horizontal = 2
 grow_vertical = 0
 tooltip_text = "La tua vita"
@@ -118,7 +137,7 @@ stretch_margin_bottom = 5
 texture_over = SubResource("AtlasTexture_nlcnp")
 texture_progress = SubResource("AtlasTexture_7jc76")
 
-[node name="Label" type="Label" parent="Control/HP"]
+[node name="Label" type="Label" parent="Control/Bars/HP"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -133,10 +152,11 @@ offset_bottom = 7.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "900/1000"
+label_settings = SubResource("LabelSettings_yq6fd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Mana" type="TextureProgressBar" parent="Control"]
+[node name="Mana" type="TextureProgressBar" parent="Control/Bars"]
 custom_minimum_size = Vector2(400, 25)
 layout_mode = 1
 anchors_preset = 7
@@ -144,10 +164,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -45.0
-offset_right = 200.0
-offset_bottom = -20.0
+offset_left = -300.0
+offset_top = -55.0
+offset_right = 300.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 0
 tooltip_text = "Il tuo mana"
@@ -161,7 +181,7 @@ stretch_margin_bottom = 5
 texture_over = SubResource("AtlasTexture_8oicf")
 texture_progress = SubResource("AtlasTexture_xj37j")
 
-[node name="Label" type="Label" parent="Control/Mana"]
+[node name="Label" type="Label" parent="Control/Bars/Mana"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -177,22 +197,23 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_qnjgq")
 text = "900/1000"
+label_settings = SubResource("LabelSettings_pmsyl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Stamina" type="TextureProgressBar" parent="Control"]
+[node name="Stamina" type="TextureProgressBar" parent="Control/Bars"]
 modulate = Color(0.968627, 0.968627, 0.968627, 1)
-custom_minimum_size = Vector2(240, 10)
+custom_minimum_size = Vector2(300, 15)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -120.0
-offset_top = -100.0
-offset_right = 120.0
-offset_bottom = -90.0
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = -135.0
 grow_horizontal = 2
 grow_vertical = 0
 tooltip_text = "La tua stamina"
@@ -205,17 +226,17 @@ stretch_margin_bottom = 1
 texture_under = SubResource("AtlasTexture_lfsej")
 texture_progress = SubResource("AtlasTexture_34leh")
 
-[node name="Sete" type="TextureProgressBar" parent="Control"]
+[node name="Sete" type="TextureProgressBar" parent="Control/Bars"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -222.0
-offset_top = -100.0
-offset_right = -210.0
-offset_bottom = -20.0
+offset_left = -329.0
+offset_top = -118.0
+offset_right = -314.0
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 0
 tooltip_text = "Il tuo livello di idratazione"
@@ -225,17 +246,17 @@ nine_patch_stretch = true
 texture_under = SubResource("AtlasTexture_6x5vu")
 texture_progress = SubResource("AtlasTexture_rlse3")
 
-[node name="Energia" type="TextureProgressBar" parent="Control"]
+[node name="Energia" type="TextureProgressBar" parent="Control/Bars"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -239.0
-offset_top = -100.0
-offset_right = -227.0
-offset_bottom = -20.0
+offset_left = -351.0
+offset_top = -118.0
+offset_right = -336.0
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 0
 tooltip_text = "La tua energia residua"

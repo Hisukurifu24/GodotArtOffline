@@ -1,11 +1,11 @@
 extends CanvasLayer
 
-@onready var hpBar = $"Control/HP"
-@onready var manaBar = $"Control/Mana"
-@onready var energyBar = $"Control/Energia"
-@onready var waterBar = $"Control/Sete"
+@onready var hpBar = $"Control/Bars/HP"
+@onready var manaBar = $"Control/Bars/Mana"
+@onready var energyBar = $"Control/Bars/Energia"
+@onready var waterBar = $"Control/Bars/Sete"
 @onready var expBar = $"Control/Exp"
-@onready var staminaBar = $"Control/Stamina"
+@onready var staminaBar = $"Control/Bars/Stamina"
 @onready var staminaTimer = $"StaminaHideTimer"
 @onready var goldLabel = %GoldText
 

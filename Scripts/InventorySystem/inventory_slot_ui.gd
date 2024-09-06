@@ -76,6 +76,7 @@ func _notification(what):
 func update():
 	if slot and slot.item:
 		item_ui.texture = slot.item.icon
+		tooltip_text = slot.item.description
 		if slot.item is EquippableItem:
 			quantity_ui.text = ""
 		else:

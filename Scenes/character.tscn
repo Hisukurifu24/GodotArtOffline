@@ -1,8 +1,7 @@
-[gd_scene load_steps=45 format=3 uid="uid://dfpr1uxutxjr6"]
+[gd_scene load_steps=44 format=3 uid="uid://dfpr1uxutxjr6"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/character.gd" id="1_amt8x"]
 [ext_resource type="Texture2D" uid="uid://cd8xy0n3arjyu" path="res://Arts/Mystic Woods/sprites/characters/player.png" id="2_akngc"]
-[ext_resource type="Resource" uid="uid://b0jfrilt62d2l" path="res://Resources/Stats/Character Base Stats.tres" id="2_wowal"]
 [ext_resource type="PackedScene" uid="uid://bqkr2usu7fvn" path="res://Scenes/sword.tscn" id="3_8pwlc"]
 [ext_resource type="Script" path="res://Scripts/InventorySystem/inventory.gd" id="5_l5fk1"]
 
@@ -343,8 +342,6 @@ func _on_sword_weapon_ready():
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_amt8x")
-baseStats = ExtResource("2_wowal")
-speed = 75.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.25)
@@ -363,13 +360,11 @@ characterSprite = NodePath("../AnimatedSprite2D")
 
 [node name="Sword" parent="Weapon" instance=ExtResource("3_8pwlc")]
 
-[node name="Inventory" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+[node name="Inventory" type="Node2D" parent="."]
 script = ExtResource("5_l5fk1")
-player = NodePath("..")
 
-[node name="Bag" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+[node name="Bag" type="Node2D" parent="."]
 script = ExtResource("5_l5fk1")
-player = NodePath("..")
 inventorySize = 50
 isActiveInventory = false
 
