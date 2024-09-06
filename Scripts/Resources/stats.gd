@@ -71,7 +71,7 @@ func _init(hp_init = 0, mp_init = 0, ad_init = 0, ap_init = 0, armor_init = 0, m
 	pass
 
 # Returns a new Stats object with the sum of the stats of the two objects
-static func sum(stats1, stats2):
+static func sum(stats1: Stats, stats2: Stats):
 	var summed_stats = stats1.duplicate()
 	summed_stats.hp += stats2.hp
 	summed_stats.mp += stats2.mp
@@ -82,6 +82,18 @@ static func sum(stats1, stats2):
 	summed_stats.crit = clamp(summed_stats.crit + stats2.crit, 0, 1)
 	summed_stats.crit_dmg = clamp(summed_stats.crit_dmg + stats2.crit_dmg, 1, 3)
 	return summed_stats
+
+static func divide_num(stats: Stats, num: float):
+	var divided_stats = stats.duplicate()
+	divided_stats.hp /= num
+	divided_stats.mp /= num
+	divided_stats.ad /= num
+	divided_stats.ap /= num
+	divided_stats.armor /= num
+	divided_stats.mr /= num
+	divided_stats.crit /= num
+	divided_stats.crit_dmg /= num
+	return divided_stats
 
 # Increase the stats of the object by the values of the parameter
 func increase(values: Stats):

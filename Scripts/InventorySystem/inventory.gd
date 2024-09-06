@@ -3,7 +3,7 @@ extends Node2D
 
 signal item_collected(item: Item)
 
-@export var player: Entity
+@export var entity: Entity
 @export var inventorySize: int = 6
 var _items: Array[Slot] = []
 
@@ -14,7 +14,7 @@ func _ready():
 		_items[i] = Slot.new()
 
 
-## Whether the inventory is active or passive (items increase player stats or not)
+## Whether the inventory is active or passive (items increase entity stats or not)
 @export var isActiveInventory: bool = true
 
 ## Add an item to the inventory
@@ -86,7 +86,7 @@ func insert_at(index: int, item: Item, quantity: int = 1):
 	_items[index].setSlot(item, quantity)
 	_on_item_collected(item)
 
-## Remove the first item that match from the inventory
+## Completely delete the first item that match from the inventory
 func delete_item(item: Item):
 	# Remove the item from the inventory
 	var index = find(item)
@@ -96,7 +96,7 @@ func delete_item(item: Item):
 	_on_item_removed(item)
 	_items[index].item = null
 
-## Remove the item at the specified index
+## Completely delete the item at the specified index
 func delete_at(index: int):
 	if index < 0 or index >= _items.size():
 		printerr("Invalid index")
@@ -104,6 +104,24 @@ func delete_at(index: int):
 	# print("Removing item at index " + str(index))
 	_on_item_removed(_items[index].item)
 	_items[index].item = null
+
+## Completely delete all items from the inventory
+func delete_all():
+	for i in range(_items.size()):
+		delete_at(i)
+
+func remove_at(index: int, amount: int = 1):
+	if index < 0 or index >= _items.size():
+		printerr("Invalid index")
+		return
+	if _items[index].item == null:
+		printerr("No item at index " + str(index))
+		return
+	_on_item_removed(_items[index].item)
+
+	# Remove the specified amount of items
+	# (automatically sets item to null if quantity beecome 0)
+	_items[index].quantity -= clamp(amount, 0, _items[index].quantity)
 
 ## Get the item at the specified index
 func get_slot(index: int) -> Slot:
@@ -117,13 +135,13 @@ func _on_item_collected(item: Item):
 	Quest_Manager.item_collected.emit(item) # Emit signal for quest system
 
 	if isActiveInventory and item is EquippableItem:
-		# Increase the player's stats
-		player.bonusStats.increase(item.stats)
+		# Increase the entity's stats
+		entity.bonusStats.increase(item.stats)
 
 func _on_item_removed(item: Item):
 	if isActiveInventory and item is EquippableItem:
-		# Decrease the player's stats
-		player.bonusStats.decrease(item.stats)
+		# Decrease the entity's stats
+		entity.bonusStats.decrease(item.stats)
 
 func print_inventory():
 	print(name + ":")
@@ -145,3 +163,51 @@ func find(item: Item) -> int:
 		if _items[i].item == item:
 			return i
 	return -1
+
+func use_item(index: int):
+	if index < 0 or index >= _items.size():
+		printerr("Invalid index")
+		return
+
+	if _items[index].item is ConsumableItem:
+		var item: ConsumableItem = _items[index].item
+		if item.isBuff:
+			# Increase the entity's stats (temporarily)
+			entity.currentStats.increase(item.stats)
+			await get_tree().create_timer(item.duration).timeout
+			entity.currentStats.decrease(item.stats)
+		else:
+			# Increase the entity's stats (permanently)
+			var time := 0
+			var buffStats = Stats.divide_num(item.stats, item.duration)
+			while time < item.duration:
+				entity.currentStats.increase(buffStats)
+				if entity is Character:
+					entity.energy += item.energy / item.duration
+					entity.water += item.water / item.duration
+				time += 1
+				await get_tree().create_timer(1).timeout
+		# Item used
+		remove_at(index)
+	elif _items[index].item is EquippableItem:
+		var item: EquippableItem = _items[index].item
+		if isActiveInventory:
+			# Unequip the item
+			var bag: InventoryComponent = entity.get_node("Bag")
+			if bag.find(null) != -1:
+				bag.add_item(item)
+				self.delete_at(index)
+			else:
+				printerr("Cannot unequip cause bag is full")
+		else:
+			# Equip the item
+			var inventory: InventoryComponent = entity.get_node("Inventory")
+			if inventory.find(null) != -1:
+				inventory.add_item(item)
+				self.delete_at(index)
+			else:
+				printerr("Cannot equip inventory bag is full")
+
+		
+	else:
+		printerr("Item cannot be used")
