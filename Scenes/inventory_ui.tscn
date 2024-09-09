@@ -15,26 +15,28 @@ font = ExtResource("2_b24x2")
 font_size = 40
 
 [node name="Inventory" type="Control"]
+texture_filter = 1
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pcdmi")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -388.0
-offset_top = -254.0
-offset_right = 387.0
-offset_bottom = 254.0
+offset_left = -207.0
+offset_top = -138.0
+offset_right = 207.0
+offset_bottom = 138.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
@@ -429,10 +431,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 23.0
-offset_top = 17.0
-offset_right = -23.0
-offset_bottom = -23.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -17.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_tr4tc")
@@ -442,6 +444,58 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
+[node name="Title" type="Label" parent="NinePatchRect/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 15.0
+grow_horizontal = 2
+text = "BAG"
+horizontal_alignment = 1
+
+[node name="Page" type="Label" parent="NinePatchRect/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -15.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1/5"
+horizontal_alignment = 1
+
+[node name="NextButton" type="Button" parent="NinePatchRect/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 0
+grow_vertical = 2
+text = ">"
+
+[node name="PrevButton" type="Button" parent="NinePatchRect/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_right = 17.0
+offset_bottom = 12.5
+grow_vertical = 2
+text = "<"
+
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect/NinePatchRect2"]
 layout_mode = 1
 anchors_preset = 8
@@ -449,13 +503,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -258.0
-offset_top = -128.0
-offset_right = 258.0
-offset_bottom = 128.0
+offset_left = -152.0
+offset_top = -76.0
+offset_right = 152.0
+offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 10
+columns = 7
 
 [node name="InventorySlot" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
 layout_mode = 2
@@ -597,127 +651,16 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="InventorySlot29" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot30" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot31" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot32" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot33" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot34" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot35" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot36" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot37" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot38" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot39" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot40" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot41" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot42" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot43" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot44" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot45" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot46" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot47" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot48" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot49" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="InventorySlot50" parent="NinePatchRect/NinePatchRect2/GridContainer" instance=ExtResource("3_8rmkm")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
 [node name="CloseButton" type="Button" parent="NinePatchRect"]
 texture_filter = 1
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -71.0
-offset_top = 24.0
-offset_right = -31.0
-offset_bottom = 64.0
+offset_left = -28.0
+offset_top = 9.0
+offset_right = -10.0
+offset_bottom = 27.0
 grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
