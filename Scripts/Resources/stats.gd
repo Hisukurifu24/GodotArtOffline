@@ -41,17 +41,18 @@ signal stats_changed()
 	set(value):
 		crit = clamp(value, 0, 1)
 		stats_changed.emit()
-# Critical Strike Chance in percentage
-var crit_pt: float:
+## Critical Strike Chance in percentage
+var crit_pt: int:
 	get:
-		return crit * 100
+		return int(crit) * 100
 	set(value):
-		crit = value / 100
+		crit = float(value) / 100
 		stats_changed.emit()
+
 ## Critical Strike Damage [1, 3]
-@export_range(1, 3) var crit_dmg: float:
+@export_range(0, 3) var crit_dmg: float:
 	set(value):
-		crit_dmg = clamp(value, 1, 3)
+		crit_dmg = clamp(value, 0, 3)
 		stats_changed.emit()
 ## Critical Strike Damage in percentage
 var crit_dmg_pt: int:
@@ -67,7 +68,7 @@ var crit_dmg_pt: int:
 # sum crit damage: self.crit_dmg * added_crit_dmg?
 
 # Returns a new Stats object
-func _init(hp_init = 0, mp_init = 0, ad_init = 0, ap_init = 0, armor_init = 0, mr_init = 0, crit_init = 0, crit_dmg_init = 1):
+func _init(hp_init = 0, mp_init = 0, ad_init = 0, ap_init = 0, armor_init = 0, mr_init = 0, crit_init = 0, crit_dmg_init = 0):
 	self.hp = hp_init
 	self.mp = mp_init
 	self.ad = ad_init
