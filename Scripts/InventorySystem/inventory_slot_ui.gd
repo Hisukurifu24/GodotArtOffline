@@ -2,6 +2,7 @@ class_name InventorySlotUI
 extends Control
 
 signal item_swapped(origin: String, originIndex: int, target: String, targetIndex: int)
+signal item_used(index: int)
 
 @export var isEquipSlot: bool = false
 
@@ -13,6 +14,8 @@ var previewScene = preload("res://Scenes/item_drag_preview.tscn")
 
 func _get_drag_data(_at_position):
 	if !slot:
+		return null
+	if !slot.item:
 		return null
 
 	# Create a preview of the item
@@ -84,3 +87,10 @@ func update():
 	else:
 		item_ui.texture = null
 		quantity_ui.text = ""
+		tooltip_text = ""
+
+func _gui_input(event: InputEvent) -> void:
+	# Check for double click
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.double_click:
+		if slot and slot.item:
+			item_used.emit(get_index())

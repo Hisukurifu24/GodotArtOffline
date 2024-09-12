@@ -1,0 +1,362 @@
+[gd_scene load_steps=13 format=3 uid="uid://snx3pa674y4v"]
+
+[ext_resource type="Script" path="res://Scripts/UI/player_ui.gd" id="1_036bo"]
+[ext_resource type="Theme" uid="uid://c74xmjjbwnv0t" path="res://Resources/UI/ui_theme.tres" id="1_ffrcf"]
+[ext_resource type="Texture2D" uid="uid://b2ymmbub0mq5m" path="res://Arts/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_5p5nh"]
+[ext_resource type="Texture2D" uid="uid://4cw46r7nhyqt" path="res://Arts/Other GUI/warrior_silhouette_man.png" id="3_ud6pe"]
+[ext_resource type="FontFile" uid="uid://dgnpq8ryfeqmi" path="res://Arts/Fonts/m6x11.ttf" id="4_ue504"]
+[ext_resource type="FontFile" uid="uid://1v7rfdsso4xy" path="res://Arts/Fonts/upheavtt.ttf" id="5_devax"]
+[ext_resource type="PackedScene" uid="uid://bgk66fypiwyas" path="res://Scenes/inventory_slot_ui.tscn" id="5_p71yy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xaae7"]
+atlas = ExtResource("2_5p5nh")
+region = Rect2(200, 8, 32, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wl3tx"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_7o2c0"]
+font = ExtResource("4_ue504")
+
+[sub_resource type="LabelSettings" id="LabelSettings_jxhma"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ipq4q"]
+font = ExtResource("5_devax")
+font_size = 20
+
+[node name="PlayerInfo" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_036bo")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.0
+offset_top = -138.0
+offset_right = 207.0
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("1_ffrcf")
+texture = SubResource("AtlasTexture_xaae7")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -17.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5p5nh")
+region_rect = Rect2(59, 155, 26, 26)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Title" type="Label" parent="NinePatchRect/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_top = 5.0
+offset_right = 21.0
+offset_bottom = 35.0
+grow_horizontal = 2
+text = "PLAYER"
+label_settings = SubResource("LabelSettings_wl3tx")
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="NinePatchRect/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProfileImage" type="TextureRect" parent="NinePatchRect/NinePatchRect2/Control"]
+unique_name_in_owner = true
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 106.0
+offset_bottom = -11.0
+grow_vertical = 2
+texture = ExtResource("3_ud6pe")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Stats" type="GridContainer" parent="NinePatchRect/NinePatchRect2/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -268.0
+offset_top = -94.5
+offset_right = -16.0
+offset_bottom = -22.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/h_separation = 15
+columns = 2
+
+[node name="HP" type="HBoxContainer" parent="NinePatchRect/NinePatchRect2/Control/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Stat" type="Label" parent="NinePatchRect/NinePatchRect2/Control/Stats/HP"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+tooltip_text = "Health Points"
+mouse_filter = 1
+text = "HP: "
+label_settings = SubResource("LabelSettings_7o2c0")
+
+[node name="Value" type="Label" parent="NinePatchRect/NinePatchRect2/Control/Stats/HP"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "1000"
+label_settings = SubResource("LabelSettings_jxhma")
+
+[node name="MP" type="HBoxContainer" parent="NinePatchRect/NinePatchRect2/Control/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Stat" type="Label" parent="NinePatchRect/NinePatchRect2/Control/Stats/MP"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+tooltip_text = "Mana Points"
+mouse_filter = 1
+text = "MP: "
+label_settings = SubResource("LabelSettings_7o2c0")
+
+[node name="Value" type="Label" parent="NinePatchRect/NinePatchRect2/Control/Stats/MP"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "1000"
+label_settings = SubResource("LabelSettings_jxhma")
+
+[node name="AD" type="HBoxContainer" parent="NinePatchRect/NinePatchRect2/Control/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Stat" type="Label" parent="NinePatchRect/NinePatchRect2/Control/Stats/AD"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+tooltip_text = "Attack Damage"
+mouse_filter = 1
+text = "AD: "
+label_settings = SubResource("LabelSettings_7o2c0")
+
+[node name="Value" type="Label" parent="NinePatchRect/NinePatchRect2/Control/Stats/AD"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "1000"
+label_settings = SubResource("LabelSettings_jxhma")
+
+[node name="AP" type="HBoxContainer" parent="NinePatchRect/NinePatchRect2/Control/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Stat" type="Label" parent="NinePatchRect/NinePatchRect2/Control/Stats/AP"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+tooltip_text = "Ability Power"
+mouse_filter = 1
+text = "AP: "
+label_settings = SubResource("LabelSettings_7o2c0")
+
+[node name="Value" type="Label" parent="NinePatchRect/NinePatchRect2/Control/Stats/AP"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "1000"
+label_settings = SubResource("LabelSettings_jxhma")
+
+[node name="ARM" type="HBoxContainer" parent="NinePatchRect/NinePatchRect2/Control/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Stat" type="Label" parent="NinePatchRect/NinePatchRect2/Control/Stats/ARM"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+tooltip_text = "Armor"
+mouse_filter = 1
+text = "ARM: "
+label_settings = SubResource("LabelSettings_7o2c0")
+
+[node name="Value" type="Label" parent="NinePatchRect/NinePatchRect2/Control/Stats/ARM"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "1000"
+label_settings = SubResource("LabelSettings_jxhma")
+
+[node name="MR" type="HBoxContainer" parent="NinePatchRect/NinePatchRect2/Control/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Stat" type="Label" parent="NinePatchRect/NinePatchRect2/Control/Stats/MR"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+tooltip_text = "Magic Resistance"
+mouse_filter = 1
+text = "MR: "
+label_settings = SubResource("LabelSettings_7o2c0")
+
+[node name="Value" type="Label" parent="NinePatchRect/NinePatchRect2/Control/Stats/MR"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "1000"
+label_settings = SubResource("LabelSettings_jxhma")
+
+[node name="CRIT RATE" type="HBoxContainer" parent="NinePatchRect/NinePatchRect2/Control/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Stat" type="Label" parent="NinePatchRect/NinePatchRect2/Control/Stats/CRIT RATE"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+tooltip_text = "Critical Chance"
+mouse_filter = 1
+text = "CRIT RATE: "
+label_settings = SubResource("LabelSettings_7o2c0")
+
+[node name="Value" type="Label" parent="NinePatchRect/NinePatchRect2/Control/Stats/CRIT RATE"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "100%"
+label_settings = SubResource("LabelSettings_jxhma")
+
+[node name="CRIT DMG" type="HBoxContainer" parent="NinePatchRect/NinePatchRect2/Control/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Stat" type="Label" parent="NinePatchRect/NinePatchRect2/Control/Stats/CRIT DMG"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+tooltip_text = "Critical Damage"
+mouse_filter = 1
+text = "CRIT DMG: "
+label_settings = SubResource("LabelSettings_7o2c0")
+
+[node name="Value" type="Label" parent="NinePatchRect/NinePatchRect2/Control/Stats/CRIT DMG"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "150%"
+label_settings = SubResource("LabelSettings_jxhma")
+
+[node name="VBox" type="VBoxContainer" parent="NinePatchRect/NinePatchRect2/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -269.0
+offset_top = -116.0
+offset_right = -9.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect2/Control/VBox"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "EQUIPMENT"
+label_settings = SubResource("LabelSettings_ipq4q")
+horizontal_alignment = 1
+
+[node name="Equipment" type="HBoxContainer" parent="NinePatchRect/NinePatchRect2/Control/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="InventorySlot" parent="NinePatchRect/NinePatchRect2/Control/VBox/Equipment" instance=ExtResource("5_p71yy")]
+layout_mode = 2
+size_flags_horizontal = 4
+isEquipSlot = true
+
+[node name="InventorySlot2" parent="NinePatchRect/NinePatchRect2/Control/VBox/Equipment" instance=ExtResource("5_p71yy")]
+layout_mode = 2
+size_flags_horizontal = 4
+isEquipSlot = true
+
+[node name="InventorySlot3" parent="NinePatchRect/NinePatchRect2/Control/VBox/Equipment" instance=ExtResource("5_p71yy")]
+layout_mode = 2
+size_flags_horizontal = 4
+isEquipSlot = true
+
+[node name="InventorySlot4" parent="NinePatchRect/NinePatchRect2/Control/VBox/Equipment" instance=ExtResource("5_p71yy")]
+layout_mode = 2
+size_flags_horizontal = 4
+isEquipSlot = true
+
+[node name="InventorySlot5" parent="NinePatchRect/NinePatchRect2/Control/VBox/Equipment" instance=ExtResource("5_p71yy")]
+layout_mode = 2
+size_flags_horizontal = 4
+isEquipSlot = true
+
+[node name="InventorySlot6" parent="NinePatchRect/NinePatchRect2/Control/VBox/Equipment" instance=ExtResource("5_p71yy")]
+layout_mode = 2
+size_flags_horizontal = 4
+isEquipSlot = true
+
+[node name="CloseButton" type="Button" parent="NinePatchRect"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -28.0
+offset_top = 9.0
+offset_right = -10.0
+offset_bottom = 27.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("1_ffrcf")
+theme_type_variation = &"CloseButton"

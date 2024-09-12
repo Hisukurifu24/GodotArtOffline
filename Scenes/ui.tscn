@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dmeggbh2vhflk"]
+[gd_scene load_steps=30 format=3 uid="uid://dmeggbh2vhflk"]
 
 [ext_resource type="Script" path="res://Scripts/UI/ui.gd" id="1_1symc"]
 [ext_resource type="Texture2D" uid="uid://djxxoo8x4s8gt" path="res://Arts/All.png" id="2_tlq1y"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://dgnpq8ryfeqmi" path="res://Arts/Fonts/m6x11.ttf" id="6_1wp34"]
 [ext_resource type="PackedScene" uid="uid://walnucdf02sg" path="res://Scenes/inventory_ui.tscn" id="6_ttmw4"]
 [ext_resource type="FontFile" uid="uid://w0sb7dfmwths" path="res://Arts/Fonts/m5x7.ttf" id="7_6bf3l"]
+[ext_resource type="PackedScene" uid="uid://snx3pa674y4v" path="res://Scenes/player_ui.tscn" id="9_xamte"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nlcnp"]
 atlas = ExtResource("2_tlq1y")
@@ -398,6 +399,9 @@ wait_time = 5.0
 one_shot = true
 
 [node name="Inventory" parent="." instance=ExtResource("6_ttmw4")]
+visible = false
+
+[node name="PlayerInfo" parent="." instance=ExtResource("9_xamte")]
 visible = false
 
 [connection signal="timeout" from="StaminaHideTimer" to="." method="_on_stamina_hide_timer_timeout"]

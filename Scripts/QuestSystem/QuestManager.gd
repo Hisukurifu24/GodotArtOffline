@@ -5,7 +5,7 @@ extends Node
 signal enemy_killed(enemy: Enemy)
 
 @warning_ignore("unused_signal")
-signal item_collected(item: Item)
+signal item_collected(item: Item, quantity: int)
 
 var availableQuests: Array[Quest] = []
 var acceptedQuests: Array[Quest] = []

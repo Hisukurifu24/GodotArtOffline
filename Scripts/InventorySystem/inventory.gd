@@ -1,7 +1,9 @@
 class_name InventoryComponent
 extends Node2D
 
-signal item_collected(item: Item)
+signal item_collected(item: Item, quantity: int)
+signal item_removed(item: Item, quantity: int)
+signal inventory_changed()
 
 @export var entity: Entity
 @export var inventorySize: int = 6
@@ -9,9 +11,11 @@ var _items: Array[Slot] = []
 
 func _ready():
 	_items.resize(inventorySize)
-	print(inventorySize)
 	for i in _items.size():
 		_items[i] = Slot.new()
+
+	item_collected.connect(_on_item_collected)
+	item_removed.connect(_on_item_removed)
 
 
 ## Whether the inventory is active or passive (items increase entity stats or not)
@@ -30,12 +34,13 @@ func add_item(item: Item, quantity: int = 1):
 			# Check if the item can be fully stacked
 			if _items[index].quantity + quantity <= item.maxStack:
 				_items[index].quantity += quantity
-				_on_item_collected(item)
+				item_collected.emit(item, quantity)
 				return
 			else:
 				# Stack as much as possible
 				quantity -= item.maxStack - _items[index].quantity
 				_items[index].quantity = item.maxStack
+				item_collected.emit(item, quantity)
 				# Add the remaining quantity
 				add_item(item, quantity)
 				return
@@ -44,9 +49,9 @@ func add_item(item: Item, quantity: int = 1):
 			_add_at_empty_slot(item, quantity)
 			return
 	else:
+		# Add one to the inventory
+		_add_at_empty_slot(item, 1)
 		if quantity > 1:
-			# Add one to the inventory
-			_add_at_empty_slot(item, 1)
 			# Add the remaining quantity
 			add_item(item, quantity - 1)
 			return
@@ -61,10 +66,11 @@ func _add_at_empty_slot(item: Item, quantity: int):
 	# Check if the item can be fully stacked
 	if quantity <= item.maxStack:
 		_items[index] = Slot.new(item, quantity)
-		_on_item_collected(item)
+		item_collected.emit(item, quantity)
 	else:
 		# Stack as much as possible
 		_items[index].setSlot(item, item.maxStack)
+		item_collected.emit(item, item.maxStack)
 		# Add the remaining quantity
 		_add_at_empty_slot(item, quantity - item.maxStack)
 		return
@@ -84,7 +90,7 @@ func insert_at(index: int, item: Item, quantity: int = 1):
 	
 	# Overwrite the item at the specified index
 	_items[index].setSlot(item, quantity)
-	_on_item_collected(item)
+	item_collected.emit(item, quantity)
 
 ## Completely delete the first item that match from the inventory
 func delete_item(item: Item):
@@ -93,7 +99,7 @@ func delete_item(item: Item):
 	if index == -1:
 		printerr("Item not found in inventory")
 		return
-	_on_item_removed(item)
+	item_removed.emit(item, _items[index].quantity)
 	_items[index].item = null
 
 ## Completely delete the item at the specified index
@@ -102,7 +108,7 @@ func delete_at(index: int):
 		printerr("Invalid index")
 		return
 	# print("Removing item at index " + str(index))
-	_on_item_removed(_items[index].item)
+	item_removed.emit(_items[index].item, _items[index].quantity)
 	_items[index].item = null
 
 ## Completely delete all items from the inventory
@@ -117,11 +123,14 @@ func remove_at(index: int, amount: int = 1):
 	if _items[index].item == null:
 		printerr("No item at index " + str(index))
 		return
-	_on_item_removed(_items[index].item)
+	
 
 	# Remove the specified amount of items
 	# (automatically sets item to null if quantity beecome 0)
 	_items[index].quantity -= clamp(amount, 0, _items[index].quantity)
+
+	# Emit signal
+	item_removed.emit(_items[index].item, _items[index].quantity)
 
 ## Get the item at the specified index
 func get_slot(index: int) -> Slot:
@@ -129,16 +138,19 @@ func get_slot(index: int) -> Slot:
 		return null
 	return _items[index]
 
-func _on_item_collected(item: Item):
+func _on_item_collected(item: Item, quantity: int):
 	# Emit signal
-	item_collected.emit(item)
-	Quest_Manager.item_collected.emit(item) # Emit signal for quest system
+	inventory_changed.emit()
+	Quest_Manager.item_collected.emit(item, quantity) # Emit signal for quest system
 
 	if isActiveInventory and item is EquippableItem:
 		# Increase the entity's stats
 		entity.bonusStats.increase(item.stats)
 
-func _on_item_removed(item: Item):
+func _on_item_removed(item: Item, _quantity: int):
+	# Emit signal
+	inventory_changed.emit()
+
 	if isActiveInventory and item is EquippableItem:
 		# Decrease the entity's stats
 		entity.bonusStats.decrease(item.stats)
@@ -181,13 +193,19 @@ func use_item(index: int):
 			var time := 0
 			var buffStats = Stats.divide_num(item.stats, item.duration)
 			while time < item.duration:
+				print("time " + str(time) + " - duration " + str(item.duration))
+				print("ASPETTA!!!")
 				entity.currentStats.increase(buffStats)
 				if entity is Character:
-					entity.energy += item.energy / item.duration
-					entity.water += item.water / item.duration
+					entity.energy += float(item.energy) / item.duration
+					entity.water += float(item.water) / item.duration
 				time += 1
-				await get_tree().create_timer(1).timeout
-		# Item used
+				if item.duration > 1:
+					await get_tree().create_timer(1).timeout
+				else:
+					# If item is instant, break the loop without waiting
+					break
+		# Item used, remove it from the inventory
 		remove_at(index)
 	elif _items[index].item is EquippableItem:
 		var item: EquippableItem = _items[index].item
@@ -195,6 +213,7 @@ func use_item(index: int):
 			# Unequip the item
 			var bag: InventoryComponent = entity.get_node("Bag")
 			if bag.find(null) != -1:
+				print("Unequipping item")
 				bag.add_item(item)
 				self.delete_at(index)
 			else:
@@ -203,11 +222,10 @@ func use_item(index: int):
 			# Equip the item
 			var inventory: InventoryComponent = entity.get_node("Inventory")
 			if inventory.find(null) != -1:
+				print("Equipping item")
 				inventory.add_item(item)
 				self.delete_at(index)
 			else:
 				printerr("Cannot equip inventory bag is full")
-
-		
 	else:
 		printerr("Item cannot be used")

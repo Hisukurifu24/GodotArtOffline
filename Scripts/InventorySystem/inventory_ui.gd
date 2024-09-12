@@ -1,3 +1,4 @@
+class_name InventoryUI
 extends Draggable
 
 var player: Character
@@ -9,7 +10,9 @@ var player_bag: InventoryComponent
 @onready var prev_button = %PrevButton
 @onready var next_button = %NextButton
 
-var current_page: int = 1
+var current_page: int = 1:
+	set(value):
+		current_page = clamp(value, 1, max_pages)
 var slots_per_page: int = 28:
 	get:
 		return bag_grid.get_child_count()
@@ -25,11 +28,16 @@ func _ready():
 	else:
 		push_error("Player not found in scene")
 
-	# for slot: InventorySlotUI in inventory_slots.get_children():
-	# 	slot.item_swapped.connect(swap_items)
+	# Connect signals
 	for slot: InventorySlotUI in bag_grid.get_children():
-		slot.item_swapped.connect(swap_items)
+		slot.item_swapped.connect(_on_item_swapped)
+		slot.item_used.connect(_on_item_used)
 	
+	player_bag.inventory_changed.connect(update_inventory)
+
+	prev_button.connect("pressed", _on_PrevButton_pressed)
+	next_button.connect("pressed", _on_NextButton_pressed)
+
 	update_inventory()
 
 func _input(event):
@@ -42,8 +50,18 @@ func _input(event):
 		close()
 	
 func update_inventory():
-	for i in range(player_bag.inventorySize):
-		var slot_ui: InventorySlotUI = bag_grid.get_child(i)
+	# Update page label
+	page_label.text = str(current_page) + "/" + str(max_pages)
+
+	# Disable buttons if necessary
+	prev_button.disabled = true if current_page == 1 else false
+	next_button.disabled = true if current_page == max_pages else false
+
+	# Update inventory slots
+	# cycle through the slots in the current page
+	for i in range((current_page - 1) * slots_per_page, (current_page) * slots_per_page):
+		# i = current index in the inventory (based on the current page)
+		var slot_ui: InventorySlotUI = bag_grid.get_child(i - (current_page - 1) * slots_per_page)
 		slot_ui.slot = player_bag.get_slot(i)
 		slot_ui.update()
 	# for i in range(player_inventory.inventorySize):
@@ -51,7 +69,7 @@ func update_inventory():
 	# 	slot_ui.slot = player_inventory.get_slot(i)
 	# 	slot_ui.update()
 
-func swap_items(origin: String, originIndex: int, target: String, targetIndex: int):
+func _on_item_swapped(origin: String, originIndex: int, target: String, targetIndex: int):
 	# print("Swapping item: " + origin + "[" + str(originIndex) + "] with " + target + "[" + str(targetIndex) + "]")
 
 	# Retrieve the origin and target inventories
@@ -122,3 +140,15 @@ func open():
 
 func close():
 	visible = false
+
+func _on_PrevButton_pressed():
+	current_page -= 1
+	update_inventory()
+
+func _on_NextButton_pressed():
+	current_page += 1
+	update_inventory()
+
+func _on_item_used(slot: int):
+	player_bag.use_item(slot)
+	update_inventory()
