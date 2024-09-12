@@ -90,7 +90,7 @@ func _process(delta):
 		sprite.play("idle_" + dirstring)
 	
 	# Decrease stamina when sprinting
-	if isSprinting:
+	if isSprinting and direction != Vector2.ZERO:
 		if (stamina > 0):
 			stamina -= delta * 30
 		else:
@@ -99,6 +99,7 @@ func _process(delta):
 		# Recover stamina otherwise
 		if stamina < 100:
 			stamina += delta * 5
+	
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -119,7 +120,7 @@ func sprint(value):
 
 func _input(event):
 	if event.is_action_pressed("sprint"):
-		if stamina > 25 and !isSprinting and direction != Vector2.ZERO:
+		if stamina > 25 and !isSprinting:
 			sprint(true)
 	if event.is_action_released("sprint"):
 		if isSprinting:
