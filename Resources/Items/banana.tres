@@ -9,10 +9,10 @@ region = Rect2(32, 448, 32, 32)
 
 [resource]
 script = ExtResource("1_vqi1l")
-hydratation = 5
-hunger = 10
-isInstant = true
-duration = 0.0
+water = 0
+energy = 0
+isBuff = false
+duration = 1
 name = "Banana"
 description = "Una banana enorme!"
 icon = SubResource("AtlasTexture_6uywc")

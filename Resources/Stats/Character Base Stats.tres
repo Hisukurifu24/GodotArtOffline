@@ -11,4 +11,4 @@ ap = 0.0
 armor = 0.0
 mr = 0.0
 crit = 0.0
-crit_dmg = 0.0
+crit_dmg = 1.0
