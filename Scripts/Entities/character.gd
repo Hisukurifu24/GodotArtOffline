@@ -1,7 +1,6 @@
 class_name Character
 extends Entity
 
-## TODO: Implementare il sistema di energia e acqua
 var energy = 100:
 	set(value):
 		energy = clamp(value, 0, max_energy)
@@ -34,7 +33,7 @@ signal energy_changed(energy, max_energy)
 signal water_changed(water, max_water)
 signal gold_changed(gold)
 
-#region Altre Variabili
+#region Movement Variables
 @onready var sprite = $AnimatedSprite2D
 
 var dirstring = "front"
@@ -45,6 +44,10 @@ var isAttacking = false
 #endregion
 
 @export var profile_image: Texture = null
+
+@onready var energy_timer = %EnergyTimer
+@onready var water_timer = %WaterTimer
+
 func _ready():
 	super._ready()
 	energy = max_energy
@@ -67,6 +70,10 @@ func _ready():
 	currentStats.stats_changed.connect(_on_character_stats_changed)
 	bonusStats.stats_changed.connect(_on_character_stats_changed)
 	maxStats.stats_changed.connect(_on_character_stats_changed)
+
+	# Connect signals
+	energy_timer.timeout.connect(_on_energy_timer_timeout)
+	water_timer.timeout.connect(_on_water_timer_timeout)
 
 	player_stats_changed.emit()
 	energy_changed.emit(energy, max_energy)
@@ -128,3 +135,9 @@ func _input(event):
 
 func _on_character_stats_changed():
 	player_stats_changed.emit()
+
+func _on_energy_timer_timeout():
+	energy -= 1
+
+func _on_water_timer_timeout():
+	water -= 1
