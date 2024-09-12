@@ -53,6 +53,14 @@ var crit_pt: float:
 	set(value):
 		crit_dmg = clamp(value, 1, 3)
 		stats_changed.emit()
+## Critical Strike Damage in percentage
+var crit_dmg_pt: int:
+	get:
+		return int(crit_dmg) * 100
+	set(value):
+		crit_dmg = float(value) / 100
+		stats_changed.emit()
+
 
 # TODO: Da definire come funziona esattamente il crit_dmg:
 # damage = ad * (1 + crit_dmg * crit) = ad + ad * crit_dmg * is_crit[0, 1]
