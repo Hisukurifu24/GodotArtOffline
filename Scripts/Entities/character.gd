@@ -44,6 +44,7 @@ var isSprinting = false
 var isAttacking = false
 #endregion
 
+@export var profile_image: Texture = null
 func _ready():
 	super._ready()
 	energy = max_energy
