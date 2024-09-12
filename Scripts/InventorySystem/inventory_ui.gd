@@ -4,8 +4,18 @@ var player: Character
 var player_inventory: InventoryComponent
 var player_bag: InventoryComponent
 
-@onready var inventory_slots = %Inventory
-@onready var bag_slots = %Bag
+@onready var bag_grid = %Bag
+@onready var page_label = %Page
+@onready var prev_button = %PrevButton
+@onready var next_button = %NextButton
+
+var current_page: int = 1
+var slots_per_page: int = 28:
+	get:
+		return bag_grid.get_child_count()
+var max_pages: int = 5:
+	get:
+		return ceili(float(player_bag.inventorySize) / slots_per_page)
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
@@ -15,9 +25,9 @@ func _ready():
 	else:
 		push_error("Player not found in scene")
 
-	for slot: InventorySlotUI in inventory_slots.get_children():
-		slot.item_swapped.connect(swap_items)
-	for slot: InventorySlotUI in bag_slots.get_children():
+	# for slot: InventorySlotUI in inventory_slots.get_children():
+	# 	slot.item_swapped.connect(swap_items)
+	for slot: InventorySlotUI in bag_grid.get_children():
 		slot.item_swapped.connect(swap_items)
 	
 	update_inventory()
@@ -33,13 +43,13 @@ func _input(event):
 	
 func update_inventory():
 	for i in range(player_bag.inventorySize):
-		var slot_ui: InventorySlotUI = bag_slots.get_child(i)
+		var slot_ui: InventorySlotUI = bag_grid.get_child(i)
 		slot_ui.slot = player_bag.get_slot(i)
 		slot_ui.update()
-	for i in range(player_inventory.inventorySize):
-		var slot_ui: InventorySlotUI = inventory_slots.get_child(i)
-		slot_ui.slot = player_inventory.get_slot(i)
-		slot_ui.update()
+	# for i in range(player_inventory.inventorySize):
+	# 	var slot_ui: InventorySlotUI = inventory_slots.get_child(i)
+	# 	slot_ui.slot = player_inventory.get_slot(i)
+	# 	slot_ui.update()
 
 func swap_items(origin: String, originIndex: int, target: String, targetIndex: int):
 	# print("Swapping item: " + origin + "[" + str(originIndex) + "] with " + target + "[" + str(targetIndex) + "]")

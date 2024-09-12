@@ -640,7 +640,7 @@ item = Array[ExtResource("15_amn70")]([ExtResource("14_aluq4")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(582, 331)
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 process_callback = 0
 position_smoothing_enabled = true
 

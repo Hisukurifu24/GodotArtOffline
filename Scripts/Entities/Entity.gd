@@ -74,9 +74,9 @@ func lvlup():
 	baseStats.increase(statsIncrement)
 
 func changeColor():
-	modulate = Color(1, 0, 0) # Change color to red
-	await get_tree().create_timer(0.5).timeout
-	modulate = Color(1, 1, 1) # Change color back to normal
+	$AnimatedSprite2D.modulate = Color(1, 0, 0) # Change color to red
+	await get_tree().create_timer(0.5).timeout # Wait for 0.5 seconds
+	$AnimatedSprite2D.modulate = Color(1, 1, 1) # Change color back to normal
 
 func _process(delta):
 	if (knockbackTime > 0):
