@@ -14,7 +14,7 @@ func _ready():
 
 	# Connect signals
 	for slot: InventorySlotUI in inventory_grid.get_children():
-		# slot.item_swapped.connect(_on_item_swapped)
+		slot.item_swapped.connect(update_inventory)
 		slot.item_used.connect(_on_item_used)
 
 	player_inventory.inventory_changed.connect(update_inventory)
