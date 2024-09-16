@@ -36,11 +36,11 @@ signal gold_changed(gold)
 #region Movement Variables
 @onready var sprite = $AnimatedSprite2D
 
-var dirstring = "front"
-var direction
+var dirstring: String = "front"
+var direction: Vector2 = Vector2.ZERO
 
-var isSprinting = false
-var isAttacking = false
+var isSprinting := false
+var isAttacking := false
 #endregion
 
 @export var profile_image: Texture = null
@@ -88,10 +88,7 @@ func _process(delta):
 		dirstring = "front" if direction.y > 0 else "back"
 		if direction.x != 0:
 			dirstring = "side"
-			if direction.x < 0:
-				sprite.flip_h = true
-			else:
-				sprite.flip_h = false
+			sprite.flip_h = true if direction.x < 0 else false
 		sprite.play("move_" + dirstring)
 	else:
 		sprite.play("idle_" + dirstring)
