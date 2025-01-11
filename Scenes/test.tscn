@@ -1,28 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://did6lhbr8fvh0"]
 
-[ext_resource type="PackedScene" uid="uid://bgk66fypiwyas" path="res://Scenes/inventory_slot_ui.tscn" id="1_xh4fw"]
-[ext_resource type="FontFile" uid="uid://f3sw3475y8u6" path="res://Arts/Fonts/RPGSystem.ttf" id="2_wyn1w"]
+[ext_resource type="PackedScene" uid="uid://dfpr1uxutxjr6" path="res://Scenes/character.tscn" id="1_du48k"]
+[ext_resource type="PackedScene" uid="uid://7rgng7tmpief" path="res://Scenes/slime.tscn" id="2_ihxqg"]
 
-[node name="Node2D" type="CanvasLayer"]
+[node name="Node2D" type="Node2D"]
 
-[node name="GridContainer" type="GridContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_du48k")]
 
-[node name="InventorySlot" parent="GridContainer" instance=ExtResource("1_xh4fw")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterBody2D"]
+remote_path = NodePath("../../Camera2D")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-texture_filter = 1
-offset_right = 234.73
-offset_bottom = 68.0
-scale = Vector2(1.175, 1.175)
-theme_override_fonts/normal_font = ExtResource("2_wyn1w")
-theme_override_font_sizes/normal_font_size = 32
-text = "Il ritorno del re"
-fit_content = true
+[node name="Slime" parent="." instance=ExtResource("2_ihxqg")]
+position = Vector2(69, -26)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+process_callback = 0
+position_smoothing_enabled = true
