@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bp6dg4gra6ab0"
+path="res://.godot/imported/Retro FootStep Krushed Landing 01.wav-11fccc915ce5c41fe2d0cba92e91d752.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/FreeSFX/GameSFX/FootStep/Retro FootStep Krushed Landing 01.wav"
+dest_files=["res://.godot/imported/Retro FootStep Krushed Landing 01.wav-11fccc915ce5c41fe2d0cba92e91d752.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

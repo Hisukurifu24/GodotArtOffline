@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://c5id40doq1fme"]
+
+[ext_resource type="PackedScene" uid="uid://b3to3r345cki4" path="res://Scenes/abilities/attacco_base.tscn" id="1_d5a3c"]
+[ext_resource type="Script" path="res://Scripts/Resources/ability.gd" id="1_r5bx8"]
+
+[resource]
+script = ExtResource("1_r5bx8")
+name = "Attacco Base"
+description = "È il massimo che sai fare?
+Quest'abilità non consuma mana."
+damage = 10
+manaCost = 0
+damageType = 0
+scene = ExtResource("1_d5a3c")

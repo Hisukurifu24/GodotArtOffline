@@ -19,6 +19,7 @@ config/icon="res://Arts/icon.jpeg"
 [autoload]
 
 Quest_Manager="*res://Scripts/QuestSystem/QuestManager.gd"
+CombatManager="*res://Scripts/Combat/combat_manager.gd"
 
 [display]
 
@@ -39,8 +40,9 @@ project/assembly_name="Godot Art Offline"
 folder_colors={
 "res://Arts/": "pink",
 "res://Arts/Fonts/": "gray",
+"res://Arts/Sounds/": "orange",
+"res://Arts/Sounds/music/": "orange",
 "res://Arts/Sprout Lands - UI Pack - Basic pack/": "green",
-"res://Arts/music/": "orange",
 "res://Resources/": "yellow",
 "res://Scenes/": "blue",
 "res://Scripts/": "purple",
@@ -104,3 +106,7 @@ openPlayerInfo={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":4,"axis_value":1.0,"script":null)
 ]
 }
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"

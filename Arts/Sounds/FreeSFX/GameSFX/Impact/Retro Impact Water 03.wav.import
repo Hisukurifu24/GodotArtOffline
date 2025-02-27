@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ctn84cb4xg0no"
+path="res://.godot/imported/Retro Impact Water 03.wav-dbc650b8ce375ea0e60ca5973d85a848.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/FreeSFX/GameSFX/Impact/Retro Impact Water 03.wav"
+dest_files=["res://.godot/imported/Retro Impact Water 03.wav-dbc650b8ce375ea0e60ca5973d85a848.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

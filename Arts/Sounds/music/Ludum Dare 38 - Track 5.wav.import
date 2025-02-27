@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c2mi3buulxywc"
+path="res://.godot/imported/Ludum Dare 38 - Track 5.wav-64fc0c7e2239956ed7c31ad8a233028b.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/music/Ludum Dare 38 - Track 5.wav"
+dest_files=["res://.godot/imported/Ludum Dare 38 - Track 5.wav-64fc0c7e2239956ed7c31ad8a233028b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

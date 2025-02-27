@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://x1lkiwajleff"
+path="res://.godot/imported/Retro Weird 07.wav-14bb9ab105c68f9bf446f4b643585b4d.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/FreeSFX/GameSFX/Weird/Retro Weird 07.wav"
+dest_files=["res://.godot/imported/Retro Weird 07.wav-14bb9ab105c68f9bf446f4b643585b4d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -29,7 +29,7 @@ func on_quest_accepted(quest: Quest):
 
 	# Set the quest as the quest as following
 	followQuest = quest
-    
+	
 	ui.updateQuests()
 
 func on_objective_completed(objective: QuestObjective):

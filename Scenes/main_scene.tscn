@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c3ntpy34qnwtt" path="res://Arts/Mystic Woods/sprites/tilesets/all.png" id="1_gdd30"]
 [ext_resource type="PackedScene" uid="uid://dfpr1uxutxjr6" path="res://Scenes/character.tscn" id="1_je4xp"]
 [ext_resource type="Texture2D" uid="uid://b2s36t6vfjkt2" path="res://Arts/Mystic Woods/sprites/tilesets/all-objects.png" id="2_idwcb"]
-[ext_resource type="AudioStream" uid="uid://c5y1k1mg2mg0n" path="res://Arts/music/Ludum Dare 38 - Track 1.wav" id="2_nphs3"]
+[ext_resource type="AudioStream" uid="uid://c5y1k1mg2mg0n" path="res://Arts/Sounds/music/Ludum Dare 38 - Track 1.wav" id="2_nphs3"]
 [ext_resource type="PackedScene" uid="uid://cx2o2i3ck7mtt" path="res://Scenes/door.tscn" id="3_ph2ag"]
 [ext_resource type="PackedScene" uid="uid://cufe1pawdabdo" path="res://Scenes/chest.tscn" id="7_mijix"]
 [ext_resource type="PackedScene" uid="uid://cpyfpno7gejy3" path="res://Scenes/sign.tscn" id="9_0jmxa"]

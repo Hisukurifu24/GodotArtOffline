@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://bdxy2ttcmxqi6"]
+
+[ext_resource type="Texture2D" uid="uid://cjob2e22r2mhu" path="res://Arts/FX/Effect and Bullet 16x16/Fire Effect and Bullet 16x16.png" id="1_fnb4v"]
+[ext_resource type="Script" path="res://Scripts/Weapons/effects/flame.gd" id="1_srb71"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmqjj"]
+atlas = ExtResource("1_fnb4v")
+region = Rect2(480, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwot3"]
+atlas = ExtResource("1_fnb4v")
+region = Rect2(496, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cykts"]
+atlas = ExtResource("1_fnb4v")
+region = Rect2(512, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbuk7"]
+atlas = ExtResource("1_fnb4v")
+region = Rect2(528, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8irr8"]
+atlas = ExtResource("1_fnb4v")
+region = Rect2(544, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_go7sq"]
+atlas = ExtResource("1_fnb4v")
+region = Rect2(560, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gvdft"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmqjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwot3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cykts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbuk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8irr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_go7sq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1xhk"]
+size = Vector2(15, 16)
+
+[node name="Flame1" type="StaticBody2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_srb71")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_gvdft")
+autoplay = "default"
+frame_progress = 0.2534
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_f1xhk")
+disabled = true

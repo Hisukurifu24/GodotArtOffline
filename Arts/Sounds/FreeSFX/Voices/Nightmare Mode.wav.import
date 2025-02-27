@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://sit7cge4v8uu"
+path="res://.godot/imported/Nightmare Mode.wav-e16d533d60ce7d1d8db87a2263aa663d.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/FreeSFX/Voices/Nightmare Mode.wav"
+dest_files=["res://.godot/imported/Nightmare Mode.wav-e16d533d60ce7d1d8db87a2263aa663d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

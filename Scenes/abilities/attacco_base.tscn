@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3to3r345cki4"]
+
+[ext_resource type="Script" path="res://Scripts/Combat/ability_node.gd" id="1_fre60"]
+[ext_resource type="AudioStream" uid="uid://fhqu1vjsaeyr" path="res://Arts/Sounds/FreeSFX/GameSFX/Swoosh/Retro Swooosh 07.wav" id="2_r4sue"]
+
+[sub_resource type="Animation" id="Animation_3xm7i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-295.804, -1.75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_cub78"]
+resource_name = "attacco_base"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-295.804, -1.75), Vector2(212, -1.75), Vector2(-295.804, -1.75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c31d7"]
+_data = {
+"RESET": SubResource("Animation_3xm7i"),
+"attacco_base": SubResource("Animation_cub78")
+}
+
+[node name="AttaccoBase" type="Node2D"]
+script = ExtResource("1_fre60")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c31d7")
+}
+autoplay = "attacco_base"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_r4sue")

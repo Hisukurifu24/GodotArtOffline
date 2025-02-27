@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cmtd6mnnyh2ro"
+path="res://.godot/imported/Retro Weapon Electric 18.wav-ad40155182d2f34e4f951fd03591bb10.sample"
+
+[deps]
+
+source_file="res://Arts/Sounds/FreeSFX/GameSFX/Weapon/various/Retro Weapon Electric 18.wav"
+dest_files=["res://.godot/imported/Retro Weapon Electric 18.wav-ad40155182d2f34e4f951fd03591bb10.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

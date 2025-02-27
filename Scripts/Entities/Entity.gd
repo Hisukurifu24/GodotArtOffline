@@ -31,6 +31,8 @@ var stamina = 100:
 		stamina_changed.emit(stamina)
 #endregion
 
+var abilities: Array[Ability] = []
+
 #region Segnali
 signal xp_changed(xp, max_xp, lvl)
 signal stamina_changed(stamina)

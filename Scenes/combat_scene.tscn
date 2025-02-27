@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://bvgqgump327l6"]
+
+[ext_resource type="Texture2D" uid="uid://cmbkofbfc7jg7" path="res://Arts/BG/battleback10.png" id="1_tn4au"]
+[ext_resource type="Texture2D" uid="uid://cd8xy0n3arjyu" path="res://Arts/Mystic Woods/sprites/characters/player.png" id="2_uw1ig"]
+[ext_resource type="Texture2D" uid="uid://dagha4sohjjpy" path="res://Arts/Mystic Woods/sprites/characters/slime.png" id="3_k62s6"]
+[ext_resource type="PackedScene" uid="uid://rw04mhn7on13" path="res://Scenes/combat_gui.tscn" id="4_tbsqc"]
+[ext_resource type="PackedScene" uid="uid://dfpr1uxutxjr6" path="res://Scenes/character.tscn" id="5_m8qbx"]
+[ext_resource type="PackedScene" uid="uid://7rgng7tmpief" path="res://Scenes/slime.tscn" id="6_unxh2"]
+[ext_resource type="PackedScene" uid="uid://b3to3r345cki4" path="res://Scenes/abilities/attacco_base.tscn" id="7_xyr44"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v7dl"]
+atlas = ExtResource("2_uw1ig")
+region = Rect2(17, 70, 15, 21)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -5
+texture_filter = 1
+texture = ExtResource("1_tn4au")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.58, 0.58)
+
+[node name="Player" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-295.804, -1.75)
+scale = Vector2(4.77381, 3.78571)
+texture = SubResource("AtlasTexture_2v7dl")
+region_rect = Rect2(-91, 0, 7, 0)
+
+[node name="Enemy" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(250, 0.999998)
+scale = Vector2(5.66667, 5.66667)
+texture = ExtResource("3_k62s6")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(8, 12, 16, 12)
+
+[node name="Combat_GUI" parent="." instance=ExtResource("4_tbsqc")]
+unique_name_in_owner = true
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("5_m8qbx")]
+visible = false
+
+[node name="Slime" parent="." instance=ExtResource("6_unxh2")]
+visible = false
+
+[node name="AttaccoBase" parent="." instance=ExtResource("7_xyr44")]
