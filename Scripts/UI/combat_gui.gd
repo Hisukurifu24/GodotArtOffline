@@ -29,27 +29,24 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") and combatOptionsUI.visible:
 		showUI("startOptions")
 
+func _update_button(button: Button, ability: Ability):
+	button.text = ability.name
+	button.get_node("../VBoxContainer/Descrizione").text = str(ability.description)
+	button.get_node("../VBoxContainer/Costo").text = "MP: " + str(ability.manaCost)
+
 func _update_abilities() -> void:
 	for i in range(4):
 		var ability: Ability = player.abilities[i]
 		if ability != null:
 			match i:
 				0:
-					ability1Button.text = ability.name
-					ability1Button.get_node("../VBoxContainer/Descrizione").text = str(ability.description)
-					ability1Button.get_node("../VBoxContainer/Costo").text = str(ability.manaCost)
+					_update_button(ability1Button, ability)
 				1:
-					ability2Button.text = ability.name
-					ability2Button.get_node("../VBoxContainer/Descrizione").text = str(ability.description)
-					ability2Button.get_node("../VBoxContainer/Costo").text = str(ability.manaCost)
+					_update_button(ability2Button, ability)
 				2:
-					ability3Button.text = ability.name
-					ability3Button.get_node("../VBoxContainer/Descrizione").text = str(ability.description)
-					ability3Button.get_node("../VBoxContainer/Costo").text = str(ability.manaCost)
+					_update_button(ability3Button, ability)
 				3:
-					ability4Button.text = ability.name
-					ability4Button.get_node("../VBoxContainer/Descrizione").text = str(ability.description)
-					ability4Button.get_node("../VBoxContainer/Costo").text = str(ability.manaCost)
+					_update_button(ability4Button, ability)
 
 func showUI(ui_name: String) -> void:
 	match ui_name:

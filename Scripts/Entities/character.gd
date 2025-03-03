@@ -48,8 +48,10 @@ var isAttacking := false
 @onready var energy_timer = %EnergyTimer
 @onready var water_timer = %WaterTimer
 
+
 func _ready():
 	super._ready()
+
 	energy = max_energy
 	water = max_water
 

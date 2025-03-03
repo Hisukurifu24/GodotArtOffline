@@ -12,7 +12,7 @@
 atlas = ExtResource("2_uw1ig")
 region = Rect2(17, 70, 15, 21)
 
-[node name="Node2D" type="Node2D"]
+[node name="Combat Scene" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -5

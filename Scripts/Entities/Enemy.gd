@@ -7,6 +7,7 @@ var is_attacking := false
 @export var attackCooldown := 1.0
 
 func _ready():
+	super._ready()
 	add_to_group("Enemy")
 
 func attack(target: Entity):

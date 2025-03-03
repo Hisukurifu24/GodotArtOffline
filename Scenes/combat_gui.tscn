@@ -10,7 +10,7 @@ line_spacing = 0.0
 font = ExtResource("3_0wguy")
 font_size = 8
 
-[node name="Combat_GUI" type="CanvasLayer"]
+[node name="Combat_GUI" type="CanvasLayer" groups=["CombatGUI"]]
 script = ExtResource("1_8vo75")
 
 [node name="Control" type="Control" parent="."]
@@ -194,11 +194,9 @@ theme_override_constants/separation = 0
 [node name="Descrizione" type="Label" parent="Control/Panel/Combat Options/Actions/GridContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 1
 size_flags_stretch_ratio = 2.0
-text = "asdsa asdasd asdasd
-asd asd
-asd asdasd"
+text = "asdsa asdasd asdasd"
 label_settings = SubResource("LabelSettings_3yexw")
 max_lines_visible = 2
 
@@ -232,7 +230,7 @@ theme_override_constants/separation = 0
 [node name="Descrizione" type="Label" parent="Control/Panel/Combat Options/Actions/GridContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 1
 size_flags_stretch_ratio = 2.0
 text = "asdsa asdasd asdasd
 asd asd
@@ -270,7 +268,7 @@ theme_override_constants/separation = 0
 [node name="Descrizione" type="Label" parent="Control/Panel/Combat Options/Actions/GridContainer/HBoxContainer3/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 1
 size_flags_stretch_ratio = 2.0
 text = "asdsa asdasd asdasd
 asd asd
@@ -308,7 +306,7 @@ theme_override_constants/separation = 0
 [node name="Descrizione" type="Label" parent="Control/Panel/Combat Options/Actions/GridContainer/HBoxContainer4/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 1
 size_flags_stretch_ratio = 2.0
 text = "asdsa asdasd asdasd
 asd asd

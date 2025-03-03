@@ -135,3 +135,30 @@ func copy(stats: Stats):
 	self.mr = stats.mr
 	self.crit = stats.crit
 	self.crit_dmg = stats.crit_dmg
+
+func getStatbyType(name: StatType):
+	match name:
+		StatType.AD:
+			return ad
+		StatType.AP:
+			return ap
+		StatType.HP:
+			return hp
+		StatType.MP:
+			return mp
+		StatType.ARM:
+			return armor
+		StatType.MR:
+			return mr
+
+enum StatType {
+	AD,
+	AP,
+	HP,
+	MP,
+	ARM,
+	MR
+}
+
+func _to_string():
+	return "HP: " + str(hp) + " MP: " + str(mp) + " AD: " + str(ad) + " AP: " + str(ap) + " ARM: " + str(armor) + " MR: " + str(mr) + " Crit: " + str(crit) + " CritDmg: " + str(crit_dmg)

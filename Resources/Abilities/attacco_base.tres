@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://c5id40doq1fme"]
+[gd_resource type="Resource" script_class="AttackAbility" load_steps=3 format=3 uid="uid://c5id40doq1fme"]
 
 [ext_resource type="PackedScene" uid="uid://b3to3r345cki4" path="res://Scenes/abilities/attacco_base.tscn" id="1_d5a3c"]
-[ext_resource type="Script" path="res://Scripts/Resources/ability.gd" id="1_r5bx8"]
+[ext_resource type="Script" path="res://Scripts/Resources/Abilities/attack_ability.gd" id="2_6qaop"]
 
 [resource]
-script = ExtResource("1_r5bx8")
-name = "Attacco Base"
-description = "È il massimo che sai fare?
-Quest'abilità non consuma mana."
-damage = 10
-manaCost = 0
+script = ExtResource("2_6qaop")
 damageType = 0
+name = "Attacco Base"
+description = "E' il massimo che sai fare?"
+baseValue = 0
+scalingValue = 1.0
+scalingType = 0
+manaCost = 0
 scene = ExtResource("1_d5a3c")

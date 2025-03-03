@@ -3,6 +3,10 @@ extends Enemy
 
 @onready var sprite = $AnimatedSprite2D
 
+func _ready():
+	super._ready()
+	
+
 func _process(_delta):
 	if !is_alive:
 		return

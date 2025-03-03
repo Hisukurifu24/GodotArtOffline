@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 #region Variabili principali
 
-@export var baseStats: Stats = Stats.new()
+@export var baseStats: Stats
 var currentStats: Stats = Stats.new()
 var bonusStats: Stats = Stats.new()
 var maxStats: Stats = Stats.new():
@@ -45,7 +45,7 @@ var knockbackTime = 0.5
 
 func _ready():
 	currentStats.copy(baseStats)
-	bonusStats = Stats.new()
+	abilities.insert(0, load("res://Resources/Abilities/attacco_base.tres"))
 
 func takeDamage(amount):
 	currentStats.hp -= amount
