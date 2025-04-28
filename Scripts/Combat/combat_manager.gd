@@ -42,6 +42,29 @@ func _process(_delta):
 			var ability: Ability = enemy.abilities[ability_index]
 			print("Enemy used " + ability.name)
 
+			# Instantiate the ability scene
+			var abilityNode: AbilityNode = ability.scene.instantiate()
+			get_node("../Combat Scene").add_child(abilityNode)
+			# Wait for the ability to finish
+			await abilityNode.abilityFinished
+			# Remove the ability node
+			abilityNode.queue_free()
+
+			# Calculate damage
+			var damage := _calculate_damage(ability, enemy, player)
+
+			print("bef Player HP: ", player.currentStats.hp)
+			# Deal damage to the player
+			player.takeDamage(damage)
+			print("Player HP: ", player.currentStats.hp)
+			# Show the damage dealt
+			combatGUI.showText("Enemy used " + ability.name + " dealing " + str(damage) + " damage!")
+			await get_tree().create_timer(2.0).timeout
+			# Pass the turn to the player
+			playerTurn = true
+			enemyTurnProcessed = false
+			combatGUI.showUI("startOptions")
+
 
 func _on_run():
 	# Check if the player can run away
