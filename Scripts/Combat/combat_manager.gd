@@ -40,6 +40,7 @@ func _process(_delta):
 			# Enemy's turn
 			var ability_index: int = combatAI.chooseAbility()
 			var ability: Ability = enemy.abilities[ability_index]
+			print("Enemy used " + ability.name)
 
 
 func _on_run():

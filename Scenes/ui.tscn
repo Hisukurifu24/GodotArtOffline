@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://dmeggbh2vhflk"]
 
-[ext_resource type="Script" path="res://Scripts/UI/ui.gd" id="1_1symc"]
+[ext_resource type="Script" uid="uid://bgtcqdb5cpefr" path="res://Scripts/UI/ui.gd" id="1_1symc"]
 [ext_resource type="Texture2D" uid="uid://djxxoo8x4s8gt" path="res://Arts/All.png" id="2_tlq1y"]
 [ext_resource type="Theme" uid="uid://c74xmjjbwnv0t" path="res://Resources/UI/ui_theme.tres" id="2_vbl7c"]
 [ext_resource type="FontFile" uid="uid://f3sw3475y8u6" path="res://Arts/Fonts/RPGSystem.ttf" id="3_qnjgq"]

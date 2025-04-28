@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://rw04mhn7on13"]
 
-[ext_resource type="Script" path="res://Scripts/UI/combat_gui.gd" id="1_8vo75"]
+[ext_resource type="Script" uid="uid://bdr4mwunekra6" path="res://Scripts/UI/combat_gui.gd" id="1_8vo75"]
 [ext_resource type="Theme" uid="uid://c74xmjjbwnv0t" path="res://Resources/UI/ui_theme.tres" id="1_a730r"]
 [ext_resource type="Texture2D" uid="uid://b2ymmbub0mq5m" path="res://Arts/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_g0j7s"]
 [ext_resource type="FontFile" uid="uid://d117dixktvope" path="res://Arts/Fonts/MenuCard.ttf" id="3_0wguy"]

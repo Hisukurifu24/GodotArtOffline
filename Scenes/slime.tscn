@@ -1,13 +1,13 @@
 [gd_scene load_steps=38 format=3 uid="uid://7rgng7tmpief"]
 
 [ext_resource type="Texture2D" uid="uid://dagha4sohjjpy" path="res://Arts/Mystic Woods/sprites/characters/slime.png" id="1_beqgq"]
-[ext_resource type="Script" path="res://Scripts/Entities/slime.gd" id="1_syftl"]
-[ext_resource type="Script" path="res://Scripts/Resources/stats.gd" id="2_kdag4"]
+[ext_resource type="Script" uid="uid://c6utug4cblxml" path="res://Scripts/Entities/slime.gd" id="1_syftl"]
+[ext_resource type="Script" uid="uid://nwfxvewrd07j" path="res://Scripts/Resources/stats.gd" id="2_kdag4"]
 [ext_resource type="PackedScene" uid="uid://deuyd32igmrt" path="res://Scenes/hitbox.tscn" id="3_ujd7q"]
-[ext_resource type="Script" path="res://Scripts/States/State Machine.gd" id="4_avgsk"]
-[ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="5_lx7uc"]
-[ext_resource type="Script" path="res://Scripts/States/EnemyFollow.gd" id="6_o70pj"]
-[ext_resource type="Script" path="res://Scripts/States/EnemyAttack.gd" id="7_yw73n"]
+[ext_resource type="Script" uid="uid://cilbdaebfd0te" path="res://Scripts/States/State Machine.gd" id="4_avgsk"]
+[ext_resource type="Script" uid="uid://cgw6jbs6ygne" path="res://Scripts/States/EnemyIdle.gd" id="5_lx7uc"]
+[ext_resource type="Script" uid="uid://qjik30642a42" path="res://Scripts/States/EnemyFollow.gd" id="6_o70pj"]
+[ext_resource type="Script" uid="uid://d08coeoiu172b" path="res://Scripts/States/EnemyAttack.gd" id="7_yw73n"]
 
 [sub_resource type="Resource" id="Resource_hwq8e"]
 script = ExtResource("2_kdag4")

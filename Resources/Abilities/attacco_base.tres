@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AttackAbility" load_steps=3 format=3 uid="uid://c5id40doq1fme"]
 
 [ext_resource type="PackedScene" uid="uid://b3to3r345cki4" path="res://Scenes/abilities/attacco_base.tscn" id="1_d5a3c"]
-[ext_resource type="Script" path="res://Scripts/Resources/Abilities/attack_ability.gd" id="2_6qaop"]
+[ext_resource type="Script" uid="uid://beeafo5uurql0" path="res://Scripts/Resources/Abilities/attack_ability.gd" id="2_6qaop"]
 
 [resource]
 script = ExtResource("2_6qaop")
@@ -10,6 +10,6 @@ name = "Attacco Base"
 description = "E' il massimo che sai fare?"
 baseValue = 0
 scalingValue = 1.0
-scalingType = 0
+scalingStat = 0
 manaCost = 0
 scene = ExtResource("1_d5a3c")

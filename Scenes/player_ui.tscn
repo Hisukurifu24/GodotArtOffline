@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://snx3pa674y4v"]
 
-[ext_resource type="Script" path="res://Scripts/UI/player_ui.gd" id="1_036bo"]
+[ext_resource type="Script" uid="uid://b6os6vbcph6x5" path="res://Scripts/UI/player_ui.gd" id="1_036bo"]
 [ext_resource type="Theme" uid="uid://c74xmjjbwnv0t" path="res://Resources/UI/ui_theme.tres" id="1_ffrcf"]
 [ext_resource type="Texture2D" uid="uid://b2ymmbub0mq5m" path="res://Arts/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_5p5nh"]
 [ext_resource type="Texture2D" uid="uid://4cw46r7nhyqt" path="res://Arts/Other GUI/warrior_silhouette_man.png" id="3_ud6pe"]

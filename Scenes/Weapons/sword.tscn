@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bqkr2usu7fvn"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/sword.gd" id="1_o2js6"]
+[ext_resource type="Script" uid="uid://ceg2i7ha5q4jc" path="res://Scripts/Weapons/sword.gd" id="1_o2js6"]
 [ext_resource type="Texture2D" uid="uid://ch2wcgl46uq4l" path="res://Arts/Items/ALL.png" id="2_kvpy0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mxxx"]
@@ -203,9 +203,9 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_khmow"]
 _data = {
-"RESET": SubResource("Animation_0cr5h"),
-"attack": SubResource("Animation_hu733"),
-"attack_reverse": SubResource("Animation_0lcic")
+&"RESET": SubResource("Animation_0cr5h"),
+&"attack": SubResource("Animation_hu733"),
+&"attack_reverse": SubResource("Animation_0lcic")
 }
 
 [node name="Sword" type="Area2D"]
@@ -231,7 +231,7 @@ region_rect = Rect2(0, 0, 21, 24)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_khmow")
+&"": SubResource("AnimationLibrary_khmow")
 }
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

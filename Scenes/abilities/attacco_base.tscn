@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3to3r345cki4"]
 
-[ext_resource type="Script" path="res://Scripts/Combat/ability_node.gd" id="1_fre60"]
+[ext_resource type="Script" uid="uid://cgr0tu8uh22dq" path="res://Scripts/Combat/ability_node.gd" id="1_fre60"]
 [ext_resource type="AudioStream" uid="uid://fhqu1vjsaeyr" path="res://Arts/Sounds/FreeSFX/GameSFX/Swoosh/Retro Swooosh 07.wav" id="2_r4sue"]
 
 [sub_resource type="Animation" id="Animation_3xm7i"]
@@ -60,8 +60,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c31d7"]
 _data = {
-"RESET": SubResource("Animation_3xm7i"),
-"attacco_base": SubResource("Animation_cub78")
+&"RESET": SubResource("Animation_3xm7i"),
+&"attacco_base": SubResource("Animation_cub78")
 }
 
 [node name="AttaccoBase" type="Node2D"]

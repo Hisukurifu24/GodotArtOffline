@@ -52,13 +52,17 @@ func _search_healing_ability() -> int:
 
 func _search_ad_scaling_ability() -> int:
 	for i in range(enemy.abilities.size()):
-		if enemy.abilities[i].scalingType == Stats.StatType.AD:
-			return i
+		if enemy.abilities[i].is_class("AttackAbility"):
+			var ability: AttackAbility = enemy.abilities[i];
+			if ability.scalingType == Stats.StatType.AD:
+				return i
 	return -1
 func _search_ap_scaling_ability() -> int:
 	for i in range(enemy.abilities.size()):
-		if enemy.abilities[i].scalingType == Stats.StatType.AP:
-			return i
+		if enemy.abilities[i].is_class("AttackAbility"):
+			var ability: AttackAbility = enemy.abilities[i];
+			if ability.scalingType == Stats.StatType.AP:
+				return i
 	return -1
 func _search_ad_ability() -> int:
 	for i in range(enemy.abilities.size()):

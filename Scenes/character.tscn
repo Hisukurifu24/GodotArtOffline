@@ -1,10 +1,10 @@
 [gd_scene load_steps=44 format=3 uid="uid://dfpr1uxutxjr6"]
 
-[ext_resource type="Script" path="res://Scripts/Entities/character.gd" id="1_amt8x"]
+[ext_resource type="Script" uid="uid://ergws450oc5n" path="res://Scripts/Entities/character.gd" id="1_amt8x"]
 [ext_resource type="Texture2D" uid="uid://inmb8tnvs2ax" path="res://Arts/Other GUI/warrior_silhouette_woman.png" id="2_a77oy"]
 [ext_resource type="Texture2D" uid="uid://cd8xy0n3arjyu" path="res://Arts/Mystic Woods/sprites/characters/player.png" id="2_akngc"]
 [ext_resource type="Resource" uid="uid://b0jfrilt62d2l" path="res://Resources/Stats/Character Base Stats.tres" id="2_bxdgp"]
-[ext_resource type="Script" path="res://Scripts/InventorySystem/inventory.gd" id="5_l5fk1"]
+[ext_resource type="Script" uid="uid://pb17h0t2lvx5" path="res://Scripts/InventorySystem/inventory.gd" id="5_l5fk1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4ttr"]
 size = Vector2(9, 4.5)

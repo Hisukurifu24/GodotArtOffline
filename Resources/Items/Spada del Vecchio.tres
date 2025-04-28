@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EquippableItem" load_steps=5 format=3 uid="uid://661o47l54uqg"]
 
-[ext_resource type="Script" path="res://Scripts/Resources/Items/EquippableItem.gd" id="1_7qxtd"]
+[ext_resource type="Script" uid="uid://c0uh7wqwqtmjk" path="res://Scripts/Resources/Items/EquippableItem.gd" id="1_7qxtd"]
 [ext_resource type="Texture2D" uid="uid://cay3jnftooi2f" path="res://Arts/Items/SWORDS.png" id="1_n5mki"]
 [ext_resource type="Resource" uid="uid://bgfq41143dusv" path="res://Resources/Stats/Items/Spada del vecchio.tres" id="3_vv84e"]
 
