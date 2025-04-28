@@ -13,7 +13,7 @@
 script = ExtResource("2_kdag4")
 hp = 100.0
 mp = 0.0
-ad = 0.0
+ad = 1.0
 ap = 0.0
 armor = 0.0
 mr = 0.0
