@@ -7,9 +7,10 @@ var enemy: Enemy
 var combatAI: CombatAI
 
 var playerTurn: bool
+var enemyTurnProcessed: bool = false
 
 func _ready():
-	# For testing purposes
+	## For testing purposes
 	player = get_tree().get_first_node_in_group("Player")
 	player.abilities.insert(0, load("res://Resources/Abilities/attacco_base.tres"))
 	player.abilities.insert(1, load("res://Resources/Abilities/attacco_base.tres"))
@@ -18,7 +19,7 @@ func _ready():
 
 	enemy = get_tree().get_first_node_in_group("Enemy")
 	print("befbef Enemy HP: ", enemy.currentStats.hp)
-	# For testing purposes
+	##
 
 	combatGUI.trying_to_run.connect(_on_run)
 	combatGUI.used_ability.connect(_on_ability_used)
@@ -30,7 +31,7 @@ func _ready():
 	playerTurn = player.speed > enemy.speed
 
 func _process(_delta):
-	if (!playerTurn):
+	if (!playerTurn and !enemyTurnProcessed):
 		# Check if the enemy is dead
 		if enemy.currentStats.hp <= 0:
 			combatGUI.showText("You won!")
@@ -38,6 +39,8 @@ func _process(_delta):
 			get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
 		else:
 			# Enemy's turn
+			enemyTurnProcessed = true
+
 			var ability_index: int = combatAI.chooseAbility()
 			var ability: Ability = enemy.abilities[ability_index]
 			print("Enemy used " + ability.name)
